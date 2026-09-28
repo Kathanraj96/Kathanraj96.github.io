@@ -40,7 +40,7 @@ $$('[data-api-step]').forEach(button => button.addEventListener('click', () => {
   const api = $('.api-scroll');
   const stage = Number(button.dataset.apiStep);
   const travel = Math.max(1, api.offsetHeight - innerHeight);
-  window.scrollTo({ top: api.offsetTop + travel * ((stage + .04) / 4), behavior: 'auto' });
+  window.scrollTo({ top: api.offsetTop + travel * ((stage + .04) / 4), behavior: 'instant' });
   setApiStage(stage);
 }));
 function updateScroll() {
@@ -121,13 +121,13 @@ const labs = [
   ['WORK IN PROGRESS', 'Building small retrieval and agent experiments to learn their product possibilities and limits.'],
   ['PRIVATE AI-ASSISTED BUILD', 'A personal dashboard I took from system design and architecture through development.']
 ];
-$$('[data-lab]').forEach(button => button.addEventListener('click', () => {
+$$('button[data-lab]').forEach(button => button.addEventListener('click', () => {
   const stage = Number(button.dataset.lab);
   $('#lab-status').textContent = labs[stage][0];
   $('#lab-copy').textContent = labs[stage][1];
   $('#ai-console').dataset.lab = stage;
   $$('[data-lab-visual]').forEach((visual, index) => visual.setAttribute('aria-hidden', index !== stage));
-  $$('[data-lab]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
+  $$('button[data-lab]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
 }));
 
 const foodStories = {
