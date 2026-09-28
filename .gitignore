@@ -1,0 +1,4 @@
+qa/*.png
+.DS_Store
+__pycache__/
+qa/playwright_chromiumdev_profile-*/

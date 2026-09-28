@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+<title id="title">GCET postcard illustration</title><desc id="desc">Illustrated view of a concrete engineering college entrance with a fountain and palm trees in Anand.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b0cbd5"/><stop offset="1" stop-color="#e7e3cd"/></linearGradient><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#c2c7bb"/><stop offset="1" stop-color="#8f9c99"/></linearGradient><pattern id="paper" width="23" height="23" patternUnits="userSpaceOnUse"><circle cx="3" cy="4" r="1" fill="#fff" opacity=".19"/><circle cx="18" cy="16" r="1" fill="#304e53" opacity=".09"/></pattern></defs>
+<rect width="800" height="620" fill="url(#sky)"/><circle cx="620" cy="90" r="68" fill="#fff0bc" opacity=".8"/>
+<path d="M0 392Q140 362 295 395T800 370V620H0Z" fill="#7f9f79"/>
+<rect x="105" y="198" width="590" height="320" fill="url(#wall)" stroke="#6e8584" stroke-width="5"/>
+<rect x="100" y="193" width="600" height="27" fill="#e1d6b9"/>
+<rect x="133" y="221" width="535" height="17" fill="#839592"/>
+<g fill="#506a70"><rect x="145" y="257" width="33" height="107"/><rect x="202" y="257" width="33" height="107"/><rect x="259" y="257" width="33" height="107"/><rect x="316" y="257" width="33" height="107"/><rect x="451" y="257" width="33" height="107"/><rect x="508" y="257" width="33" height="107"/><rect x="565" y="257" width="33" height="107"/><rect x="622" y="257" width="33" height="107"/></g>
+<rect x="324" y="378" width="152" height="140" fill="#425762"/><rect x="335" y="386" width="130" height="135" fill="#647f83"/>
+<path d="M75 405H725V432H75Z" fill="#d9d8c2"/><path d="M105 518H695v19H105Z" fill="#d9d8c2"/>
+<rect x="320" y="188" width="160" height="60" rx="5" fill="#2f6170"/><text x="400" y="230" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="700" letter-spacing="8" fill="#e7ede6">GCET</text>
+<path d="M0 620L276 489h248L800 620Z" fill="#c9b58d"/>
+<ellipse cx="400" cy="530" rx="129" ry="38" fill="#557988"/><ellipse cx="400" cy="519" rx="116" ry="28" fill="#9dc7be"/><ellipse cx="400" cy="514" rx="73" ry="14" fill="#d5e3d3"/>
+<path d="M400 507V448" stroke="#8ec4c6" stroke-width="6"/><path d="M400 464Q380 455 372 476M400 464Q422 450 427 478" fill="none" stroke="#a9d5cf" stroke-width="4"/>
+<g stroke="#665c46" stroke-width="8" stroke-linecap="round" fill="none"><path d="M56 620L78 185M740 620L719 157"/></g>
+<g fill="#54795c"><path d="M78 213Q10 190 22 131Q78 148 78 213"/><path d="M78 213Q91 128 145 128Q132 181 78 213"/><path d="M78 213Q32 227 10 274Q60 268 78 213"/><path d="M719 185Q658 152 656 113Q704 118 719 185"/><path d="M719 185Q740 100 794 104Q784 153 719 185"/><path d="M719 185Q756 216 797 240Q753 248 719 185"/></g>
+<path d="M0 562Q169 536 268 559T800 552V620H0Z" fill="#6c9068" opacity=".7"/>
+<rect width="800" height="620" fill="url(#paper)"/><path d="M0 0h800v620H0z" fill="none" stroke="#4f625b" stroke-width="12" opacity=".28"/>
+</svg>

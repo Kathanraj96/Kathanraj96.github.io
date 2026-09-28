@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" role="img" aria-labelledby="title desc">
+<title id="title">Monkey D. Luffy fan art</title><desc id="desc">Original bold vector fan illustration of the One Piece character smiling beneath a straw hat.</desc>
+<defs>
+  <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2" fill="#141414" opacity=".18"/></pattern>
+  <linearGradient id="hat" x2="0" y2="1"><stop stop-color="#ffe2a1"/><stop offset="1" stop-color="#ddad5d"/></linearGradient>
+</defs>
+<rect width="700" height="500" fill="#f4f0df"/>
+<path d="M0 0h700L530 500H0Z" fill="#f8d459"/><path d="M700 0v500H498Z" fill="#de5a42"/>
+<path d="M0 370L700 80M0 442L700 152M160 500L700 280" stroke="#111" stroke-width="10" opacity=".16"/>
+<rect width="700" height="500" fill="url(#dots)" opacity=".35"/>
+<path d="M143 498Q147 352 265 342H461Q564 382 580 500Z" fill="#ba272c" stroke="#141414" stroke-width="11"/>
+<path d="M302 354Q326 414 358 452Q387 410 406 353" fill="#e5ac76" stroke="#141414" stroke-width="8"/>
+<path d="M276 390Q294 443 296 500H209Q212 411 276 390M445 393Q503 419 504 500H418Q420 442 445 393" fill="#d93538" stroke="#141414" stroke-width="7"/>
+<ellipse cx="361" cy="262" rx="114" ry="132" fill="#e6b17c" stroke="#141414" stroke-width="10"/>
+<ellipse cx="246" cy="280" rx="19" ry="29" fill="#e6b17c" stroke="#141414" stroke-width="8"/>
+<ellipse cx="477" cy="280" rx="19" ry="29" fill="#e6b17c" stroke="#141414" stroke-width="8"/>
+<path d="M258 218Q250 173 285 145L302 185L316 131L334 177L362 129L378 175L411 138L417 188L446 160L472 220L456 249Q427 216 402 226L386 199L357 232L338 204L304 238L286 218Z" fill="#151515" stroke="#151515" stroke-width="8" stroke-linejoin="round"/>
+<path d="M292 265Q311 250 329 262M388 262Q405 250 425 265" fill="none" stroke="#161616" stroke-width="7" stroke-linecap="round"/>
+<ellipse cx="313" cy="276" rx="6" ry="10" fill="#111"/><ellipse cx="406" cy="276" rx="6" ry="10" fill="#111"/>
+<path d="M349 285Q357 294 362 284" fill="none" stroke="#9b673f" stroke-width="5" stroke-linecap="round"/>
+<path d="M311 320Q359 372 421 316Q402 369 359 374Q326 372 311 320Z" fill="#fff7e9" stroke="#161616" stroke-width="7" stroke-linejoin="round"/>
+<path d="M318 335Q358 345 408 331" fill="none" stroke="#161616" stroke-width="4"/>
+<path d="M292 296l-12 13m14-10l-12 14" stroke="#a04f38" stroke-width="4" stroke-linecap="round"/>
+<path d="M224 192Q226 95 352 80Q488 84 500 190Z" fill="url(#hat)" stroke="#151515" stroke-width="11"/>
+<path d="M249 169Q357 198 477 166L500 190Q367 220 225 191Z" fill="#c62d32" stroke="#151515" stroke-width="7"/>
+<ellipse cx="359" cy="193" rx="203" ry="33" fill="#e6b96e" stroke="#151515" stroke-width="11"/>
+<path d="M166 190Q337 223 552 184" fill="none" stroke="#fce4a2" stroke-width="6" opacity=".7"/>
+<path d="M174 473l-35 19M540 445l46 28M112 100l-44-17M588 105l41-29" stroke="#121212" stroke-width="9" stroke-linecap="round"/>
+<path d="M0 0h700v500H0z" fill="none" stroke="#141414" stroke-width="12"/>
+</svg>

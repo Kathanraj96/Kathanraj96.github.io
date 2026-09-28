@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+<title id="title">Sheth C. N. Vidyalaya postcard illustration</title><desc id="desc">Warm illustrated view of a tree-lined school campus in Ahmedabad.</desc>
+<defs>
+  <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b9d6d1"/><stop offset="1" stop-color="#e6e2c4"/></linearGradient>
+  <linearGradient id="brick" x2="0" y2="1"><stop stop-color="#bb765d"/><stop offset="1" stop-color="#8d4a3e"/></linearGradient>
+  <pattern id="paper" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r="1" fill="#ffffff" opacity=".15"/><circle cx="15" cy="19" r="1" fill="#685e4b" opacity=".1"/></pattern>
+</defs>
+<rect width="800" height="620" fill="url(#sky)"/><circle cx="639" cy="100" r="61" fill="#f7dda2" opacity=".9"/>
+<path d="M0 340Q110 288 244 334T510 322T800 310V620H0Z" fill="#a8b68e"/>
+<path d="M0 416Q230 358 398 424T800 402V620H0Z" fill="#7d9b7d"/>
+<path d="M280 620L342 363H585L689 620Z" fill="#d1ae87"/><path d="M360 620L390 370H500L538 620Z" fill="#e4c99f"/>
+<path d="M157 302h468v250H157z" fill="url(#brick)" stroke="#7c493d" stroke-width="5"/>
+<path d="M140 302l37-83h436l37 83z" fill="#9b5a49" stroke="#75473d" stroke-width="6"/>
+<rect x="186" y="337" width="410" height="16" fill="#dfb385"/>
+<rect x="192" y="246" width="386" height="27" fill="#e9d4ae"/><text x="385" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" letter-spacing="3" fill="#6a3d33">C. N. VIDYALAYA</text>
+<g fill="#e9d3ac" stroke="#74483b" stroke-width="4">
+  <path d="M184 545V393q0-45 42-45t42 45v152z"/><path d="M286 545V393q0-45 42-45t42 45v152z"/><path d="M389 545V393q0-45 42-45t42 45v152z"/><path d="M493 545V393q0-45 42-45t42 45v152z"/>
+</g>
+<g fill="#48453a"><path d="M197 540V394q0-31 29-31t29 31v146z"/><path d="M299 540V394q0-31 29-31t29 31v146z"/><path d="M402 540V394q0-31 29-31t29 31v146z"/><path d="M506 540V394q0-31 29-31t29 31v146z"/></g>
+<g stroke="#433e31" stroke-width="11" stroke-linecap="round"><path d="M94 625V253"/><path d="M84 332L26 224M97 295L158 199"/><path d="M696 625V219"/><path d="M692 319L739 206M688 286L623 190"/></g>
+<g fill="#547358"><circle cx="44" cy="207" r="78"/><circle cx="127" cy="173" r="88"/><circle cx="708" cy="164" r="91"/><circle cx="771" cy="230" r="81"/><circle cx="19" cy="313" r="58"/></g>
+<g fill="#75946c" opacity=".75"><circle cx="77" cy="143" r="53"/><circle cx="152" cy="218" r="43"/><circle cx="734" cy="124" r="50"/><circle cx="792" cy="189" r="45"/></g>
+<path d="M0 566Q113 540 183 558T354 556T800 531V620H0Z" fill="#557753"/>
+<rect width="800" height="620" fill="url(#paper)"/>
+<path d="M0 0h800v620H0z" fill="none" stroke="#624d3e" stroke-width="12" opacity=".35"/>
+</svg>

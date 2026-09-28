@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" role="img" aria-labelledby="title desc">
+<title id="title">SCMHRD postcard illustration</title><desc id="desc">Illustrated view of a modern beige and blue-glass campus building with landscaping in Pune.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#c2d0d4"/><stop offset="1" stop-color="#e8d9c7"/></linearGradient><linearGradient id="glass" x2="0" y2="1"><stop stop-color="#80a4ad"/><stop offset="1" stop-color="#365e73"/></linearGradient><pattern id="paper" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="#fff" opacity=".18"/><circle cx="17" cy="18" r="1" fill="#674f44" opacity=".08"/></pattern></defs>
+<rect width="800" height="620" fill="url(#sky)"/><circle cx="638" cy="103" r="68" fill="#f6d9a0" opacity=".8"/>
+<path d="M0 412Q230 364 421 405T800 390V620H0Z" fill="#8b9f84"/>
+<rect x="116" y="180" width="568" height="323" fill="#d4c6b5" stroke="#9d8c7d" stroke-width="5"/>
+<rect x="157" y="200" width="486" height="20" fill="#b2a18e"/>
+<rect x="152" y="233" width="230" height="218" fill="url(#glass)" stroke="#557887" stroke-width="4"/>
+<rect x="412" y="233" width="230" height="218" fill="url(#glass)" stroke="#557887" stroke-width="4"/>
+<g stroke="#b2d0ce" stroke-width="4" opacity=".8"><path d="M209 233V451M266 233V451M323 233V451M468 233V451M525 233V451M582 233V451"/><path d="M152 287H382M152 342H382M152 397H382M412 287H642M412 342H642M412 397H642"/></g>
+<path d="M382 222h30v246h-30z" fill="#e6d2ba"/><path d="M245 470h315v36H245z" fill="#b9aa99"/>
+<rect x="294" y="159" width="212" height="49" fill="#efe4d4" stroke="#aa9b88" stroke-width="2"/><text x="400" y="191" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="4" fill="#5d5554">SCMHRD</text>
+<path d="M0 620L226 508h348L800 620Z" fill="#b8a79a"/><path d="M0 620L292 517h216L800 620Z" fill="#c8b8a8"/>
+<ellipse cx="400" cy="549" rx="110" ry="30" fill="#7696a2"/><ellipse cx="400" cy="541" rx="96" ry="20" fill="#b3d0cb"/><path d="M400 525V483" stroke="#e9f1e6" stroke-width="4"/><path d="M400 500Q378 496 373 510M400 500Q419 494 429 511" stroke="#e9f1e6" stroke-width="3" fill="none"/>
+<g fill="#4f7460"><circle cx="98" cy="410" r="72"/><circle cx="704" cy="394" r="82"/><circle cx="29" cy="453" r="50"/><circle cx="786" cy="441" r="52"/></g><g fill="#729379"><circle cx="126" cy="385" r="42"/><circle cx="671" cy="358" r="43"/></g>
+<path d="M0 557Q147 533 243 550T800 548V620H0Z" fill="#648568" opacity=".75"/>
+<rect width="800" height="620" fill="url(#paper)"/><path d="M0 0h800v620H0z" fill="none" stroke="#665a4c" stroke-width="12" opacity=".28"/>
+</svg>
