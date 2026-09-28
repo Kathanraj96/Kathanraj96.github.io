@@ -1,6 +1,6 @@
 # Generated cutouts
 
-These three transparent PNGs were made with the built-in imagegen tool for this site. They are original editorial illustrations, not portraits or depictions of franchise characters.
+The first three transparent PNGs below are original editorial illustrations made with the built-in imagegen tool. The three WebP cutouts at the end are unofficial fan-art studies of the named characters, generated with the same built-in tool and compressed for the website.
 
 ## `movement-athlete-cutout.png`
 
@@ -13,3 +13,15 @@ Use case: illustration-story. Asset type: large transparent cutout for the final
 ## `gujarat-fafda-cutout.png`
 
 Use case: illustration-story. Asset type: transparent cutout for a personal website's Gujarat food chapter. A lively, hand-painted editorial cartoon still life of Gujarati fafda on a crinkled paper tray: several long golden crisp strips, a few fried green chillies, small bowls of chutney, and a playful paper kite tucked behind the tray. Warm Ahmedabad street-food feeling. Bold imperfect ink contour, tactile watercolor and risograph-like grain, terracotta, saffron, pale lemon, and teal accents. Diagonal composition with lots of visible negative transparent space around the cutout. The food must remain the clear subject and readable at small size. No person, no words, no logo, no watermark, no background or floor. Genuinely transparent background and clean silhouette.
+
+## `luffy-manga-cutout.webp`
+
+Use case: illustration-story. Asset type: transparent full-body character cutout for one panel of a personal website's comic-book chapter. Create original fan art depicting Monkey D. Luffy from One Piece, clearly recognizable by straw hat, red open shirt, blue shorts and joyful grin. Style: expressive hand-inked black-and-white manga panel drawing with sparse warm red accents, energetic varied brush lines, halftone shading, offbeat handmade feel. Pose: full-body walking forward with one foot lifted and one hand touching the straw hat, playful free spirit. Clean silhouette and readable anatomy at small web size. Transparent background with real alpha, no panel border, no scenery, no text, no speech bubbles, no watermark. Keep whole character visible with safe margins.
+
+## `zoro-anime-cutout.webp`
+
+Use case: illustration-story. Asset type: transparent full-body character cutout for the second panel of a personal website comic-book chapter. Create original fan art depicting Roronoa Zoro from One Piece, clearly recognizable by short green hair, green waist sash, three swords, and calm serious expression. Style: premium contemporary cel-shaded Japanese anime animation frame with bold contour, crisp teal and green palette, layered highlights, a little dynamic motion energy. Pose: full-body purposeful stride, swords secured at the waist, one hand on a sword hilt, not attacking; confident and composed. Clean silhouette readable at small web size. Transparent background with real alpha. No panel border, no scenery, no text, no speech bubbles, no watermark. Whole character visible with safe margins.
+
+## `zenitsu-cartoon-cutout.webp`
+
+Use case: illustration-story. Asset type: transparent full-body character cutout for the third panel of a personal website comic-book chapter. Create original fan art depicting Zenitsu Agatsuma from Demon Slayer, recognizable by short choppy golden yellow hair and warm yellow-orange triangular-pattern haori. Style: expressive American television cartoon interpretation with clean hand-drawn outlines, squash-and-stretch charm and strong readable shapes; visibly different from realistic anime and manga. Pose: full body, taking a nervous but determined step forward, a small lightning streak curling beside him, bright expressive face. Cutout silhouette readable at small web size. Transparent background with real alpha. No panel border, no scenery, no text, no speech bubbles, no watermark. Whole character visible with safe margins.

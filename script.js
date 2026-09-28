@@ -250,18 +250,21 @@ $$('.achievement-replay').forEach(button => button.addEventListener('click', () 
 const foodStories = {
   fafda: 'A crisp street-food favourite, especially when the city is celebrating.',
   gathiya: 'A familiar Gujarati snack that tastes like home, even when I am far away.',
-  undhiyu: 'A seasonal dish that carries the feeling of gathering and tradition.'
+  undhiyu: 'A seasonal dish that carries the feeling of gathering and tradition.',
+  navratri: 'Nine nights of garba, colour, music and late food stops: this is Gujarat at its most alive.'
 };
-$$('[data-food]').forEach(button => button.addEventListener('click', () => {
+$$('.food-picker [data-food]').forEach(button => button.addEventListener('click', () => {
   $('#food-detail').textContent = foodStories[button.dataset.food];
   $('#food').dataset.food = button.dataset.food;
-  $$('[data-food]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
+  $$('.food-picker [data-food]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
 }));
 
 $('#principles-button').addEventListener('click', event => {
-  const expanded = $('.quote-section').classList.toggle('is-decomposed');
-  event.currentTarget.setAttribute('aria-pressed', expanded);
-  event.currentTarget.textContent = expanded ? 'REBUILD THE IDEA ↖' : 'BREAK IT DOWN ↗';
+  const section = $('.quote-section');
+  const step = (Number(section.dataset.principleStep) + 1) % 3;
+  section.dataset.principleStep = String(step);
+  event.currentTarget.textContent = ['BREAK IT DOWN ↗','BUILD BACK UP ↗','START AGAIN ↺'][step];
+  event.currentTarget.setAttribute('aria-label', ['Show the fundamental parts of a problem','Rebuild a better process from the fundamental parts','Start the first-principles illustration again'][step]);
 });
 
 const avatar = $('#personal-avatar');
@@ -286,6 +289,18 @@ $('#game-button').addEventListener('click', event => {
   event.currentTarget.setAttribute('aria-pressed', playing);
   event.currentTarget.textContent = playing ? 'PAUSE THE JOURNEY ↗' : 'START THE JOURNEY ↗';
 });
+const gameWorlds = {
+  match: { level: 'LEVEL 01 · THE MATCH', description: 'The match begins with one more pass. FIFA is the place I go when I want a quick test of timing and instinct.' },
+  myth: { level: 'LEVEL 02 · THE MYTH', description: 'God of War pulls me into a world where every choice has weight and the story keeps widening.' },
+  island: { level: 'LEVEL 03 · THE ISLAND', description: 'Ghost of Tsushima is the kind of world I stay in for its atmosphere, movement and sense of place.' }
+};
+$$('[data-game-choice]').forEach(button => button.addEventListener('click', () => {
+  const world = button.dataset.gameChoice;
+  $('#games').dataset.game = world;
+  $('#game-hud-level').textContent = gameWorlds[world].level;
+  $('#game-description').textContent = gameWorlds[world].description;
+  $$('[data-game-choice]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
+}));
 $('#games').addEventListener('pointermove', event => {
   if (!finePointer || !motionOK) return;
   const rect = $('#games').getBoundingClientRect();
@@ -296,14 +311,28 @@ $('#manga-button').addEventListener('click', event => {
   event.currentTarget.setAttribute('aria-pressed', turned);
   event.currentTarget.textContent = turned ? 'BACK TO INK ←' : 'TURN THE PAGE →';
   $('#manga-page-number').textContent = turned ? '02' : '01';
-  const captions = turned ? ['Take the unfamiliar path.','Keep going when it gets hard.','Find a new question.'] : ['Joy chooses the next road.','Focus finds a way through.','Wonder keeps asking why.'];
+  const captions = turned ? ['Choose the unfamiliar path.','Hold your ground and keep going.','Courage arrives one step at a time.','Find a new question.'] : ['Joy chooses the next road.','Quiet focus finds a way through.','A nervous step can still be brave.','Wonder keeps asking why.'];
   $$('.panel-caption span').forEach((caption, index) => { caption.textContent = captions[index]; });
 });
 if (!motionOK) $('#manga-spread').classList.remove('is-playing');
 $('#crew-button').addEventListener('click', event => {
   const playing = $('#manga-spread').classList.toggle('is-playing');
   event.currentTarget.setAttribute('aria-pressed', String(playing));
-  event.currentTarget.textContent = playing ? 'PAUSE THE CREW Ⅱ' : 'START THE CREW ▶';
+  event.currentTarget.textContent = playing ? 'PAUSE THE PANELS Ⅱ' : 'START THE PANELS ▶';
+});
+
+const panelObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (entry.isIntersecting) entry.target.classList.add('in-view');
+}), {threshold:.18});
+$$('[data-comic-panel]').forEach(panel => {
+  panelObserver.observe(panel);
+  panel.addEventListener('pointermove', event => {
+    if (!finePointer || !motionOK) return;
+    const rect = panel.getBoundingClientRect();
+    panel.style.setProperty('--panel-x', `${((event.clientX - rect.left) / rect.width - .5) * 16}px`);
+    panel.style.setProperty('--panel-y', `${((event.clientY - rect.top) / rect.height - .5) * 10}px`);
+  });
+  panel.addEventListener('pointerleave', () => { panel.style.setProperty('--panel-x', '0px'); panel.style.setProperty('--panel-y', '0px'); });
 });
 
 const observer = new IntersectionObserver(entries => {
