@@ -172,10 +172,10 @@ $$('button[data-lab]').forEach(button => button.addEventListener('click', () => 
 }));
 
 const certifications = [
-  { date:'MAR 2025 · HUGGING FACE LEARN', name:'AI Agent Course', description:'Agent concepts, tools and workflows; part of my ongoing hands-on AI exploration.', category:'AI / EXPERIMENTATION', symbol:'✳' },
-  { date:'JUN–OCT 2024 · ISB EXECUTIVE EDUCATION', name:'Product Management', description:'Formal product-management learning alongside enterprise product practice.', category:'PRODUCT / PRACTICE', symbol:'↗' },
-  { date:'MAY 2020 · DATACAMP', name:'Data Science for Everyone (Python)', description:'Completed with Data Analyst in Python, building a stronger base for data analysis.', category:'DATA / PYTHON', symbol:'∑' },
-  { date:'SEP 2019 · KPMG', name:'Lean Six Sigma Green Belt', description:'Training in process improvement and structured problem-solving.', category:'OPERATIONS / PROCESS', symbol:'✓' }
+  { date:'MAR 2025 · HUGGING FACE LEARN', name:'AI Agent Course', description:'Agent concepts, tools and workflows; part of my ongoing hands-on AI exploration.', category:'AI / EXPERIMENTATION', motif:'ai' },
+  { date:'JUN–OCT 2024 · ISB EXECUTIVE EDUCATION', name:'Product Management', description:'Formal product-management learning alongside enterprise product practice.', category:'PRODUCT / PRACTICE', motif:'roadmap' },
+  { date:'MAY 2020 · DATACAMP', name:'Data Science for Everyone (Python)', description:'Completed with Data Analyst in Python, building a stronger base for data analysis.', category:'DATA / PYTHON', motif:'data' },
+  { date:'SEP 2019 · KPMG', name:'Lean Six Sigma Green Belt', description:'Training in process improvement and structured problem-solving.', category:'OPERATIONS / PROCESS', motif:'process' }
 ];
 const certTabs = $$('button[data-cert]');
 function selectCertification(index, focus = false) {
@@ -185,7 +185,9 @@ function selectCertification(index, focus = false) {
   $('#cert-name').textContent = item.name;
   $('#cert-description').textContent = item.description;
   $('#cert-category').textContent = item.category;
-  $('#cert-symbol').textContent = item.symbol;
+  $('#cert-art-use').setAttribute('href', `./assets/proof-motifs.svg#${item.motif}`);
+  $('#cert-visual').dataset.certArt = index;
+  $('.cert-visual-stamp').textContent = `KR / 0${index + 1}`;
   $('#cert-panel').setAttribute('aria-labelledby', `cert-tab-${index}`);
   certTabs.forEach((tab, tabIndex) => {
     tab.setAttribute('aria-selected', String(tabIndex === index));
@@ -194,6 +196,10 @@ function selectCertification(index, focus = false) {
   if (focus) certTabs[index].focus();
 }
 certTabs.forEach((tab, index) => tab.addEventListener('click', () => selectCertification(index)));
+$('#cert-next').addEventListener('click', () => {
+  const current = certTabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
+  selectCertification((current + 1) % certTabs.length);
+});
 $('.cert-tabs').addEventListener('keydown', event => {
   const current = certTabs.indexOf(document.activeElement);
   if (current < 0) return;
@@ -206,6 +212,40 @@ $('.cert-tabs').addEventListener('keydown', event => {
   event.preventDefault();
   selectCertification(next, true);
 });
+
+const skillRoutes = $$('[data-skill]');
+const skillMotifs = ['roadmap', 'systems', 'data', 'ai'];
+const skillLabels = ['PRODUCT CRAFT', 'ENTERPRISE SYSTEMS', 'DATA + ANALYTICS', 'APPLIED AI'];
+function setSkillFocus(index) {
+  const board = $('.skill-switchboard');
+  if (Number(board.dataset.active) === index && skillRoutes[index].classList.contains('is-active')) return;
+  board.dataset.active = index;
+  $('#skill-focus-use').setAttribute('href', `./assets/proof-motifs.svg#${skillMotifs[index]}`);
+  $('#skill-focus-label').textContent = `0${index + 1} / ${skillLabels[index]}`;
+  $$('.board-port').forEach((port, portIndex) => port.classList.toggle('is-active', portIndex === index));
+  skillRoutes.forEach((route, routeIndex) => route.classList.toggle('is-active', routeIndex === index));
+}
+skillRoutes.forEach((route, index) => {
+  route.addEventListener('pointerenter', () => setSkillFocus(index));
+  route.addEventListener('focusin', () => setSkillFocus(index));
+});
+const skillObserver = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting);
+  if (visible.length) {
+    visible.sort((a, b) => Math.abs(a.boundingClientRect.top - innerHeight * .38) - Math.abs(b.boundingClientRect.top - innerHeight * .38));
+    setSkillFocus(Number(visible[0].target.dataset.skill));
+  }
+}, {rootMargin:'-25% 0px -50% 0px', threshold:0});
+skillRoutes.forEach(route => skillObserver.observe(route));
+setSkillFocus(0);
+
+$$('.achievement-replay').forEach(button => button.addEventListener('click', () => {
+  const ticket = button.closest('.achievement-ticket');
+  ticket.classList.remove('is-replaying');
+  void ticket.offsetWidth;
+  ticket.classList.add('is-replaying');
+  setTimeout(() => ticket.classList.remove('is-replaying'), 900);
+}));
 
 const foodStories = {
   fafda: 'A crisp street-food favourite, especially when the city is celebrating.',

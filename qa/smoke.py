@@ -27,6 +27,10 @@ with sync_playwright() as playwright:
         assert page.locator('[data-timeline-item]').count() == 3
         assert page.locator('.skill-route').count() == 4
         assert page.locator('.achievement-ticket').count() == 6
+        page.locator('[data-skill="2"]').hover()
+        assert page.locator('.skill-switchboard').get_attribute('data-active') == '2'
+        page.locator('.ticket-vedanta .achievement-replay').click()
+        assert 'is-replaying' in page.locator('.ticket-vedanta').get_attribute('class')
         page.locator('#education-next').click()
         page.wait_for_function("document.querySelector('#education-position').textContent.includes('ANAND')")
         assert 'ANAND' in page.locator('#education-position').inner_text()
@@ -46,6 +50,9 @@ with sync_playwright() as playwright:
         page.locator('#cert-tab-1').press('ArrowRight')
         assert page.locator('#cert-tab-2').get_attribute('aria-selected') == 'true'
         assert 'Data Science' in page.locator('#cert-name').inner_text()
+        page.locator('#cert-next').click()
+        assert page.locator('#cert-tab-3').get_attribute('aria-selected') == 'true'
+        assert page.locator('#cert-art-use').get_attribute('href').endswith('#process')
         page.locator('#principles-button').click()
         assert 'is-decomposed' in page.locator('#first-principles').get_attribute('class')
         page.locator('[data-food="undhiyu"]').click()
