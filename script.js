@@ -284,10 +284,21 @@ function moveBall(event) {
 court.addEventListener('pointermove', event => { if (finePointer && motionOK) moveBall(event); });
 court.addEventListener('click', moveBall);
 
+const gamesSection = $('#games');
+const coopUnlock = $('#coop-unlock');
+const coopOverlay = $('#coop-overlay');
+const coopPath = ['match', 'island', 'myth'];
+let coopStep = 0;
+let coopFound = false;
+let currentGameWorld = 'match';
+function updateGameProgress() {
+  $('#game-hud-progress').textContent = coopPath.map((_, index) => index < coopStep ? '●' : '○').join(' ');
+}
 $('#game-button').addEventListener('click', event => {
-  const playing = $('#games').classList.toggle('playing');
-  event.currentTarget.setAttribute('aria-pressed', playing);
+  const playing = gamesSection.classList.toggle('playing');
+  event.currentTarget.setAttribute('aria-pressed', String(playing));
   event.currentTarget.textContent = playing ? 'PAUSE THE JOURNEY ↗' : 'START THE JOURNEY ↗';
+  if (!playing && !coopFound) { coopStep = 0; updateGameProgress(); }
 });
 const gameWorlds = {
   match: { level: 'LEVEL 01 · THE MATCH', description: 'The match begins with one more pass. FIFA is the place I go when I want a quick test of timing and instinct.' },
@@ -296,11 +307,36 @@ const gameWorlds = {
 };
 $$('[data-game-choice]').forEach(button => button.addEventListener('click', () => {
   const world = button.dataset.gameChoice;
-  $('#games').dataset.game = world;
+  currentGameWorld = world;
+  gamesSection.dataset.game = world;
   $('#game-hud-level').textContent = gameWorlds[world].level;
   $('#game-description').textContent = gameWorlds[world].description;
   $$('[data-game-choice]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
+  if (gamesSection.classList.contains('playing') && !coopFound) {
+    coopStep = world === coopPath[coopStep] ? coopStep + 1 : world === coopPath[0] ? 1 : 0;
+    updateGameProgress();
+    if (coopStep === coopPath.length) { coopFound = true; coopUnlock.hidden = false; }
+  }
 }));
+coopUnlock.addEventListener('click', () => {
+  gamesSection.dataset.game = 'coop';
+  gamesSection.classList.add('coop-open');
+  coopOverlay.hidden = false;
+  coopUnlock.hidden = true;
+  $('#coop-name-kathan').textContent = 'KATHAN';
+  $('#coop-name-janhvi').textContent = 'JANHVI';
+  $('#coop-story').textContent = 'I love playing with my wife Janhvi. Some nights it is one more Trackmania run or a Mortal Kombat rematch; It Takes Two makes the best case for sharing the controller.';
+  $('#coop-close').focus();
+});
+function closeCoop() {
+  coopOverlay.hidden = true;
+  gamesSection.classList.remove('coop-open');
+  gamesSection.dataset.game = currentGameWorld;
+  coopUnlock.hidden = false;
+  coopUnlock.focus();
+}
+$('#coop-close').addEventListener('click', closeCoop);
+coopOverlay.addEventListener('keydown', event => { if (event.key === 'Escape') closeCoop(); });
 $('#games').addEventListener('pointermove', event => {
   if (!finePointer || !motionOK) return;
   const rect = $('#games').getBoundingClientRect();
@@ -309,11 +345,11 @@ $('#games').addEventListener('pointermove', event => {
 const storyScroll = $('#story-scroll');
 const storyStage = $('#manga-spread');
 const storyScenes = $$('.story-scene', storyStage);
-const storyNames = ['MANGA INK', 'CEL ANIMATION', 'CARTOON ENERGY', 'ANIME FINISH'];
+const storyNames = ['MANGA INK', 'HERO CITY', 'WATER PATH', 'ANIME FINISH'];
 const storyReactions = [
   ['HA HA!', 'HEY!'],
-  ['FOCUS.', 'ONWARD.'],
-  ['AHH!', 'I CAN DO IT!'],
+  ['I CAN DO THIS!', 'FORWARD.'],
+  ['BREATHE.', 'STAY KIND.'],
   ['POWER UP!', 'ONWARD!']
 ];
 const storyReactionTimers = new WeakMap();

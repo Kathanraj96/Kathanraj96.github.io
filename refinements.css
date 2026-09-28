@@ -183,15 +183,17 @@ html{scroll-padding-top:76px}html,body{overflow-x:clip}
 .story-scenes{position:absolute;inset:40px 0 48px;overflow:hidden}
 .story-scene{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s,visibility .45s}
 .story-scene.is-active{opacity:1;visibility:visible;pointer-events:auto}
-.scene-manga{background:#f1ebdb;color:#1b1d1b}.scene-manga::before{content:"";position:absolute;inset:-30%;background:repeating-conic-gradient(from 4deg at 30% 67%,#12161516 0 1deg,transparent 1deg 11deg);opacity:.7}
-.scene-zoro{background:#82b8bc;color:#173342}.scene-zoro::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(155deg,transparent 0 48px,#e5f4e944 49px 52px,transparent 53px 96px)}
-.scene-zenitsu{background:#f6c286;color:#542c22}.scene-zenitsu::before{content:"";position:absolute;inset:-25%;background:repeating-conic-gradient(from 0deg at 30% 70%,#dd644119 0 3deg,transparent 3deg 20deg)}
-.scene-goku{background:radial-gradient(circle at 85% 48%,#f69363 0,#cb655e 24%,#515e88 64%,#253b61 100%);color:#fff7e8}.scene-goku::before{content:"";position:absolute;inset:0;background:radial-gradient(#fff2d037 1px,transparent 1.5px),repeating-linear-gradient(150deg,transparent 0 68px,#fff1d316 69px 72px,transparent 73px 125px);background-size:17px 17px,auto;opacity:.64}
+.scene-manga{--world-image:url('./assets/scene-bg-luffy.webp');--world-opacity:.5;--world-wash:linear-gradient(90deg,#f1ebdbaa,#f1ebdbdc 58%,#f1ebdbea);background:#f1ebdb;color:#1b1d1b}
+.scene-deku{--world-image:url('./assets/scene-bg-deku.webp');--world-opacity:.5;--world-wash:linear-gradient(90deg,#e2eeeeaa,#e2eeeebd 55%,#e2eeeedf);background:#dcebed;color:#173342}
+.scene-tanjiro{--world-image:url('./assets/scene-bg-tanjiro.webp');--world-opacity:.52;--world-wash:linear-gradient(90deg,#f5e9dbe5,#f5e9dba6 55%,#f5e9db82);background:#f3e8d8;color:#4b3028}
+.scene-goku{--world-image:url('./assets/scene-bg-goku.webp');--world-opacity:.55;--world-wash:linear-gradient(90deg,#15294ddb,#243a63b0 55%,#273c5f9c);background:#253b61;color:#fff7e8}
+.story-scene::before{content:"";position:absolute;inset:0;z-index:0;background:var(--world-image) center/cover no-repeat;opacity:var(--world-opacity,.5);pointer-events:none}
+.story-scene::after{content:"";position:absolute;inset:0;z-index:0;background:var(--world-wash);pointer-events:none}
 .scene-copy{position:absolute;z-index:3;top:11%;right:7%;width:min(52%,610px)}
-.scene-zenitsu .scene-copy,.scene-goku .scene-copy{left:7%;right:auto;width:min(45%,560px)}
+.scene-tanjiro .scene-copy,.scene-goku .scene-copy{left:7%;right:auto;width:min(45%,560px)}
 .scene-copy small{display:inline-block;padding:7px 9px;border:1px solid currentColor;font:700 10px/1 var(--mono);letter-spacing:.08em}
 .scene-copy h3{font:900 clamp(58px,6.7vw,111px)/.91 var(--display);letter-spacing:.012em;margin:25px 0 20px;max-width:720px}
-.scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(56px,5.2vw,84px)}
+.scene-goku .scene-copy h3,.scene-tanjiro .scene-copy h3{font-size:clamp(56px,5.2vw,84px)}
 .scene-copy p{font:500 clamp(15px,1.35vw,20px)/1.45 var(--editorial);max-width:440px;margin:0 0 21px}
 .scene-react{border:2px solid currentColor;background:#d8f151;color:#17282b;padding:11px 13px;box-shadow:5px 5px 0 #171c1c73;font:800 10px/1 var(--mono);cursor:pointer;transition:transform .18s,box-shadow .18s}
 .scene-react:hover,.scene-react:focus-visible{transform:translateY(-3px);box-shadow:5px 8px 0 #171c1c73}
@@ -201,28 +203,28 @@ html{scroll-padding-top:76px}html,body{overflow-x:clip}
 .scene-actor{position:absolute;z-index:3;left:var(--actor-x,15%);bottom:14%;width:200px;height:200px;transform:translateX(-50%);transition:left .12s linear;filter:drop-shadow(8px 9px 0 #17292e3b);cursor:pointer}
 .story-sprite{width:100%;height:100%;background-repeat:no-repeat;background-size:400% 100%;background-position:0 0}
 .sprite-luffy{background-image:url('./assets/luffy-chibi-sprite.webp');image-rendering:pixelated}
-.sprite-zoro{background-image:url('./assets/zoro-chibi-sprite.webp')}
-.sprite-zenitsu{background-image:url('./assets/zenitsu-chibi-sprite.webp')}
+.sprite-deku{background-image:url('./assets/deku-chibi-sprite.webp')}
+.sprite-tanjiro{background-image:url('./assets/tanjiro-chibi-sprite.webp')}
 .sprite-goku{background-image:url('./assets/goku-chibi-sprite.webp')}
 .story-sprite[data-frame="0"]{background-position:0 0}.story-sprite[data-frame="1"]{background-position:33.333% 0}.story-sprite[data-frame="2"]{background-position:66.667% 0}.story-sprite[data-frame="3"]{background-position:100% 0}
 .scene-speech{position:absolute;z-index:4;left:var(--actor-x,15%);bottom:51%;max-width:155px;padding:14px 17px;background:#fffdf5;border:3px solid #171c1c;border-radius:55% 47% 57% 49%;color:#171c1c;transform:translateX(-50%) rotate(-8deg);text-align:center;font:900 clamp(18px,2vw,28px)/.9 var(--display);box-shadow:6px 7px 0 #171c1c34;transition:left .12s linear,transform .25s}
-.scene-zoro .scene-speech{left:calc(var(--actor-x,32%) - 135px)}.scene-zenitsu .scene-speech{left:calc(var(--actor-x,55%) + 105px)}.scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 150px)}
+.scene-deku .scene-speech{left:calc(var(--actor-x,32%) - 135px)}.scene-tanjiro .scene-speech{left:calc(var(--actor-x,55%) + 105px)}.scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 150px)}
 .scene-speech::after{content:"";position:absolute;left:44%;bottom:-15px;width:17px;height:17px;background:#fffdf5;border-right:3px solid #171c1c;border-bottom:3px solid #171c1c;transform:rotate(45deg)}
 .story-scene.is-reacting .scene-actor{animation:scene-hop .34s ease-in-out 3 alternate}
 .story-scene.is-reacting .scene-speech{transform:translateX(-50%) rotate(4deg) scale(1.12)}
 @keyframes scene-hop{to{translate:0 -17px}}
-.scene-art-mark{position:absolute;z-index:1;pointer-events:none}.scene-art-sun{left:5%;top:7%;font:180px/.8 var(--display);color:#e2b76277;transform:rotate(-11deg)}.scene-art-speed{left:-8%;right:55%;top:16%;bottom:25%;border:4px dashed #171c1c38;border-radius:50%;transform:rotate(-16deg)}.scene-art-ring{left:2%;bottom:20%;width:37%;aspect-ratio:1;border:5px dashed #e1eee899;border-radius:50%}.scene-art-slash{left:5%;top:10%;width:34%;height:8px;background:#d8f151;box-shadow:0 45px #d8f151a6,0 90px #d8f15173;transform:rotate(-27deg)}.scene-art-burst{left:7%;top:5%;font:900 300px/1 var(--display);color:#e46c3a4a;transform:rotate(-12deg)}.scene-art-zigzag{left:5%;top:30%;font:140px/1 var(--display);color:#fff2bd}.scene-art-energy{right:9%;top:10%;font:280px/1 var(--display);color:#ffcc6945;transform:rotate(-14deg)}.scene-art-speedlines{right:7%;top:16%;width:42%;height:9px;background:#fff3d450;box-shadow:0 54px #fff3d436,0 108px #fff3d425;transform:rotate(-24deg)}
+.scene-art-mark{position:absolute;z-index:1;pointer-events:none;opacity:.42}.scene-art-sun{left:5%;top:7%;font:180px/.8 var(--display);color:#e2b76277;transform:rotate(-11deg)}.scene-art-speed{left:-8%;right:55%;top:16%;bottom:25%;border:4px dashed #171c1c38;border-radius:50%;transform:rotate(-16deg)}.scene-art-ring{left:2%;bottom:20%;width:37%;aspect-ratio:1;border:5px dashed #e1eee899;border-radius:50%}.scene-art-slash{left:5%;top:10%;width:34%;height:8px;background:#d8f151;box-shadow:0 45px #d8f151a6,0 90px #d8f15173;transform:rotate(-27deg)}.scene-art-burst{left:7%;top:5%;font:900 300px/1 var(--display);color:#e46c3a4a;transform:rotate(-12deg)}.scene-art-zigzag{left:5%;top:30%;font:140px/1 var(--display);color:#fff2bd}.scene-art-energy{right:9%;top:10%;font:280px/1 var(--display);color:#ffcc6945;transform:rotate(-14deg)}.scene-art-speedlines{right:7%;top:16%;width:42%;height:9px;background:#fff3d450;box-shadow:0 54px #fff3d436,0 108px #fff3d425;transform:rotate(-24deg)}
 .scene-finish{position:absolute;z-index:2;left:var(--finish-x,85%);bottom:13%;width:22px;height:225px;transform:translateX(-50%);background:conic-gradient(#fff 25%,#172b3d 0 50%,#fff 0 75%,#172b3d 0) 0 0/22px 22px;border:2px solid #172b3d;box-shadow:5px 6px 0 #14283a77}.scene-finish span{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) rotate(-6deg);background:#fff7e8;color:#19344e;border:3px solid #19344e;padding:8px 13px;font:900 23px/.9 var(--display);white-space:nowrap;box-shadow:4px 5px 0 #14283a77}.scene-finish i{position:absolute;left:-100px;top:-70px;width:200px;text-align:center;color:#ffe280;font:900 36px var(--display);font-style:normal;opacity:0;transform:translateY(30px) scale(.5);transition:opacity .4s,transform .5s}.story-stage.is-finished .scene-finish i{opacity:1;transform:translateY(0) scale(1)}.story-stage.is-finished .scene-finish span{background:#d8f151}
 .story-scene-nav{display:flex;gap:6px}.story-scene-nav button{width:30px;height:28px;border:1px solid #e8ede2;background:none;color:#f4f0e6;font:800 10px var(--mono);cursor:pointer}.story-scene-nav button[aria-current="true"],.story-scene-nav button:hover{background:#d8f151;color:#171c1c;border-color:#d8f151}
-@media(min-width:761px) and (max-width:1100px){.scene-zenitsu .scene-copy,.scene-goku .scene-copy{width:43%}.scene-speech{bottom:46%}.scene-zoro .scene-speech{left:calc(var(--actor-x,32%) - 105px)}.scene-zenitsu .scene-speech{left:calc(var(--actor-x,55%) + 40px)}.scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 150px)}}
+@media(min-width:761px) and (max-width:1100px){.scene-tanjiro .scene-copy,.scene-goku .scene-copy{width:43%}.scene-speech{bottom:46%}.scene-deku .scene-speech{left:calc(var(--actor-x,32%) - 105px)}.scene-tanjiro .scene-speech{left:calc(var(--actor-x,55%) + 40px)}.scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 150px)}}
 @media(min-width:761px) and (max-height:780px){.scene-copy{top:6%}.scene-copy h3{font-size:clamp(52px,5.3vw,85px);margin:15px 0 12px}.scene-copy p{font-size:15px;line-height:1.35;margin-bottom:12px}}
 @media(max-width:760px){
   .story-scroll{height:430vh;margin-top:40px}
   .story-stage{min-height:590px;box-shadow:7px 9px 0 #e85a3e}
   .story-stage-top,.story-stage-bottom{padding:8px 11px;font-size:7px}.story-stage-top span:last-child,.story-stage-bottom>span:first-child{display:none}
-  .scene-copy,.scene-zenitsu .scene-copy,.scene-goku .scene-copy{top:7%;left:6%;right:6%;width:auto}.scene-copy h3{font-size:clamp(48px,11vw,75px);margin:14px 0 12px}.scene-copy p{font-size:14px;line-height:1.35;max-width:520px;margin-bottom:13px}.scene-react{font-size:8px;padding:8px 10px}
-  .scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(44px,9vw,64px)}
-  .scene-actor{width:150px;height:150px;bottom:12%}.scene-walkway{bottom:10%;font-size:7px}.scene-speech,.scene-zoro .scene-speech,.scene-zenitsu .scene-speech,.scene-goku .scene-speech{left:var(--actor-x,30%);bottom:31%;padding:9px 12px;font-size:20px}
+  .scene-copy,.scene-tanjiro .scene-copy,.scene-goku .scene-copy{top:7%;left:6%;right:6%;width:auto}.scene-copy h3{font-size:clamp(48px,11vw,75px);margin:14px 0 12px}.scene-copy p{font-size:14px;line-height:1.35;max-width:520px;margin-bottom:13px}.scene-react{font-size:8px;padding:8px 10px}
+  .scene-goku .scene-copy h3,.scene-tanjiro .scene-copy h3{font-size:clamp(44px,9vw,64px)}
+  .scene-actor{width:150px;height:150px;bottom:12%}.scene-walkway{bottom:10%;font-size:7px}.scene-speech,.scene-deku .scene-speech,.scene-tanjiro .scene-speech,.scene-goku .scene-speech{left:var(--actor-x,30%);bottom:31%;padding:9px 12px;font-size:20px}
   .scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 95px)}.scene-goku .scene-speech::after{left:auto;right:10%}
   .scene-art-sun{font-size:100px;top:37%}.scene-art-burst{font-size:180px;top:40%}.scene-art-zigzag{font-size:80px;top:55%}.scene-art-energy{font-size:180px;top:44%}
   .scene-finish{height:155px;width:16px;bottom:10%;background-size:16px 16px}.scene-finish span{font-size:16px;padding:6px 8px}.scene-finish i{left:-65px;top:-42px;width:130px;font-size:25px}
@@ -230,11 +232,31 @@ html{scroll-padding-top:76px}html,body{overflow-x:clip}
 @media(max-width:500px){
   .story-stage{height:calc(100svh - 76px);min-height:600px;border-width:5px}.story-scenes{inset:37px 0 42px}.story-stage-top{min-height:37px}.story-stage-bottom{min-height:42px}
   .scene-copy h3{font-size:clamp(42px,11vw,54px);line-height:.95}.scene-copy p{font-size:12px;max-width:310px}.scene-actor{width:137px;height:137px;bottom:12%}.scene-speech{bottom:32%;font-size:17px;max-width:145px}.story-scene-nav button{width:24px;height:24px;font-size:8px}
-  .scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(38px,10vw,50px)}
+  .scene-goku .scene-copy h3,.scene-tanjiro .scene-copy h3{font-size:clamp(38px,10vw,50px)}
 }
 @media(max-width:360px){
   .scene-copy{top:6%}.scene-copy small{font-size:8px;padding:5px 7px}.scene-copy h3{font-size:36px;margin:10px 0 8px}.scene-copy p{font-size:11px;line-height:1.28;margin-bottom:8px}.scene-react{font-size:7px;padding:7px 8px}
-  .scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:34px}
+  .scene-goku .scene-copy h3,.scene-tanjiro .scene-copy h3{font-size:34px}
   .scene-actor{width:115px;height:115px;bottom:7%}.scene-speech{bottom:27%;font-size:14px;max-width:115px;padding:8px 9px}.scene-finish{height:120px}.scene-finish span{font-size:14px;padding:5px 6px}
 }
 @media(prefers-reduced-motion:reduce){.story-scene,.scene-actor,.scene-speech,.scene-finish i{transition:none}.story-scene.is-reacting .scene-actor{animation:none}}
+
+/* A small player-two discovery stays inside the game rather than in the page copy. */
+.games-section[data-game="coop"]{--game-sky:#7861aa;--game-dark:#282350;--game-ground:#77a89a;--game-light:#ffd88f}
+.game-partner{position:absolute;bottom:calc(13% + 15px);left:calc(var(--runner-x,65%) + 58px);width:34px;height:57px;background:#f3a59b;box-shadow:0 -18px #553659,-10px 15px #62457a,10px 15px #62457a,-10px 57px #212447,10px 57px #212447;z-index:4;opacity:0;transition:left .4s,opacity .4s}
+.games-section.coop-open .game-partner{opacity:1}.games-section.playing.coop-open .game-partner{animation:run 1s ease-in-out infinite reverse}
+.game-overlay .coop-unlock{position:absolute;z-index:8;right:8%;top:43%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:62px;height:62px;margin:0;padding:5px;border:3px solid #f7e5d3;border-radius:5px;background:#e85975;color:#fff5e7;box-shadow:5px 6px 0 #10233d;font:900 11px var(--mono);transform:rotate(8deg);animation:coop-pulse 1.5s ease-in-out infinite;cursor:pointer}
+.coop-unlock span{font:900 27px/.8 var(--display)}.coop-unlock small{font:900 9px/1 var(--mono)}.game-overlay .coop-unlock:hover,.game-overlay .coop-unlock:focus-visible{transform:rotate(0) scale(1.1)}
+.coop-unlock[hidden],.coop-overlay[hidden]{display:none!important}
+.coop-overlay{position:absolute;inset:72px 18px 70px;z-index:10;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);grid-template-rows:auto minmax(0,1fr);gap:12px 32px;padding:22px 28px 28px;border:5px solid #f8e6b8;background:repeating-linear-gradient(0deg,#ffffff08 0 2px,transparent 2px 7px),linear-gradient(135deg,#14294b,#2e285a 64%,#75406d);box-shadow:12px 13px 0 #12203a;color:#fff6e9;overflow:auto}
+.coop-top{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #efd8b79c;padding-bottom:12px;color:#ffda7b;font:900 10px/1.2 var(--mono);letter-spacing:.12em}
+.game-overlay .coop-top button{width:36px;height:36px;min-width:36px;margin:0;padding:0;border:2px solid #f7e5d3;background:#f7e5d3;color:#182a49;box-shadow:3px 3px 0 #0d1730;font:900 27px/1 var(--display)}
+.coop-stage{grid-column:1;position:relative;display:grid;grid-template-rows:minmax(0,1fr) auto;align-items:end;min-width:0;min-height:0;border:1px solid #f8e6b866;background:radial-gradient(circle at 50% 45%,#a8659259,transparent 52%),repeating-linear-gradient(90deg,#ffffff0a 0 1px,transparent 1px 42px);overflow:hidden}
+.coop-stage img{display:block;width:100%;max-height:100%;object-fit:contain;align-self:center;filter:drop-shadow(0 18px 8px #11173499);animation:coop-bob 2.2s ease-in-out infinite alternate}
+.coop-nameplates{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 8% 14px;margin-top:-10px}.coop-nameplates span{display:block;padding:8px 6px;border:2px solid #fff2d9;background:#174e80;color:#fff;text-align:center;letter-spacing:.12em;font:900 clamp(13px,1.6vw,22px)/1 var(--display);box-shadow:4px 4px 0 #141b38}.coop-nameplates span+span{background:#ca6b68}
+.coop-copy{grid-column:2;align-self:center;max-width:430px}.coop-copy small{font:900 10px/1.3 var(--mono);color:#ffda7b;letter-spacing:.12em}.coop-copy h3{font:900 clamp(58px,6vw,105px)/.83 var(--display);margin:20px 0;color:#fff7e4;letter-spacing:.015em}.coop-copy p{max-width:420px;margin:0;padding:0;border:0;background:none;color:#fff4e8;text-shadow:none;font:500 16px/1.5 var(--editorial)}.coop-games{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}.coop-games span{display:inline-block;border:1px solid #ffe0a4;padding:7px 9px;color:#ffe0a4;font:800 8px/1.2 var(--mono);letter-spacing:.05em}
+@keyframes coop-pulse{50%{translate:0 -8px;box-shadow:5px 12px 0 #10233d}}@keyframes coop-bob{to{transform:translateY(-9px) rotate(1deg)}}
+@media(max-width:760px){.coop-overlay{inset:8px;grid-template-columns:1fr;grid-template-rows:auto auto auto;align-content:center;gap:12px;padding:14px}.coop-top{font-size:8px}.coop-stage{grid-column:1;min-height:260px;max-height:410px}.coop-stage img{max-height:335px}.coop-copy{grid-column:1;align-self:start}.coop-copy h3{font-size:clamp(54px,14vw,78px);margin:9px 0}.coop-copy p{font-size:14px}.coop-games{margin-top:12px}.game-overlay .coop-unlock{right:7%;top:43%;width:50px;height:50px}.coop-unlock span{font-size:21px}}
+@media(max-width:500px){.coop-overlay{inset:5px;gap:8px}.coop-stage{min-height:215px;max-height:300px}.coop-stage img{max-height:255px}.coop-nameplates{padding:0 4% 8px}.coop-nameplates span{font-size:12px;padding:6px 3px}.coop-copy h3{font-size:50px}.coop-copy p{font-size:13px;line-height:1.35}.coop-games span{font-size:8px;padding:5px 6px}}
+@media(min-width:360px) and (max-width:500px) and (min-height:800px){.coop-overlay{padding-bottom:112px}}
+@media(prefers-reduced-motion:reduce){.game-overlay .coop-unlock,.coop-stage img,.games-section.playing.coop-open .game-partner{animation:none}}

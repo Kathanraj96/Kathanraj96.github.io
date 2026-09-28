@@ -25,3 +25,19 @@ Use case: illustration-story. Asset type: transparent full-body character cutout
 ## `zenitsu-cartoon-cutout.webp`
 
 Use case: illustration-story. Asset type: transparent full-body character cutout for the third panel of a personal website comic-book chapter. Create original fan art depicting Zenitsu Agatsuma from Demon Slayer, recognizable by short choppy golden yellow hair and warm yellow-orange triangular-pattern haori. Style: expressive American television cartoon interpretation with clean hand-drawn outlines, squash-and-stretch charm and strong readable shapes; visibly different from realistic anime and manga. Pose: full body, taking a nervous but determined step forward, a small lightning streak curling beside him, bright expressive face. Cutout silhouette readable at small web size. Transparent background with real alpha. No panel border, no scenery, no text, no speech bubbles, no watermark. Whole character visible with safe margins.
+
+## Current moving route and co-op level
+
+These assets were generated with the built-in imagegen tool for the current interactive site. The sprite sources are stored in `sprite-sources/`; `tools/build_comic_sprites.py` assembles the transparent pose cells into web-ready strips. The older single-pose Zoro and Zenitsu images above are retained as unused design history.
+
+| Site asset | Prompt direction |
+| --- | --- |
+| `sprite-sources/deku-poses-v2.png` → `deku-chibi-sprite.webp` | Transparent four-pose chibi fan-art sprite sheet of Izuku Midoriya/Deku: walk, determined stance, powered-up movement, celebratory thumbs-up. Distinct well-spaced full-body poses, green hero outfit and tousled hair, no text or background. The second generation widened the gaps so the four cells could be separated cleanly. |
+| `sprite-sources/tanjiro-poses.png` → `tanjiro-chibi-sprite.webp` | Transparent four-pose chibi fan-art sprite sheet of Tanjiro Kamado: walk, steady stance, water-breathing action, gentle smile. Checkered haori and forehead mark, clean full-body silhouettes, no text or background. |
+| `scene-bg-luffy.webp` | Character-free hand-painted manga seaside road with distant ship and warm paper texture; subtle pale palette and open foreground for a walking sprite. |
+| `scene-bg-deku.webp` | Character-free bright anime hero-city rooftop and long walkway; soft sky blue and teal, perspective leading right, no words or logos. |
+| `scene-bg-tanjiro.webp` | Character-free painterly Japanese forest path with quiet stream and morning light; warm green, amber and muted blue, no characters or lettering. |
+| `scene-bg-goku.webp` | Character-free anime-inspired rocky training plateau at dusk with distant mountains and open ground for a finish line; restrained indigo and gold, no symbols or lettering. |
+| `kathan-janhvi-coop.webp` | Two original handcrafted cooperative game avatars, a young South Asian man in a patched blue adventurer jacket and a young South Asian woman in a coral outfit and teal scarf, playfully reaching toward one another. Full-body expressive 3D cutout look, no existing game character designs, no names or text; the site adds the names on unlock. |
+
+The four world images are rendered under translucent CSS washes at roughly half opacity so text and moving characters remain the focal point.

@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="./enhancements.css">
   <link rel="stylesheet" href="./chapters.css?v=2">
   <link rel="stylesheet" href="./proof.css?v=6">
-  <link rel="stylesheet" href="./refinements.css?v=7">
-  <script src="./script.js?v=13" defer></script>
+  <link rel="stylesheet" href="./refinements.css?v=10">
+  <script src="./script.js?v=15" defer></script>
 </head>
 <body>
   <!-- Inline symbols keep decorative motifs visible in local file previews. -->
@@ -218,11 +218,27 @@
 
     <section class="food-section personal-section section-pad" id="food" data-food="fafda" aria-labelledby="food-title"><div class="personal-label"><span>02 / GUJARAT + FOOD</span><span>CHOOSE A FLAVOUR ↓</span></div><div class="food-visual" aria-hidden="true"><div class="food-sun"></div><img class="food-fafda-cutout" src="./assets/gujarat-fafda-cutout.png" alt="" loading="lazy"><span class="food-stamp">FROM<br>GUJARAT<br>WITH ♥</span><img class="food-character" src="./assets/cartoon-foodie.svg" alt="" loading="lazy"><div class="navratri-dandiya"><i></i><i></i><span>GARBA NIGHTS ✦</span></div></div><div class="personal-story"><h2 id="food-title">HOME HAS<br>A <i>FLAVOUR.</i></h2><p>Living away from home made me value it differently. Food documentaries drew me into where dishes come from and why they matter. Gujarat's street food, Navratri and Uttarayan carry that feeling home.</p><div class="food-picker" role="group" aria-label="Gujarati favourites"><button type="button" class="active" data-food="fafda" aria-pressed="true">FAFDA</button><button type="button" data-food="gathiya" aria-pressed="false">GATHIYA</button><button type="button" data-food="undhiyu" aria-pressed="false">UNDHIYU</button><button type="button" data-food="navratri" aria-pressed="false">NAVRATRI</button></div><p class="food-detail" id="food-detail">A crisp street-food favourite, especially when the city is celebrating.</p></div></section>
 
-    <section class="games-section personal-section" id="games" data-game="match" aria-labelledby="games-title"><div class="game-world" id="game-world" aria-hidden="true"><div class="game-sun"></div><div class="game-cloud cloud-a"></div><div class="game-cloud cloud-b"></div><div class="game-mountain mountain-a"></div><div class="game-mountain mountain-b"></div><div class="game-ground"></div><div class="game-goal"></div><div class="game-runner" id="game-runner"></div></div><div class="game-overlay"><div class="personal-label"><span>03 / GAMES</span><span>CHOOSE A WORLD ↓</span></div><div class="game-hud"><span>KR / SAVE SLOT 01</span><span id="game-hud-level">LEVEL 01 · THE MATCH</span><span>● ● ○</span></div><h2 id="games-title">PRESS<br><i>PLAY.</i></h2><p id="game-description">The match begins with one more pass. FIFA is the place I go when I want a quick test of timing and instinct.</p><div class="game-levels" role="group" aria-label="Choose a game world"><button type="button" class="active" data-game-choice="match" aria-pressed="true"><b>01</b><span>THE MATCH</span><small>FIFA</small></button><button type="button" data-game-choice="myth" aria-pressed="false"><b>02</b><span>THE MYTH</span><small>GOD OF WAR</small></button><button type="button" data-game-choice="island" aria-pressed="false"><b>03</b><span>THE ISLAND</span><small>GHOST OF TSUSHIMA</small></button></div><button type="button" id="game-button" aria-pressed="false">START THE JOURNEY ↗</button></div></section>
+    <section class="games-section personal-section" id="games" data-game="match" aria-labelledby="games-title">
+      <div class="game-world" id="game-world" aria-hidden="true"><div class="game-sun"></div><div class="game-cloud cloud-a"></div><div class="game-cloud cloud-b"></div><div class="game-mountain mountain-a"></div><div class="game-mountain mountain-b"></div><div class="game-ground"></div><div class="game-goal"></div><div class="game-runner" id="game-runner"></div><div class="game-partner"></div></div>
+      <div class="game-overlay">
+        <div class="personal-label"><span>03 / GAMES</span><span>CHOOSE A WORLD ↓</span></div>
+        <div class="game-hud"><span>KR / SAVE SLOT 01</span><span id="game-hud-level">LEVEL 01 · THE MATCH</span><span id="game-hud-progress" aria-label="Hidden level progress">○ ○ ○</span></div>
+        <h2 id="games-title">PRESS<br><i>PLAY.</i></h2>
+        <p id="game-description">The match begins with one more pass. FIFA is the place I go when I want a quick test of timing and instinct.</p>
+        <div class="game-levels" role="group" aria-label="Choose a game world"><button type="button" class="active" data-game-choice="match" aria-pressed="true"><b>01</b><span>THE MATCH</span><small>FIFA</small></button><button type="button" data-game-choice="myth" aria-pressed="false"><b>02</b><span>THE MYTH</span><small>GOD OF WAR</small></button><button type="button" data-game-choice="island" aria-pressed="false"><b>03</b><span>THE ISLAND</span><small>GHOST OF TSUSHIMA</small></button></div>
+        <button type="button" id="game-button" aria-pressed="false">START THE JOURNEY ↗</button>
+        <button type="button" class="coop-unlock" id="coop-unlock" aria-label="Open hidden co-op level" hidden><span aria-hidden="true">♥</span><small>P2?</small></button>
+        <div class="coop-overlay" id="coop-overlay" hidden aria-label="Hidden co-op level">
+          <div class="coop-top"><span>SECRET LEVEL / 04 · TWO PLAYER MODE</span><button type="button" id="coop-close" aria-label="Close hidden co-op level">×</button></div>
+          <div class="coop-stage"><img src="./assets/kathan-janhvi-coop.webp" alt="Two original handcrafted game avatars reaching toward each other" loading="lazy"><div class="coop-nameplates"><span id="coop-name-kathan"></span><span id="coop-name-janhvi"></span></div></div>
+          <div class="coop-copy"><small>PLAYER TWO HAS JOINED</small><h3>BETTER<br>TOGETHER.</h3><p id="coop-story"></p><div class="coop-games"><span>TRACKMANIA</span><span>MORTAL KOMBAT</span><span>IT TAKES TWO</span></div></div>
+        </div>
+      </div>
+    </section>
 
     <section class="manga-section personal-section section-pad" id="manga" aria-labelledby="manga-title">
       <div class="personal-label"><span>04 / MANGA + ANIMATION</span><span>FOLLOW THE CONTINUOUS ROUTE ↓</span></div>
-      <div class="story-header"><div><span class="story-kicker">THE FIRST MANGA I READ WAS ONE PIECE</span><h2 id="manga-title">STORIES<br>THAT <i>MOVE.</i></h2></div><div class="story-intro"><p>One Piece is still my favourite. I connect with Luffy's joy and freedom, and sometimes Zoro's serious side. Zenitsu's animation brings a different kind of energy. The characters pass one route between manga ink, cel animation, cartoon expression and a final anime sprint.</p><div class="story-controls"><button type="button" id="manga-button">NEXT WORLD →</button><button type="button" id="crew-button" aria-pressed="true">PAUSE MOTION Ⅱ</button><span>WORLD <b id="manga-page-number">01</b> / 04</span></div></div></div>
+      <div class="story-header"><div><span class="story-kicker">THE FIRST MANGA I READ WAS ONE PIECE</span><h2 id="manga-title">STORIES<br>THAT <i>MOVE.</i></h2></div><div class="story-intro"><p>One Piece is still my favourite. Luffy's joy, Deku's resolve, Tanjiro's empathy and Goku's energy each bring a different mood to the same moving route. Their illustrated worlds stay quiet so the small characters can carry the story.</p><div class="story-controls"><button type="button" id="manga-button">NEXT WORLD →</button><button type="button" id="crew-button" aria-pressed="true">PAUSE MOTION Ⅱ</button><span>WORLD <b id="manga-page-number">01</b> / 04</span></div></div></div>
       <div class="story-scroll" id="story-scroll">
         <div class="story-stage is-playing" id="manga-spread" data-story-scene="0" aria-label="Scroll through four animated character worlds">
           <div class="story-stage-top"><span>KR / THE MOVING PAGES</span><span id="story-scene-label">01 / MANGA INK</span><span>SCROLL TO CHANGE THE WORLD ↓</span></div>
@@ -232,15 +248,15 @@
               <div class="scene-copy"><small>01 / FREEDOM</small><h3>THE NEXT ROAD<br>IS THE GOOD PART.</h3><p>One Piece was the first manga I read. Luffy's joy and freedom still make me want to see what is around the next corner.</p><button class="scene-react" type="button" data-react-scene="0">MAKE LUFFY REACT ↗</button></div>
               <div class="scene-walkway" aria-hidden="true"><span>STORY STARTS HERE</span><span>→</span></div><div class="scene-actor" data-actor="luffy"><div class="story-sprite sprite-luffy" data-frame="0" role="img" aria-label="Small pixel-art Luffy walking, laughing and waving"></div></div><div class="scene-speech" aria-hidden="true">LET'S GO!</div>
             </article>
-            <article class="story-scene scene-zoro" data-scene-index="1" aria-hidden="true">
+            <article class="story-scene scene-deku" data-scene-index="1" aria-hidden="true">
               <div class="scene-art-mark scene-art-ring" aria-hidden="true"></div><div class="scene-art-mark scene-art-slash" aria-hidden="true"></div>
-              <div class="scene-copy"><small>02 / FOCUS</small><h3>KEEP YOUR<br>OWN COURSE.</h3><p>Zoro's serious side has a different pull: the patience to keep practicing, even when the route is difficult.</p><button class="scene-react" type="button" data-react-scene="1">MAKE ZORO REACT ↗</button></div>
-              <div class="scene-walkway" aria-hidden="true"><span>ONE STEP AT A TIME</span><span>→</span></div><div class="scene-actor" data-actor="zoro"><div class="story-sprite sprite-zoro" data-frame="0" role="img" aria-label="Small anime chibi Zoro walking, focusing and smiling"></div></div><div class="scene-speech" aria-hidden="true">STAY SHARP.</div>
+              <div class="scene-copy"><small>02 / RESOLVE</small><h3>KEEP YOUR<br>OWN COURSE.</h3><p>Deku's progress is built from practice and the courage to take one more step, even before he feels ready.</p><button class="scene-react" type="button" data-react-scene="1">MAKE DEKU REACT ↗</button></div>
+              <div class="scene-walkway" aria-hidden="true"><span>ONE STEP AT A TIME</span><span>→</span></div><div class="scene-actor" data-actor="deku"><div class="story-sprite sprite-deku" data-frame="0" role="img" aria-label="Small chibi Deku walking, powering up and giving a thumbs-up"></div></div><div class="scene-speech" aria-hidden="true">KEEP GOING!</div>
             </article>
-            <article class="story-scene scene-zenitsu" data-scene-index="2" aria-hidden="true">
-              <div class="scene-art-mark scene-art-burst" aria-hidden="true">!</div><div class="scene-art-mark scene-art-zigzag" aria-hidden="true">⚡</div>
-              <div class="scene-copy"><small>03 / COURAGE</small><h3>A NERVOUS STEP<br>STILL COUNTS.</h3><p>I love the energy of Zenitsu's animation. The change from doubt to action is both funny and surprisingly familiar.</p><button class="scene-react" type="button" data-react-scene="2">MAKE ZENITSU REACT ↗</button></div>
-              <div class="scene-walkway" aria-hidden="true"><span>FEAR → COURAGE</span><span>→</span></div><div class="scene-actor" data-actor="zenitsu"><div class="story-sprite sprite-zenitsu" data-frame="0" role="img" aria-label="Small cartoon chibi Zenitsu walking, startled and determined"></div></div><div class="scene-speech" aria-hidden="true">I CAN DO IT!</div>
+            <article class="story-scene scene-tanjiro" data-scene-index="2" aria-hidden="true">
+              <div class="scene-art-mark scene-art-burst" aria-hidden="true">✧</div><div class="scene-art-mark scene-art-zigzag" aria-hidden="true">〜</div>
+              <div class="scene-copy"><small>03 / EMPATHY</small><h3>STAY KIND.<br>KEEP MOVING.</h3><p>Tanjiro's strength has a gentle center: understanding others while still doing the difficult thing.</p><button class="scene-react" type="button" data-react-scene="2">MAKE TANJIRO REACT ↗</button></div>
+              <div class="scene-walkway" aria-hidden="true"><span>HEART → ACTION</span><span>→</span></div><div class="scene-actor" data-actor="tanjiro"><div class="story-sprite sprite-tanjiro" data-frame="0" role="img" aria-label="Small chibi Tanjiro walking, creating a water arc and smiling"></div></div><div class="scene-speech" aria-hidden="true">BREATHE.</div>
             </article>
             <article class="story-scene scene-goku" data-scene-index="3" aria-hidden="true">
               <div class="scene-art-mark scene-art-energy" aria-hidden="true">✦</div><div class="scene-art-mark scene-art-speedlines" aria-hidden="true"></div>

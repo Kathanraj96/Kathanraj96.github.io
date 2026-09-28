@@ -1,13 +1,15 @@
 """Assemble the approved four-pose character sheets into stable website sprites."""
 from pathlib import Path
 from PIL import Image
+import cv2
+import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'assets' / 'sprite-sources'
 SHEETS = {
     'luffy': 'luffy-poses.png',
-    'zoro': 'zoro-poses.png',
-    'zenitsu': 'zenitsu-poses.png',
+    'deku': 'deku-poses-v2.png',
+    'tanjiro': 'tanjiro-poses.png',
     'goku': 'goku-poses.png',
 }
 CELL = 256
@@ -25,6 +27,13 @@ for name, filename in SHEETS.items():
     poses = []
     for box in quadrants:
         quadrant = image.crop(box)
+        if name in {'deku', 'tanjiro'}:
+            alpha = np.asarray(quadrant.getchannel('A'))
+            count, labels, stats, _ = cv2.connectedComponentsWithStats((alpha >= 16).astype('uint8'), 8)
+            if count < 2:
+                raise ValueError(f'{name}: no character found in {box}')
+            main = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+            quadrant.putalpha(Image.fromarray(np.where(labels == main, alpha, 0).astype('uint8')))
         mask = quadrant.getchannel('A').point(lambda alpha: 255 if alpha >= 16 else 0)
         bounds = mask.getbbox()
         if bounds is None:
