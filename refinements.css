@@ -79,3 +79,10 @@ html{scroll-padding-top:76px}
   .panel-ink,.panel-anime,.panel-cartoon{min-height:430px}.panel-pixel{min-height:330px}.panel-ink .panel-art{min-height:310px}.crew-cutout{height:310px}.panel-ink .crew-cutout{height:350px}.panel-meta,.panel-caption{padding:12px 14px}.panel-caption{min-height:64px}.panel-caption strong{font-size:29px}.panel-caption span{font-size:8px}.panel-sfx{font-size:26px}
 }
 @media(prefers-reduced-motion:reduce){.crew-cutout,.story-panel,.principle-question,.principle-fragments>div,.principle-rebuild,.finish-medal{animation:none!important;transition:none!important}.story-panel .crew-cutout{opacity:1;translate:0 0}.data-flow-scan::after{animation:none}}
+
+/* Final visual checks: preserve captions, fit long words and show more of the API world. */
+@media(min-width:1101px){.api-copy h2{font-size:clamp(85px,9.5vw,145px)}}
+.principle-fragments>div:nth-child(3) strong{font-size:clamp(20px,2.1vw,34px)}
+.games-section{height:auto;min-height:100vh}.game-overlay{height:auto;min-height:100vh}
+.panel-art{overflow:hidden}.panel-caption{position:relative;z-index:4}.panel-ink .panel-caption{background:#f0ecdf}.panel-anime .panel-caption{background:#91bdb9}.panel-cartoon .panel-caption{background:#f4c887}.panel-pixel .panel-caption{background:#203c47}.story-panels.turned .panel-ink .panel-caption{background:#f4db88}.story-panels.turned .panel-anime .panel-caption{background:#416475}.story-panels.turned .panel-cartoon .panel-caption{background:#f5b9a9}.story-panels.turned .panel-pixel .panel-caption{background:#385a55}
+@media(max-width:500px){.exchange-world{top:48%;right:-3%;width:92vw}.principle-fragments>div:nth-child(3) strong{font-size:20px}}
