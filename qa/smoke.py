@@ -25,6 +25,8 @@ with sync_playwright() as playwright:
         assert not errors, errors
         assert page.locator('[data-education-stop]').count() == 3
         assert page.locator('[data-timeline-item]').count() == 3
+        assert page.locator('.skill-route').count() == 4
+        assert page.locator('.achievement-ticket').count() == 6
         page.locator('#education-next').click()
         page.wait_for_function("document.querySelector('#education-position').textContent.includes('ANAND')")
         assert 'ANAND' in page.locator('#education-position').inner_text()
@@ -38,6 +40,12 @@ with sync_playwright() as playwright:
         assert 'retrieval and agent' in page.locator('#lab-copy').inner_text()
         assert page.locator('#ai-console').get_attribute('data-lab') == '1'
         assert page.locator('[data-lab-visual="1"]').get_attribute('aria-hidden') == 'false'
+        page.locator('#cert-tab-1').click()
+        assert page.locator('#cert-tab-1').get_attribute('aria-selected') == 'true'
+        assert 'Product Management' in page.locator('#cert-name').inner_text()
+        page.locator('#cert-tab-1').press('ArrowRight')
+        assert page.locator('#cert-tab-2').get_attribute('aria-selected') == 'true'
+        assert 'Data Science' in page.locator('#cert-name').inner_text()
         page.locator('#principles-button').click()
         assert 'is-decomposed' in page.locator('#first-principles').get_attribute('class')
         page.locator('[data-food="undhiyu"]').click()
@@ -50,10 +58,10 @@ with sync_playwright() as playwright:
         assert page.locator('#manga .crew-figure').count() == 3
         page.locator('#crew-button').click()
         assert 'is-playing' not in page.locator('#manga-spread').get_attribute('class')
-        for section in ['top','api','health','pricing','thinking','path','experience','first-principles','beyond','movement','food','games','manga','connect']:
-            if width == 768 and section not in ['top','api','path','experience','beyond']:
+        for section in ['top','api','health','pricing','thinking','path','experience','skills','achievements','certifications','first-principles','beyond','movement','food','games','manga','connect']:
+            if width == 768 and section not in ['top','api','path','experience','skills','achievements','certifications','beyond']:
                 continue
-            if width == 390 and section not in ['top','api','health','path','experience','beyond','food','manga']:
+            if width == 390 and section not in ['top','api','health','path','experience','skills','achievements','certifications','beyond','food','manga']:
                 continue
             page.locator('#'+section).scroll_into_view_if_needed()
             page.wait_for_timeout(950)

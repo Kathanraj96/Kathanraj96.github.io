@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./enhancements.css">
   <link rel="stylesheet" href="./chapters.css?v=2">
-  <script src="./script.js?v=5" defer></script>
+  <link rel="stylesheet" href="./proof.css">
+  <script src="./script.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -151,9 +152,47 @@
       </div>
     </section>
 
+    <section class="skills-section section-pad" id="skills" aria-labelledby="skills-title">
+      <div class="folio-top"><span>CHAPTER 07 / SKILLS</span><span>THE CONNECTIONS BETWEEN DISCIPLINES</span></div>
+      <div class="skills-intro"><span class="kicker">WHAT I BRING TO THE ROOM</span><h2 id="skills-title">THE USEFUL<br><i>OVERLAP.</i></h2><p>A product lens, systems fluency and enough hands-on building to ask better questions. These are the capabilities I use together, not a list of software logos.</p></div>
+      <div class="skill-map" aria-label="Skills connected to work on this site">
+        <div class="skill-spine" aria-hidden="true"><span>PRODUCT</span><b>×</b><span>SYSTEMS</span><b>×</b><span>AI</span></div>
+        <article class="skill-route route-product"><div class="skill-route-top"><span>01 / PRODUCT CRAFT</span><span>DECIDE WHAT MATTERS</span></div><h3>Turn ambiguity<br>into a plan.</h3><p>Product vision and roadmaps · requirements and user stories · backlog priorities · Agile delivery · stakeholder alignment</p><a href="#api">SEE IT IN THE EXCHANGE ↗</a></article>
+        <article class="skill-route route-systems"><div class="skill-route-top"><span>02 / ENTERPRISE SYSTEMS</span><span>MAKE THE PARTS TALK</span></div><h3>Connect systems<br>to real work.</h3><p>Enterprise APIs · ERP ecosystems · partner integrations · transaction flows · interoperability and connection lifecycle</p><a href="#api">FOLLOW THE DATA FLOW ↗</a></article>
+        <article class="skill-route route-data"><div class="skill-route-top"><span>03 / DATA + ANALYTICS</span><span>TRUST THE SIGNAL</span></div><h3>Find the cause,<br>then improve it.</h3><p>Data quality and governance · metadata and lineage · root-cause analysis · Python and SQL · Tableau, Power BI and Looker</p><a href="#health">OPEN THE CASE FILES ↗</a></article>
+        <article class="skill-route route-ai"><div class="skill-route-top"><span>04 / APPLIED AI</span><span>BUILD TO LEARN</span></div><h3>Explore the next<br>useful system.</h3><p>Hands-on experiments with RAG, AI agents and LangChain/LangGraph; cloud and data tools including AWS, GCP and Databricks.</p><a href="#thinking">EXPLORE THE EXPERIMENTS ↗</a></article>
+      </div>
+      <div class="skill-footer"><span>STRATEGY → DELIVERY → LEARNING</span><span>THE THROUGH-LINE: MAKE COMPLEX THINGS USEFUL.</span></div>
+    </section>
+
+    <section class="achievements-section section-pad" id="achievements" aria-labelledby="achievements-title">
+      <div class="folio-top"><span>CHAPTER 08 / ACHIEVEMENTS</span><span>MOMENTS ALONG THE WAY</span></div>
+      <div class="achievements-layout"><div class="achievements-intro"><span class="kicker">A FEW MARKERS I KEEP</span><h2 id="achievements-title">ON THE<br><i>RECORD.</i></h2><p>Competitions and recognition have been a useful way to test ideas with people outside my day-to-day work.</p><div class="achievement-spotlight" aria-label="All India rank 700 among about 300,000 CodeVita participants"><span>2017 / TCS CODEVITA</span><strong>#700</strong><small>ALL-INDIA RANK / ABOUT 300,000 PARTICIPANTS</small></div></div>
+      <div class="achievement-wall">
+        <article class="achievement-ticket"><span class="ticket-year">2014</span><span class="ticket-seal">TOP 1%</span><div><small>GUJARAT STATE BOARD</small><h3>Academic scholarship</h3><p>Awarded for placing in the top 1% in 12th standard.</p></div></article>
+        <article class="achievement-ticket"><span class="ticket-year">2018</span><span class="ticket-seal">FINALIST</span><div><small>INFOSYS INGENIOUS</small><h3>Campus finalist</h3><p>An early test of problem-solving in a competitive setting.</p></div></article>
+        <article class="achievement-ticket"><span class="ticket-year">2019</span><span class="ticket-seal">+20%</span><div><small>VEDANTA LIMITED / SUMMER INTERNSHIP</small><h3>Equipment efficiency</h3><p>Gap analysis and process work improved equipment efficiency by 20%.</p></div></article>
+        <article class="achievement-ticket"><span class="ticket-year">2019</span><span class="ticket-seal">WINNER</span><div><small>FLIPKART WIRED</small><h3>Supply-chain case study</h3><p>Campus winner in the supply-chain case competition.</p></div></article>
+        <article class="achievement-ticket"><span class="ticket-year">2019</span><span class="ticket-seal">NATIONAL</span><div><small>OPSTRAT / SIBM PUNE</small><h3>National winner</h3><p>Recognized in the operations strategy competition.</p></div></article>
+        <article class="achievement-ticket"><span class="ticket-year">2023<br>2025</span><span class="ticket-seal">FINALIST</span><div><small>GCS INDIA / AMERICAN EXPRESS</small><h3>Shark Tank finalist</h3><p>Finalist at the GCS India level in both years.</p></div></article>
+      </div></div>
+    </section>
+
+    <section class="certifications-section section-pad" id="certifications" aria-labelledby="certifications-title">
+      <div class="folio-top"><span>CHAPTER 09 / CERTIFICATIONS</span><span>FORMAL LEARNING, CONTINUED</span></div>
+      <div class="cert-intro"><span class="kicker">COURSES + CREDENTIALS</span><h2 id="certifications-title">THE LEARNING<br><i>FILES.</i></h2><p>Product, process, data and AI: four formal stops that sit alongside learning by building.</p></div>
+      <div class="cert-drawer"><div class="cert-tabs" role="tablist" aria-label="Certifications and courses">
+        <button type="button" role="tab" id="cert-tab-0" data-cert="0" aria-controls="cert-panel" aria-selected="true" tabindex="0"><span>01 / MAR 2025</span><strong>AI Agents</strong><small>HUGGING FACE LEARN</small></button>
+        <button type="button" role="tab" id="cert-tab-1" data-cert="1" aria-controls="cert-panel" aria-selected="false" tabindex="-1"><span>02 / JUN–OCT 2024</span><strong>Product Management</strong><small>ISB EXECUTIVE EDUCATION</small></button>
+        <button type="button" role="tab" id="cert-tab-2" data-cert="2" aria-controls="cert-panel" aria-selected="false" tabindex="-1"><span>03 / MAY 2020</span><strong>Data + Python</strong><small>DATACAMP</small></button>
+        <button type="button" role="tab" id="cert-tab-3" data-cert="3" aria-controls="cert-panel" aria-selected="false" tabindex="-1"><span>04 / SEP 2019</span><strong>Six Sigma</strong><small>KPMG</small></button>
+      </div><div class="cert-sheet" role="tabpanel" id="cert-panel" aria-labelledby="cert-tab-0" tabindex="0" aria-live="polite"><div class="cert-sheet-head"><span id="cert-number">FILE 01 / 04</span><span>KR / LEARNING ARCHIVE</span></div><div class="cert-sheet-body"><div class="cert-symbol" aria-hidden="true"><span id="cert-symbol">✳</span></div><div><span id="cert-date">MAR 2025 · HUGGING FACE LEARN</span><h3 id="cert-name">AI Agent Course</h3><p id="cert-description">Agent concepts, tools and workflows; part of my ongoing hands-on AI exploration.</p></div></div><div class="cert-sheet-foot"><span>LEARN → TEST → APPLY</span><span id="cert-category">AI / EXPERIMENTATION</span></div></div></div>
+      <p class="cert-training"><strong>ALSO IN THE TOOLKIT / INTERNAL TRAINING</strong><span>Python, R, SQL, SPSS, Hive/HQL, Databricks and GCP · Sep 2020–Feb 2021</span></p>
+    </section>
+
     <section class="quote-section section-pad" id="first-principles" aria-labelledby="quote-title"><div class="quote-top"><span>AN IDEA FROM ELON MUSK</span><span>FIRST PRINCIPLES / FIELD NOTE 01</span></div><div class="principles-machine" aria-hidden="true"><div class="principle-block block-assumption">ASSUMPTION <b>×</b></div><div class="principle-block block-truth">FUNDAMENTAL<br>TRUTHS <b>✳</b></div><div class="principle-block block-build">REBUILD <b>↗</b></div><svg class="principles-rocket" viewBox="0 0 120 230"><path d="M60 14C88 37 98 75 91 142L74 163H46L29 142C22 75 32 37 60 14Z"/><circle cx="60" cy="80" r="17"/><path d="M29 121L8 154V180L46 158M91 121L112 154V180L74 158M48 165L42 194M72 165L78 194M51 205L60 224L69 205"/></svg></div><h2 id="quote-title">“Reason from first principles<br>rather than by analogy.”</h2><div class="principles-caption"><span>01 / QUESTION THE ASSUMPTION</span><span>02 / FIND WHAT IS TRUE</span><span>03 / BUILD BACK UP</span></div><div class="quote-actions"><button type="button" id="principles-button" aria-pressed="false">BREAK IT DOWN ↗</button><a href="https://elonmuskarchive.org/video/foundation-kevin-rose-2012-09-08" target="_blank" rel="noopener noreferrer">— ELON MUSK, IN CONVERSATION WITH KEVIN ROSE ↗</a></div></section>
 
-    <section class="offduty-intro" id="beyond" aria-labelledby="beyond-title"><div class="offduty-tape">AFTER HOURS ✳ AFTER HOURS ✳ AFTER HOURS ✳ AFTER HOURS ✳ AFTER HOURS ✳</div><div class="offduty-inner"><span>CHAPTER 07 / OFF DUTY</span><h2 id="beyond-title">OUTSIDE<br>THE <i>ORG CHART.</i></h2><p>The same curiosity has a lot more places to go.</p><div class="personal-avatar" id="personal-avatar" aria-label="Interactive Kathan character placeholder awaiting a personal photo"><span>K<span class="avatar-eye left"></span><span class="avatar-eye right"></span></span><small>PORTRAIT IN PROGRESS</small></div></div></section>
+    <section class="offduty-intro" id="beyond" aria-labelledby="beyond-title"><div class="offduty-tape">AFTER HOURS ✳ AFTER HOURS ✳ AFTER HOURS ✳ AFTER HOURS ✳ AFTER HOURS ✳</div><div class="offduty-inner"><span>CHAPTER 10 / OFF DUTY</span><h2 id="beyond-title">OUTSIDE<br>THE <i>ORG CHART.</i></h2><p>The same curiosity has a lot more places to go.</p><div class="personal-avatar" id="personal-avatar" aria-label="Interactive Kathan character placeholder awaiting a personal photo"><span>K<span class="avatar-eye left"></span><span class="avatar-eye right"></span></span><small>PORTRAIT IN PROGRESS</small></div></div></section>
 
     <section class="movement-section personal-section section-pad" id="movement" aria-labelledby="movement-title"><div class="personal-label"><span>01 / MOVEMENT</span><span>MOVE YOUR POINTER OR TAP THE COURT</span></div><div class="movement-court" id="movement-court" aria-hidden="true"><div class="court-arc"></div><div class="court-midline"></div><div class="court-ball" id="court-ball"></div><span class="court-score">21.1 KM<br>FINISHED</span></div><img class="movement-character" src="./assets/anime-athlete.svg" alt="" aria-hidden="true" loading="lazy"><div class="personal-story"><h2 id="movement-title">I FOUND MY<br>OWN WAY TO <i>MOVE.</i></h2><p>I found fitness in college, then a knee injury in 2020 interrupted it. Coming back made movement more personal: running, dance, yoga, boxing, pickleball and badminton. Tennis is the new challenge. Finishing the Vedanta Delhi Half Marathon is a milestone I carry with me.</p></div></section>
 
@@ -172,7 +211,7 @@
       <p class="story-endnote">THREE ORIGINAL CHARACTERS · THREE WAYS TO KEEP MOVING</p>
     </section>
 
-    <section class="curiosity-section section-pad" aria-labelledby="curiosity-title"><span>05 / STILL CURIOUS</span><h2 id="curiosity-title">THE NEXT<br>QUESTION IS<br><i>OUT THERE.</i></h2><img class="curiosity-character" src="./assets/manga-reader.svg" alt="" aria-hidden="true" loading="lazy"><div class="curiosity-clippings" aria-hidden="true"><span>AI</span><span>SYSTEMS</span><span>HISTORY</span><span>FOOD</span><span>COMICS</span><span>?</span></div><p>I read, follow new technology and keep exploring how ideas connect.</p></section>
+    <section class="curiosity-section section-pad" aria-labelledby="curiosity-title"><span>05 / STILL CURIOUS</span><h2 id="curiosity-title">THE NEXT<br>QUESTION IS<br><i>OUT THERE.</i></h2><img class="curiosity-character" src="./assets/manga-reader.svg" alt="" aria-hidden="true" loading="lazy"><div class="curiosity-clippings" aria-hidden="true"><span>AI</span><span>SYSTEMS</span><span>HISTORY</span><span>FOOD</span><span>COMICS</span><span>?</span></div><p>I read, follow new technology and keep exploring how ideas connect. My final-year engineering project even brought food and code together: a recipe recommender built in Python with K-means.</p></section>
 
     <section class="connect-section section-pad" id="connect" aria-labelledby="connect-title"><div class="folio-top"><span>THE NEXT CONNECTION</span><span>YOUR MOVE ↗</span></div><h2 id="connect-title">LET'S MAKE<br><i>SOMETHING</i><br>MAKE SENSE.</h2><p>For product conversations, ideas, or a good question: get in touch.</p><div class="connect-links"><button type="button" disabled title="LinkedIn profile URL to be added">LINKEDIN ↗ <small>LINK COMING SOON</small></button><a href="mailto:kathanraj96@gmail.com">EMAIL ME ↗</a></div></section>
   </main>

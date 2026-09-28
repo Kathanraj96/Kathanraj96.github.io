@@ -171,6 +171,42 @@ $$('button[data-lab]').forEach(button => button.addEventListener('click', () => 
   $$('button[data-lab]').forEach(item => { const active = Number(item.dataset.lab) === stage; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
 }));
 
+const certifications = [
+  { date:'MAR 2025 · HUGGING FACE LEARN', name:'AI Agent Course', description:'Agent concepts, tools and workflows; part of my ongoing hands-on AI exploration.', category:'AI / EXPERIMENTATION', symbol:'✳' },
+  { date:'JUN–OCT 2024 · ISB EXECUTIVE EDUCATION', name:'Product Management', description:'Formal product-management learning alongside enterprise product practice.', category:'PRODUCT / PRACTICE', symbol:'↗' },
+  { date:'MAY 2020 · DATACAMP', name:'Data Science for Everyone (Python)', description:'Completed with Data Analyst in Python, building a stronger base for data analysis.', category:'DATA / PYTHON', symbol:'∑' },
+  { date:'SEP 2019 · KPMG', name:'Lean Six Sigma Green Belt', description:'Training in process improvement and structured problem-solving.', category:'OPERATIONS / PROCESS', symbol:'✓' }
+];
+const certTabs = $$('button[data-cert]');
+function selectCertification(index, focus = false) {
+  const item = certifications[index];
+  $('#cert-number').textContent = `FILE 0${index + 1} / 04`;
+  $('#cert-date').textContent = item.date;
+  $('#cert-name').textContent = item.name;
+  $('#cert-description').textContent = item.description;
+  $('#cert-category').textContent = item.category;
+  $('#cert-symbol').textContent = item.symbol;
+  $('#cert-panel').setAttribute('aria-labelledby', `cert-tab-${index}`);
+  certTabs.forEach((tab, tabIndex) => {
+    tab.setAttribute('aria-selected', String(tabIndex === index));
+    tab.tabIndex = tabIndex === index ? 0 : -1;
+  });
+  if (focus) certTabs[index].focus();
+}
+certTabs.forEach((tab, index) => tab.addEventListener('click', () => selectCertification(index)));
+$('.cert-tabs').addEventListener('keydown', event => {
+  const current = certTabs.indexOf(document.activeElement);
+  if (current < 0) return;
+  let next;
+  if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % certTabs.length;
+  else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + certTabs.length) % certTabs.length;
+  else if (event.key === 'Home') next = 0;
+  else if (event.key === 'End') next = certTabs.length - 1;
+  else return;
+  event.preventDefault();
+  selectCertification(next, true);
+});
+
 const foodStories = {
   fafda: 'A crisp street-food favourite, especially when the city is celebrating.',
   gathiya: 'A familiar Gujarati snack that tastes like home, even when I am far away.',
@@ -237,7 +273,7 @@ const observer = new IntersectionObserver(entries => {
     observer.unobserve(entry.target);
   }
 }, {threshold:.12});
-$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.education-intro,.timeline-intro,.timeline-copy,.personal-story,.story-header,.story-panels').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
+$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.education-intro,.timeline-intro,.timeline-copy,.skills-intro,.skill-route,.achievements-intro,.achievement-ticket,.cert-intro,.personal-story,.story-header,.story-panels').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
 const metricObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
   metricObserver.disconnect();
