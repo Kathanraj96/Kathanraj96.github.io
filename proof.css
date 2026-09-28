@@ -17,7 +17,7 @@
 .skill-route:hover::before,.skill-route:focus-within::before{background:#d8f151;scale:1.25}
 .skill-route-top{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px;margin-bottom:24px;color:#4e7986;font:700 10px var(--mono);letter-spacing:.07em}
 .skill-route h3{font:800 clamp(42px,4.2vw,70px)/.9 var(--display);letter-spacing:0;margin:0}
-.skill-route p{font:400 clamp(12px,1vw,15px)/1.65 var(--mono);margin:2px 0 20px}
+.skill-route p{font:400 clamp(12px,1vw,15px)/1.65 var(--mono);margin:16px 0 20px}
 .skill-route a{grid-column:2;justify-self:start;border-bottom:1px solid #26536a;padding-bottom:7px;font:700 10px var(--mono);letter-spacing:.05em}
 .skill-route a:hover{color:#bd4937}
 .skill-footer{display:flex;justify-content:space-between;gap:25px;padding-top:22px;color:#5e7980;font:700 10px var(--mono)}
