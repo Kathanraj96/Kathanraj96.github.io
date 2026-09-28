@@ -306,34 +306,111 @@ $('#games').addEventListener('pointermove', event => {
   const rect = $('#games').getBoundingClientRect();
   $('#game-world').style.setProperty('--runner-x', `${clamp((event.clientX - rect.left) / rect.width,.1,.88)*100}%`);
 });
-$('#manga-button').addEventListener('click', event => {
-  const turned = $('#manga-spread').classList.toggle('turned');
-  event.currentTarget.setAttribute('aria-pressed', turned);
-  event.currentTarget.textContent = turned ? 'BACK TO INK ←' : 'TURN THE PAGE →';
-  $('#manga-page-number').textContent = turned ? '02' : '01';
-  const captions = turned ? ['Choose the unfamiliar path.','Hold your ground and keep going.','Courage arrives one step at a time.','Find a new question.'] : ['Joy chooses the next road.','Quiet focus finds a way through.','A nervous step can still be brave.','Wonder keeps asking why.'];
-  $$('.panel-caption span').forEach((caption, index) => { caption.textContent = captions[index]; });
-});
-if (!motionOK) $('#manga-spread').classList.remove('is-playing');
-$('#crew-button').addEventListener('click', event => {
-  const playing = $('#manga-spread').classList.toggle('is-playing');
-  event.currentTarget.setAttribute('aria-pressed', String(playing));
-  event.currentTarget.textContent = playing ? 'PAUSE THE PANELS Ⅱ' : 'START THE PANELS ▶';
-});
-
-const panelObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (entry.isIntersecting) entry.target.classList.add('in-view');
-}), {threshold:.18});
-$$('[data-comic-panel]').forEach(panel => {
-  panelObserver.observe(panel);
-  panel.addEventListener('pointermove', event => {
-    if (!finePointer || !motionOK) return;
-    const rect = panel.getBoundingClientRect();
-    panel.style.setProperty('--panel-x', `${((event.clientX - rect.left) / rect.width - .5) * 16}px`);
-    panel.style.setProperty('--panel-y', `${((event.clientY - rect.top) / rect.height - .5) * 10}px`);
+const storyScroll = $('#story-scroll');
+const storyStage = $('#manga-spread');
+const storyScenes = $$('.story-scene', storyStage);
+const storyNames = ['MANGA INK', 'CEL ANIMATION', 'CARTOON ENERGY', 'PIXEL WORLD'];
+const storyReactions = [
+  ['HA HA!', 'HEY!'],
+  ['FOCUS.', 'ONWARD.'],
+  ['AHH!', 'I CAN DO IT!'],
+  ['?', 'BEEP!']
+];
+const storyReactionTimers = new WeakMap();
+let currentStoryScene = -1;
+let storyScrollQueued = false;
+let storyFrameTick = 0;
+function reactStoryScene(index) {
+  const scene = storyScenes[index];
+  if (!scene) return;
+  const bubble = $('.scene-speech', scene);
+  const sprite = $('.story-sprite', scene);
+  if (!scene.dataset.defaultSpeech) scene.dataset.defaultSpeech = bubble.textContent;
+  const prior = storyReactionTimers.get(scene);
+  if (prior) prior.forEach(clearTimeout);
+  scene.classList.add('is-reacting');
+  bubble.textContent = storyReactions[index][0];
+  if (sprite) sprite.dataset.frame = '2';
+  const middle = setTimeout(() => {
+    bubble.textContent = storyReactions[index][1];
+    if (sprite) sprite.dataset.frame = '3';
+  }, 570);
+  const end = setTimeout(() => {
+    scene.classList.remove('is-reacting');
+    bubble.textContent = scene.dataset.defaultSpeech;
+    if (sprite) sprite.dataset.frame = '0';
+  }, 1350);
+  storyReactionTimers.set(scene, [middle, end]);
+}
+function setStoryScene(index) {
+  if (index === currentStoryScene) return;
+  currentStoryScene = index;
+  storyStage.dataset.storyScene = String(index);
+  storyScenes.forEach((scene, sceneIndex) => {
+    const active = sceneIndex === index;
+    scene.classList.toggle('is-active', active);
+    scene.setAttribute('aria-hidden', String(!active));
+    if (!active) {
+      const sprite = $('.story-sprite', scene);
+      if (sprite) sprite.dataset.frame = '0';
+    }
   });
-  panel.addEventListener('pointerleave', () => { panel.style.setProperty('--panel-x', '0px'); panel.style.setProperty('--panel-y', '0px'); });
+  $$('[data-story-jump]').forEach((button, buttonIndex) => button.setAttribute('aria-current', String(buttonIndex === index)));
+  $('#story-scene-label').textContent = `0${index + 1} / ${storyNames[index]}`;
+  $('#story-progress-label').textContent = `0${index + 1} / 04`;
+  $('#manga-page-number').textContent = `0${index + 1}`;
+  $('#manga-button').textContent = index === 3 ? 'BACK TO START ↺' : 'NEXT WORLD →';
+  if (motionOK && storyStage.classList.contains('is-playing')) {
+    setTimeout(() => { if (currentStoryScene === index) reactStoryScene(index); }, 550);
+  }
+}
+function updateStoryScroll() {
+  storyScrollQueued = false;
+  const start = storyScroll.getBoundingClientRect().top + scrollY - 76;
+  const travel = Math.max(1, storyScroll.offsetHeight - storyStage.offsetHeight);
+  const progress = clamp((scrollY - start) / travel);
+  const index = Math.min(3, Math.floor(progress * 4));
+  const local = clamp(progress * 4 - index);
+  setStoryScene(index);
+  storyScenes[index].style.setProperty('--actor-left', `${9 + local * (innerWidth < 760 ? 22 : 10)}%`);
+}
+function jumpToStoryScene(index) {
+  const start = storyScroll.getBoundingClientRect().top + scrollY - 76;
+  const travel = Math.max(1, storyScroll.offsetHeight - storyStage.offsetHeight);
+  scrollTo({top:start + travel * ((index + .08) / 4),behavior:motionOK ? 'smooth' : 'instant'});
+}
+$('#manga-button').addEventListener('click', () => jumpToStoryScene((currentStoryScene + 1) % 4));
+$$('[data-story-jump]').forEach(button => button.addEventListener('click', () => jumpToStoryScene(Number(button.dataset.storyJump))));
+$$('[data-react-scene]').forEach(button => button.addEventListener('click', () => reactStoryScene(Number(button.dataset.reactScene))));
+storyScenes.forEach((scene, index) => {
+  const actor = $('.scene-actor', scene);
+  actor.addEventListener('pointerenter', () => { if (finePointer) reactStoryScene(index); });
+  actor.addEventListener('pointerdown', () => reactStoryScene(index));
 });
+if (!motionOK) storyStage.classList.remove('is-playing');
+$('#crew-button').textContent = motionOK ? 'PAUSE MOTION Ⅱ' : 'START MOTION ▶';
+$('#crew-button').setAttribute('aria-pressed', String(motionOK));
+$('#crew-button').addEventListener('click', event => {
+  const playing = storyStage.classList.toggle('is-playing');
+  event.currentTarget.setAttribute('aria-pressed', String(playing));
+  event.currentTarget.textContent = playing ? 'PAUSE MOTION Ⅱ' : 'START MOTION ▶';
+});
+addEventListener('scroll', () => {
+  if (storyScrollQueued) return;
+  storyScrollQueued = true;
+  requestAnimationFrame(updateStoryScroll);
+}, {passive:true});
+addEventListener('resize', updateStoryScroll);
+setInterval(() => {
+  if (!motionOK || !storyStage.classList.contains('is-playing') || document.visibilityState !== 'visible') return;
+  const box = storyStage.getBoundingClientRect();
+  if (box.bottom < 0 || box.top > innerHeight) return;
+  const scene = storyScenes[currentStoryScene];
+  if (!scene || scene.classList.contains('is-reacting')) return;
+  const sprite = $('.story-sprite', scene);
+  if (sprite) sprite.dataset.frame = storyFrameTick++ % 4 < 2 ? '0' : '1';
+}, 260);
+updateStoryScroll();
 
 const observer = new IntersectionObserver(entries => {
   for (const entry of entries) {
@@ -342,7 +419,7 @@ const observer = new IntersectionObserver(entries => {
     observer.unobserve(entry.target);
   }
 }, {threshold:.12});
-$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.education-intro,.timeline-intro,.timeline-copy,.skills-intro,.skill-route,.achievements-intro,.achievement-ticket,.cert-intro,.personal-story,.story-header,.story-panels').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
+$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.education-intro,.timeline-intro,.timeline-copy,.skills-intro,.skill-route,.achievements-intro,.achievement-ticket,.cert-intro,.personal-story,.story-header,.story-stage').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
 const metricObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
   metricObserver.disconnect();
