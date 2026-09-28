@@ -26,7 +26,7 @@ with sync_playwright() as playwright:
         assert page.locator('[data-education-stop]').count() == 3
         assert page.locator('[data-timeline-item]').count() == 3
         page.locator('#education-next').click()
-        page.wait_for_timeout(450)
+        page.wait_for_function("document.querySelector('#education-position').textContent.includes('ANAND')")
         assert 'ANAND' in page.locator('#education-position').inner_text()
         page.locator('[data-api-step="2"]').click()
         assert page.locator('#api-stage').get_attribute('data-stage') == '2'

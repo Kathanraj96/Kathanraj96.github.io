@@ -11,7 +11,9 @@
 .education-buttons button{width:47px;height:42px;border:1px solid #2e6170;background:#f0f2e9;color:#173446;font:800 24px var(--editorial);cursor:pointer;transition:background .2s,transform .2s}
 .education-buttons button:not(:disabled):hover{background:#d8f151;transform:translateY(-3px)}
 .education-buttons button:disabled{opacity:.35;cursor:default}
-.education-track{display:flex;gap:25px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:0 3vw;padding:0 8vw 24px 0;scrollbar-color:#477786 #d0dad6;scrollbar-width:thin}
+.education-track{display:flex;gap:25px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:0 3vw;padding:0 8vw 24px 0;scrollbar-width:none;user-select:none;cursor:grab}
+.education-track:active{cursor:grabbing}
+.education-track::-webkit-scrollbar{display:none}
 .education-track:focus-visible{outline:3px solid #3c7182;outline-offset:5px}
 .education-card{flex:0 0 min(82vw,1060px);scroll-snap-align:start;display:grid;grid-template-columns:1.08fr .92fr;grid-template-rows:auto 1fr;background:#f4f1e8;border:1px solid #8aa6ac;min-height:515px;box-shadow:8px 10px 0 #58798722}
 .education-stop{grid-column:1/-1;display:flex;align-items:center;gap:16px;border-bottom:1px solid #a7baba;position:relative;padding:16px 22px;font:700 10px var(--mono);letter-spacing:.08em;color:#426f7b}
@@ -19,7 +21,7 @@
 .education-stop>span{position:relative;z-index:1;background:#f4f1e8;padding:0 5px}
 .education-stop .education-dot{width:43px;height:43px;border:2px solid #2c6472;border-radius:50%;display:grid;place-items:center;background:#d8f151;color:#183a48;padding:0}
 .education-card figure{margin:0;padding:28px 0 28px 28px;display:flex;align-items:center}
-.education-card figure img{width:100%;aspect-ratio:3/2;object-fit:contain;transform:rotate(-2deg);box-shadow:10px 13px 12px #273b3a28;transition:transform .4s}
+.education-card figure img{width:100%;aspect-ratio:3/2;object-fit:contain;transform:rotate(-2deg);box-shadow:10px 13px 12px #273b3a28;transition:transform .4s;pointer-events:none}
 .education-card:hover figure img{transform:rotate(0deg) translateY(-7px)}
 .education-copy{align-self:center;padding:30px clamp(25px,3vw,55px)}
 .education-copy>span{font:700 10px var(--mono);color:#4a7d8a;letter-spacing:.12em}
