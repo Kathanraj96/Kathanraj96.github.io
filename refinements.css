@@ -1,5 +1,5 @@
 /* A legibility pass and the next illustrated chapter of the field guide. */
-html{scroll-padding-top:76px}
+html{scroll-padding-top:76px}html,body{overflow-x:clip}
 .case-banner{position:relative;z-index:8;display:grid;grid-template-columns:84px minmax(0,1fr) auto;align-items:center;gap:22px;min-height:134px;padding:20px clamp(22px,5vw,88px);background:#172b39;color:#f5f3e9;border-top:7px solid #d8f151;border-bottom:2px solid #9cb2b6;box-shadow:0 14px 0 #11242f14}
 .section-pad>.case-banner{margin:calc(-1 * clamp(76px,9vw,150px)) calc(-1 * clamp(22px,5vw,88px)) clamp(75px,8vw,120px)}
 .case-no{font:900 78px/.72 var(--display);color:#d8f151;letter-spacing:-.08em}
@@ -179,60 +179,62 @@ html{scroll-padding-top:76px}
 .story-scroll{position:relative;height:410vh;margin-top:65px}
 .story-stage{position:sticky;top:76px;height:calc(100vh - 76px);min-height:600px;overflow:hidden;border:7px solid #171c1c;background:#ede9dd;box-shadow:14px 15px 0 #e85a3e;isolation:isolate}
 .story-stage-top,.story-stage-bottom{position:absolute;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 20px;background:#171c1c;color:#f4f0e6;font:700 9px/1.25 var(--mono);letter-spacing:.08em}
-.story-stage-top{top:0;min-height:40px}.story-stage-bottom{bottom:0;min-height:48px}
+.story-stage-top{top:0;min-height:40px}.story-stage-bottom{bottom:0;min-height:48px}.story-stage-bottom::before{content:"";position:absolute;left:0;top:0;width:var(--route-progress,0%);height:3px;background:#d8f151;transition:width .1s linear}
 .story-scenes{position:absolute;inset:40px 0 48px;overflow:hidden}
 .story-scene{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s,visibility .45s}
 .story-scene.is-active{opacity:1;visibility:visible;pointer-events:auto}
 .scene-manga{background:#f1ebdb;color:#1b1d1b}.scene-manga::before{content:"";position:absolute;inset:-30%;background:repeating-conic-gradient(from 4deg at 30% 67%,#12161516 0 1deg,transparent 1deg 11deg);opacity:.7}
 .scene-zoro{background:#82b8bc;color:#173342}.scene-zoro::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(155deg,transparent 0 48px,#e5f4e944 49px 52px,transparent 53px 96px)}
 .scene-zenitsu{background:#f6c286;color:#542c22}.scene-zenitsu::before{content:"";position:absolute;inset:-25%;background:repeating-conic-gradient(from 0deg at 30% 70%,#dd644119 0 3deg,transparent 3deg 20deg)}
-.scene-scout{background:#203945;color:#edf3df}.scene-scout::before{content:"";position:absolute;inset:0;background:linear-gradient(#8ac9c51d 1px,transparent 1px),linear-gradient(90deg,#8ac9c51d 1px,transparent 1px);background-size:24px 24px}
+.scene-goku{background:radial-gradient(circle at 85% 48%,#f69363 0,#cb655e 24%,#515e88 64%,#253b61 100%);color:#fff7e8}.scene-goku::before{content:"";position:absolute;inset:0;background:radial-gradient(#fff2d037 1px,transparent 1.5px),repeating-linear-gradient(150deg,transparent 0 68px,#fff1d316 69px 72px,transparent 73px 125px);background-size:17px 17px,auto;opacity:.64}
 .scene-copy{position:absolute;z-index:3;top:11%;right:7%;width:min(52%,610px)}
+.scene-zenitsu .scene-copy,.scene-goku .scene-copy{left:7%;right:auto;width:min(45%,560px)}
 .scene-copy small{display:inline-block;padding:7px 9px;border:1px solid currentColor;font:700 10px/1 var(--mono);letter-spacing:.08em}
 .scene-copy h3{font:900 clamp(58px,6.7vw,111px)/.91 var(--display);letter-spacing:.012em;margin:25px 0 20px;max-width:720px}
-.scene-scout .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(56px,5.2vw,84px)}
+.scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(56px,5.2vw,84px)}
 .scene-copy p{font:500 clamp(15px,1.35vw,20px)/1.45 var(--editorial);max-width:440px;margin:0 0 21px}
 .scene-react{border:2px solid currentColor;background:#d8f151;color:#17282b;padding:11px 13px;box-shadow:5px 5px 0 #171c1c73;font:800 10px/1 var(--mono);cursor:pointer;transition:transform .18s,box-shadow .18s}
 .scene-react:hover,.scene-react:focus-visible{transform:translateY(-3px);box-shadow:5px 8px 0 #171c1c73}
-.scene-scout .scene-react{background:#f6c286}
+.scene-goku .scene-react{background:#ffb96a}
 .scene-walkway{position:absolute;z-index:1;left:5%;right:5%;bottom:13%;display:flex;justify-content:space-between;align-items:center;border-top:3px dashed currentColor;padding-top:7px;font:800 9px var(--mono);letter-spacing:.12em;opacity:.72}
 .scene-walkway span:last-child{font-size:22px;line-height:.5}
-.scene-actor{position:absolute;z-index:3;left:var(--actor-left,10%);bottom:14%;width:200px;height:200px;transition:left .12s linear;filter:drop-shadow(8px 9px 0 #17292e3b);cursor:pointer}
+.scene-actor{position:absolute;z-index:3;left:var(--actor-x,15%);bottom:14%;width:200px;height:200px;transform:translateX(-50%);transition:left .12s linear;filter:drop-shadow(8px 9px 0 #17292e3b);cursor:pointer}
 .story-sprite{width:100%;height:100%;background-repeat:no-repeat;background-size:400% 100%;background-position:0 0}
 .sprite-luffy{background-image:url('./assets/luffy-chibi-sprite.webp');image-rendering:pixelated}
 .sprite-zoro{background-image:url('./assets/zoro-chibi-sprite.webp')}
 .sprite-zenitsu{background-image:url('./assets/zenitsu-chibi-sprite.webp')}
+.sprite-goku{background-image:url('./assets/goku-chibi-sprite.webp')}
 .story-sprite[data-frame="0"]{background-position:0 0}.story-sprite[data-frame="1"]{background-position:33.333% 0}.story-sprite[data-frame="2"]{background-position:66.667% 0}.story-sprite[data-frame="3"]{background-position:100% 0}
-.scene-speech{position:absolute;z-index:4;left:calc(var(--actor-left,10%) + 105px);bottom:51%;max-width:155px;padding:14px 17px;background:#fffdf5;border:3px solid #171c1c;border-radius:55% 47% 57% 49%;color:#171c1c;transform:rotate(-8deg);text-align:center;font:900 clamp(18px,2vw,28px)/.9 var(--display);box-shadow:6px 7px 0 #171c1c34;transition:left .12s linear,transform .25s}
-.scene-speech::after{content:"";position:absolute;left:22%;bottom:-15px;width:17px;height:17px;background:#fffdf5;border-right:3px solid #171c1c;border-bottom:3px solid #171c1c;transform:rotate(45deg)}
+.scene-speech{position:absolute;z-index:4;left:var(--actor-x,15%);bottom:51%;max-width:155px;padding:14px 17px;background:#fffdf5;border:3px solid #171c1c;border-radius:55% 47% 57% 49%;color:#171c1c;transform:translateX(-50%) rotate(-8deg);text-align:center;font:900 clamp(18px,2vw,28px)/.9 var(--display);box-shadow:6px 7px 0 #171c1c34;transition:left .12s linear,transform .25s}
+.scene-zoro .scene-speech{left:calc(var(--actor-x,32%) - 135px)}.scene-zenitsu .scene-speech{left:calc(var(--actor-x,55%) + 105px)}.scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 110px)}
+.scene-speech::after{content:"";position:absolute;left:44%;bottom:-15px;width:17px;height:17px;background:#fffdf5;border-right:3px solid #171c1c;border-bottom:3px solid #171c1c;transform:rotate(45deg)}
 .story-scene.is-reacting .scene-actor{animation:scene-hop .34s ease-in-out 3 alternate}
-.story-scene.is-reacting .scene-speech{transform:rotate(4deg) scale(1.12)}
+.story-scene.is-reacting .scene-speech{transform:translateX(-50%) rotate(4deg) scale(1.12)}
 @keyframes scene-hop{to{translate:0 -17px}}
-.scene-art-mark{position:absolute;z-index:1;pointer-events:none}.scene-art-sun{left:5%;top:7%;font:180px/.8 var(--display);color:#e2b76277;transform:rotate(-11deg)}.scene-art-speed{left:-8%;right:55%;top:16%;bottom:25%;border:4px dashed #171c1c38;border-radius:50%;transform:rotate(-16deg)}.scene-art-ring{left:2%;bottom:20%;width:37%;aspect-ratio:1;border:5px dashed #e1eee899;border-radius:50%}.scene-art-slash{left:5%;top:10%;width:34%;height:8px;background:#d8f151;box-shadow:0 45px #d8f151a6,0 90px #d8f15173;transform:rotate(-27deg)}.scene-art-burst{left:7%;top:5%;font:900 300px/1 var(--display);color:#e46c3a4a;transform:rotate(-12deg)}.scene-art-zigzag{left:5%;top:30%;font:140px/1 var(--display);color:#fff2bd}.scene-art-pixels{left:7%;top:15%;font:900 95px/1.7 var(--display);color:#d8f15155;writing-mode:vertical-rl}
+.scene-art-mark{position:absolute;z-index:1;pointer-events:none}.scene-art-sun{left:5%;top:7%;font:180px/.8 var(--display);color:#e2b76277;transform:rotate(-11deg)}.scene-art-speed{left:-8%;right:55%;top:16%;bottom:25%;border:4px dashed #171c1c38;border-radius:50%;transform:rotate(-16deg)}.scene-art-ring{left:2%;bottom:20%;width:37%;aspect-ratio:1;border:5px dashed #e1eee899;border-radius:50%}.scene-art-slash{left:5%;top:10%;width:34%;height:8px;background:#d8f151;box-shadow:0 45px #d8f151a6,0 90px #d8f15173;transform:rotate(-27deg)}.scene-art-burst{left:7%;top:5%;font:900 300px/1 var(--display);color:#e46c3a4a;transform:rotate(-12deg)}.scene-art-zigzag{left:5%;top:30%;font:140px/1 var(--display);color:#fff2bd}.scene-art-energy{right:9%;top:10%;font:280px/1 var(--display);color:#ffcc6945;transform:rotate(-14deg)}.scene-art-speedlines{right:7%;top:16%;width:42%;height:9px;background:#fff3d450;box-shadow:0 54px #fff3d436,0 108px #fff3d425;transform:rotate(-24deg)}
+.scene-finish{position:absolute;z-index:2;left:var(--finish-x,85%);bottom:13%;width:22px;height:225px;transform:translateX(-50%);background:conic-gradient(#fff 25%,#172b3d 0 50%,#fff 0 75%,#172b3d 0) 0 0/22px 22px;border:2px solid #172b3d;box-shadow:5px 6px 0 #14283a77}.scene-finish span{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) rotate(-6deg);background:#fff7e8;color:#19344e;border:3px solid #19344e;padding:8px 13px;font:900 23px/.9 var(--display);white-space:nowrap;box-shadow:4px 5px 0 #14283a77}.scene-finish i{position:absolute;left:-100px;top:-70px;width:200px;text-align:center;color:#ffe280;font:900 36px var(--display);font-style:normal;opacity:0;transform:translateY(30px) scale(.5);transition:opacity .4s,transform .5s}.story-stage.is-finished .scene-finish i{opacity:1;transform:translateY(0) scale(1)}.story-stage.is-finished .scene-finish span{background:#d8f151}
 .story-scene-nav{display:flex;gap:6px}.story-scene-nav button{width:30px;height:28px;border:1px solid #e8ede2;background:none;color:#f4f0e6;font:800 10px var(--mono);cursor:pointer}.story-scene-nav button[aria-current="true"],.story-scene-nav button:hover{background:#d8f151;color:#171c1c;border-color:#d8f151}
-.scene-scout .scene-actor{display:grid;place-items:center}.scene-scout .crew-figure{width:170px;height:190px;max-width:100%;filter:none}
-.story-stage.is-playing .scene-scout.is-active .figure-bob{animation:crew-bob .7s ease-in-out infinite alternate}.story-stage.is-playing .scene-scout.is-active .leg-left{animation:crew-leg .55s ease-in-out infinite alternate}.story-stage.is-playing .scene-scout.is-active .leg-right{animation:crew-leg .55s ease-in-out infinite alternate-reverse}.story-stage.is-playing .scene-scout.is-active .arm-left{animation:crew-arm .55s ease-in-out infinite alternate-reverse}.story-stage.is-playing .scene-scout.is-active .arm-right{animation:crew-arm .55s ease-in-out infinite alternate}
-.scene-scout.is-reacting .scout-mouth-idle{display:none}.scene-scout.is-reacting .scout-mouth-emote{display:block}.story-stage.is-playing .scene-scout.is-active.is-reacting .arm-right{animation:none;transform:rotate(-38deg)}
-
-@media(min-width:761px) and (max-width:1100px){.scene-speech{left:calc(var(--actor-left,10%) - 10px)}}
+@media(min-width:761px) and (max-width:1100px){.scene-zenitsu .scene-copy,.scene-goku .scene-copy{width:43%}.scene-speech{bottom:46%}.scene-zoro .scene-speech{left:calc(var(--actor-x,32%) - 105px)}.scene-zenitsu .scene-speech{left:calc(var(--actor-x,55%) + 40px)}.scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 60px)}}
+@media(min-width:761px) and (max-height:780px){.scene-copy{top:6%}.scene-copy h3{font-size:clamp(52px,5.3vw,85px);margin:15px 0 12px}.scene-copy p{font-size:15px;line-height:1.35;margin-bottom:12px}}
 @media(max-width:760px){
   .story-scroll{height:430vh;margin-top:40px}
   .story-stage{min-height:590px;box-shadow:7px 9px 0 #e85a3e}
   .story-stage-top,.story-stage-bottom{padding:8px 11px;font-size:7px}.story-stage-top span:last-child,.story-stage-bottom>span:first-child{display:none}
-  .scene-copy{top:7%;left:6%;right:6%;width:auto}.scene-copy h3{font-size:clamp(48px,11vw,75px);margin:14px 0 12px}.scene-copy p{font-size:14px;line-height:1.35;max-width:520px;margin-bottom:13px}.scene-react{font-size:8px;padding:8px 10px}
-  .scene-scout .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(44px,9vw,64px)}
-  .scene-actor{width:150px;height:150px;bottom:12%}.scene-walkway{bottom:10%;font-size:7px}.scene-speech{left:calc(var(--actor-left,10%) + 108px);bottom:31%;padding:9px 12px;font-size:20px}
-  .scene-art-sun{font-size:100px;top:37%}.scene-art-burst{font-size:180px;top:40%}.scene-art-zigzag{font-size:80px;top:55%}.scene-art-pixels{font-size:50px;top:50%}
-  .scene-scout .crew-figure{width:135px;height:145px}
+  .scene-copy,.scene-zenitsu .scene-copy,.scene-goku .scene-copy{top:7%;left:6%;right:6%;width:auto}.scene-copy h3{font-size:clamp(48px,11vw,75px);margin:14px 0 12px}.scene-copy p{font-size:14px;line-height:1.35;max-width:520px;margin-bottom:13px}.scene-react{font-size:8px;padding:8px 10px}
+  .scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(44px,9vw,64px)}
+  .scene-actor{width:150px;height:150px;bottom:12%}.scene-walkway{bottom:10%;font-size:7px}.scene-speech,.scene-zoro .scene-speech,.scene-zenitsu .scene-speech,.scene-goku .scene-speech{left:var(--actor-x,30%);bottom:31%;padding:9px 12px;font-size:20px}
+  .scene-goku .scene-speech{left:calc(var(--actor-x,70%) - 95px)}.scene-goku .scene-speech::after{left:auto;right:10%}
+  .scene-art-sun{font-size:100px;top:37%}.scene-art-burst{font-size:180px;top:40%}.scene-art-zigzag{font-size:80px;top:55%}.scene-art-energy{font-size:180px;top:44%}
+  .scene-finish{height:155px;width:16px;bottom:10%;background-size:16px 16px}.scene-finish span{font-size:16px;padding:6px 8px}.scene-finish i{left:-65px;top:-42px;width:130px;font-size:25px}
 }
 @media(max-width:500px){
   .story-stage{height:calc(100svh - 76px);min-height:600px;border-width:5px}.story-scenes{inset:37px 0 42px}.story-stage-top{min-height:37px}.story-stage-bottom{min-height:42px}
-  .scene-copy h3{font-size:clamp(42px,11vw,54px);line-height:.95}.scene-copy p{font-size:12px;max-width:310px}.scene-actor{width:137px;height:137px;bottom:12%}.scene-speech{left:calc(var(--actor-left,10%) + 100px);bottom:32%;font-size:17px;max-width:145px}.story-scene-nav button{width:24px;height:24px;font-size:8px}
-  .scene-scout .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(38px,10vw,50px)}
+  .scene-copy h3{font-size:clamp(42px,11vw,54px);line-height:.95}.scene-copy p{font-size:12px;max-width:310px}.scene-actor{width:137px;height:137px;bottom:12%}.scene-speech{bottom:32%;font-size:17px;max-width:145px}.story-scene-nav button{width:24px;height:24px;font-size:8px}
+  .scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:clamp(38px,10vw,50px)}
 }
 @media(max-width:360px){
   .scene-copy{top:6%}.scene-copy small{font-size:8px;padding:5px 7px}.scene-copy h3{font-size:36px;margin:10px 0 8px}.scene-copy p{font-size:11px;line-height:1.28;margin-bottom:8px}.scene-react{font-size:7px;padding:7px 8px}
-  .scene-scout .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:34px}
-  .scene-actor{width:115px;height:115px;bottom:7%}.scene-speech{left:calc(var(--actor-left,10%) + 78px);bottom:27%;font-size:14px;max-width:115px;padding:8px 9px}
+  .scene-goku .scene-copy h3,.scene-zenitsu .scene-copy h3{font-size:34px}
+  .scene-actor{width:115px;height:115px;bottom:7%}.scene-speech{bottom:27%;font-size:14px;max-width:115px;padding:8px 9px}.scene-finish{height:120px}.scene-finish span{font-size:14px;padding:5px 6px}
 }
-@media(prefers-reduced-motion:reduce){.story-scene,.scene-actor,.scene-speech{transition:none}.story-scene.is-reacting .scene-actor,.story-stage.is-playing .scene-scout.is-active .figure-bob,.story-stage.is-playing .scene-scout.is-active .leg,.story-stage.is-playing .scene-scout.is-active .arm{animation:none}}
+@media(prefers-reduced-motion:reduce){.story-scene,.scene-actor,.scene-speech,.scene-finish i{transition:none}.story-scene.is-reacting .scene-actor{animation:none}}

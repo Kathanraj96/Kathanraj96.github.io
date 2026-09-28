@@ -309,12 +309,12 @@ $('#games').addEventListener('pointermove', event => {
 const storyScroll = $('#story-scroll');
 const storyStage = $('#manga-spread');
 const storyScenes = $$('.story-scene', storyStage);
-const storyNames = ['MANGA INK', 'CEL ANIMATION', 'CARTOON ENERGY', 'PIXEL WORLD'];
+const storyNames = ['MANGA INK', 'CEL ANIMATION', 'CARTOON ENERGY', 'ANIME FINISH'];
 const storyReactions = [
   ['HA HA!', 'HEY!'],
   ['FOCUS.', 'ONWARD.'],
   ['AHH!', 'I CAN DO IT!'],
-  ['?', 'BEEP!']
+  ['POWER UP!', 'ONWARD!']
 ];
 const storyReactionTimers = new WeakMap();
 let currentStoryScene = -1;
@@ -332,18 +332,22 @@ function reactStoryScene(index) {
   bubble.textContent = storyReactions[index][0];
   if (sprite) sprite.dataset.frame = '2';
   const middle = setTimeout(() => {
+    if (index === 3 && storyStage.classList.contains('is-finished')) return;
     bubble.textContent = storyReactions[index][1];
     if (sprite) sprite.dataset.frame = '3';
   }, 570);
   const end = setTimeout(() => {
     scene.classList.remove('is-reacting');
-    bubble.textContent = scene.dataset.defaultSpeech;
-    if (sprite) sprite.dataset.frame = '0';
+    const finished = index === 3 && storyStage.classList.contains('is-finished');
+    bubble.textContent = finished ? 'WE MADE IT!' : scene.dataset.defaultSpeech;
+    if (sprite) sprite.dataset.frame = finished ? '3' : '0';
   }, 1350);
   storyReactionTimers.set(scene, [middle, end]);
 }
 function setStoryScene(index) {
   if (index === currentStoryScene) return;
+  const previousScene = storyScenes[currentStoryScene];
+  if (previousScene) previousScene.style.setProperty('--actor-x', storyScenes[index].style.getPropertyValue('--actor-x'));
   currentStoryScene = index;
   storyStage.dataset.storyScene = String(index);
   storyScenes.forEach((scene, sceneIndex) => {
@@ -370,9 +374,25 @@ function updateStoryScroll() {
   const travel = Math.max(1, storyScroll.offsetHeight - storyStage.offsetHeight);
   const progress = clamp((scrollY - start) / travel);
   const index = Math.min(3, Math.floor(progress * 4));
-  const local = clamp(progress * 4 - index);
+  const scene = storyScenes[index];
+  const sceneWidth = Math.max(1, scene.clientWidth);
+  const actorWidth = $('.scene-actor', scene).offsetWidth;
+  const edge = Math.max(15, ((actorWidth / 2 + 16) / sceneWidth) * 100);
+  const routePosition = edge + progress * (100 - edge * 2);
+  scene.style.setProperty('--actor-x', `${routePosition}%`);
+  storyStage.style.setProperty('--finish-x', `${100 - edge}%`);
+  storyStage.style.setProperty('--route-progress', `${progress * 100}%`);
   setStoryScene(index);
-  storyScenes[index].style.setProperty('--actor-left', `${9 + local * (innerWidth < 760 ? 22 : 10)}%`);
+  const finished = progress >= .94;
+  const wasFinished = storyStage.classList.contains('is-finished');
+  storyStage.classList.toggle('is-finished', finished);
+  if (finished) {
+    $('.scene-speech', storyScenes[3]).textContent = 'WE MADE IT!';
+    $('.story-sprite', storyScenes[3]).dataset.frame = '3';
+  } else if (wasFinished) {
+    $('.scene-speech', storyScenes[3]).textContent = storyScenes[3].dataset.defaultSpeech || 'ALMOST THERE!';
+    $('.story-sprite', storyScenes[3]).dataset.frame = '0';
+  }
 }
 function jumpToStoryScene(index) {
   const start = storyScroll.getBoundingClientRect().top + scrollY - 76;
@@ -401,12 +421,13 @@ addEventListener('scroll', () => {
   requestAnimationFrame(updateStoryScroll);
 }, {passive:true});
 addEventListener('resize', updateStoryScroll);
+addEventListener('pageshow', () => requestAnimationFrame(updateStoryScroll));
 setInterval(() => {
   if (!motionOK || !storyStage.classList.contains('is-playing') || document.visibilityState !== 'visible') return;
   const box = storyStage.getBoundingClientRect();
   if (box.bottom < 0 || box.top > innerHeight) return;
   const scene = storyScenes[currentStoryScene];
-  if (!scene || scene.classList.contains('is-reacting')) return;
+  if (!scene || scene.classList.contains('is-reacting') || storyStage.classList.contains('is-finished')) return;
   const sprite = $('.story-sprite', scene);
   if (sprite) sprite.dataset.frame = storyFrameTick++ % 4 < 2 ? '0' : '1';
 }, 260);

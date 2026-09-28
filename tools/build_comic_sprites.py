@@ -8,6 +8,7 @@ SHEETS = {
     'luffy': 'luffy-poses.png',
     'zoro': 'zoro-poses.png',
     'zenitsu': 'zenitsu-poses.png',
+    'goku': 'goku-poses.png',
 }
 CELL = 256
 MARGIN = 12
