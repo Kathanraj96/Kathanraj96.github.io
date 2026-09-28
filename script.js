@@ -185,7 +185,7 @@ function selectCertification(index, focus = false) {
   $('#cert-name').textContent = item.name;
   $('#cert-description').textContent = item.description;
   $('#cert-category').textContent = item.category;
-  $('#cert-art-use').setAttribute('href', `./assets/proof-motifs.svg#${item.motif}`);
+  $('#cert-art-use').setAttribute('href', `#motif-${item.motif}`);
   $('#cert-visual').dataset.certArt = index;
   $('.cert-visual-stamp').textContent = `KR / 0${index + 1}`;
   $('#cert-panel').setAttribute('aria-labelledby', `cert-tab-${index}`);
@@ -220,7 +220,7 @@ function setSkillFocus(index) {
   const board = $('.skill-switchboard');
   if (Number(board.dataset.active) === index && skillRoutes[index].classList.contains('is-active')) return;
   board.dataset.active = index;
-  $('#skill-focus-use').setAttribute('href', `./assets/proof-motifs.svg#${skillMotifs[index]}`);
+  $('#skill-focus-use').setAttribute('href', `#motif-${skillMotifs[index]}`);
   $('#skill-focus-label').textContent = `0${index + 1} / ${skillLabels[index]}`;
   $$('.board-port').forEach((port, portIndex) => port.classList.toggle('is-active', portIndex === index));
   skillRoutes.forEach((route, routeIndex) => route.classList.toggle('is-active', routeIndex === index));
