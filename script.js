@@ -73,11 +73,6 @@ function updateScroll() {
     item.classList.toggle('is-current', rect.top < innerHeight * .63 && rect.bottom > innerHeight * .28);
   });
   if (motionOK) {
-    $$('.timeline-postcard').forEach((postcard) => {
-      const rect = postcard.getBoundingClientRect();
-      const shift = clamp((innerHeight - rect.top) / (innerHeight + rect.height)) * 22 - 11;
-      postcard.style.setProperty('--postcard-shift', `${shift}px`);
-    });
     $$('.curiosity-clippings span').forEach((item, index) => {
       const rect = $('.curiosity-section').getBoundingClientRect();
       const shift = clamp((innerHeight - rect.top) / (innerHeight + rect.height)) * (index % 2 ? -40 : 40);
@@ -88,6 +83,52 @@ function updateScroll() {
 addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateScroll); } }, { passive: true });
 addEventListener('resize', () => { resizeVoxel(); updateScroll(); });
 updateScroll();
+
+const educationTrack = $('#education-track');
+const educationCards = $$('.education-card', educationTrack);
+let educationIndex = 0;
+const educationPlaces = ['AHMEDABAD', 'ANAND', 'PUNE'];
+function updateEducation() {
+  const left = educationTrack.getBoundingClientRect().left;
+  let nearest = 0;
+  let distance = Infinity;
+  educationCards.forEach((card, index) => {
+    const nextDistance = Math.abs(card.getBoundingClientRect().left - left);
+    if (nextDistance < distance) { distance = nextDistance; nearest = index; }
+  });
+  educationIndex = nearest;
+  $('#education-position').textContent = `0${nearest + 1} / 03   ${educationPlaces[nearest]}`;
+  $('#education-prev').disabled = nearest === 0;
+  $('#education-next').disabled = nearest === educationCards.length - 1;
+  const max = Math.max(1, educationTrack.scrollWidth - educationTrack.clientWidth);
+  $('#education-progress-fill').style.transform = `scaleX(${(1 + 2 * clamp(educationTrack.scrollLeft / max)) / 3})`;
+}
+function goToEducation(index) {
+  const target = educationCards[clamp(index, 0, educationCards.length - 1)];
+  educationTrack.scrollTo({ left: educationTrack.scrollLeft + target.getBoundingClientRect().left - educationTrack.getBoundingClientRect().left, behavior: motionOK ? 'smooth' : 'instant' });
+}
+$('#education-prev').addEventListener('click', () => goToEducation(educationIndex - 1));
+$('#education-next').addEventListener('click', () => goToEducation(educationIndex + 1));
+educationTrack.addEventListener('scroll', updateEducation, { passive: true });
+educationTrack.addEventListener('keydown', event => {
+  if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+  event.preventDefault();
+  goToEducation(educationIndex + (event.key === 'ArrowRight' ? 1 : -1));
+});
+let educationDrag = null;
+educationTrack.addEventListener('pointerdown', event => {
+  if (event.pointerType !== 'mouse') return;
+  educationDrag = { x: event.clientX, left: educationTrack.scrollLeft };
+  educationTrack.setPointerCapture(event.pointerId);
+});
+educationTrack.addEventListener('pointermove', event => {
+  if (!educationDrag) return;
+  educationTrack.scrollLeft = educationDrag.left - (event.clientX - educationDrag.x);
+});
+educationTrack.addEventListener('pointerup', () => { educationDrag = null; });
+educationTrack.addEventListener('pointercancel', () => { educationDrag = null; });
+addEventListener('resize', updateEducation);
+updateEducation();
 
 const incidentStories = {
   repeat: ['Find the repeat, not just the alert.', 'Group similar issues, identify the root cause, and make the next response consistent across teams.'],
@@ -177,9 +218,16 @@ $('#games').addEventListener('pointermove', event => {
 $('#manga-button').addEventListener('click', event => {
   const turned = $('#manga-spread').classList.toggle('turned');
   event.currentTarget.setAttribute('aria-pressed', turned);
-  event.currentTarget.textContent = turned ? 'BACK TO COVER ←' : 'TURN THE PAGE →';
+  event.currentTarget.textContent = turned ? 'BACK TO INK ←' : 'TURN THE PAGE →';
   $('#manga-page-number').textContent = turned ? '02' : '01';
-  $('.manga-burst').innerHTML = turned ? 'SERIOUS<br>ON THE<br>INSIDE.' : 'FREEDOM<br>LOOKS GOOD<br>ON YOU.';
+  const captions = turned ? ['Take the unfamiliar path.','Keep going when it gets hard.','Find a new question.'] : ['Joy chooses the next road.','Focus finds a way through.','Wonder keeps asking why.'];
+  $$('.panel-caption span').forEach((caption, index) => { caption.textContent = captions[index]; });
+});
+if (!motionOK) $('#manga-spread').classList.remove('is-playing');
+$('#crew-button').addEventListener('click', event => {
+  const playing = $('#manga-spread').classList.toggle('is-playing');
+  event.currentTarget.setAttribute('aria-pressed', String(playing));
+  event.currentTarget.textContent = playing ? 'PAUSE THE CREW Ⅱ' : 'START THE CREW ▶';
 });
 
 const observer = new IntersectionObserver(entries => {
@@ -189,7 +237,7 @@ const observer = new IntersectionObserver(entries => {
     observer.unobserve(entry.target);
   }
 }, {threshold:.12});
-$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.timeline-intro,.timeline-copy,.personal-story,.manga-spread').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
+$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.education-intro,.timeline-intro,.timeline-copy,.personal-story,.story-header,.story-panels').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
 const metricObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
   metricObserver.disconnect();

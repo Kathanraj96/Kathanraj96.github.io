@@ -23,7 +23,11 @@ with sync_playwright() as playwright:
         # Layout failures are reported after screenshots so they can be inspected.
         assert not dimensions['unloaded'], dimensions
         assert not errors, errors
-        assert page.locator('[data-timeline-item]').count() == 6
+        assert page.locator('[data-education-stop]').count() == 3
+        assert page.locator('[data-timeline-item]').count() == 3
+        page.locator('#education-next').click()
+        page.wait_for_timeout(450)
+        assert 'ANAND' in page.locator('#education-position').inner_text()
         page.locator('[data-api-step="2"]').click()
         assert page.locator('#api-stage').get_attribute('data-stage') == '2'
         page.locator('[data-incident="quality"]').click()
@@ -42,10 +46,14 @@ with sync_playwright() as playwright:
         assert page.locator('#games').get_attribute('class').find('playing') >= 0
         page.locator('#manga-button').click()
         assert page.locator('#manga-page-number').inner_text() == '02'
-        for section in ['top','api','health','pricing','thinking','path','first-principles','beyond','movement','food','games','manga','connect']:
-            if width == 768 and section not in ['top','api','path','beyond']:
+        assert page.locator('#manga img').count() == 0
+        assert page.locator('#manga .crew-figure').count() == 3
+        page.locator('#crew-button').click()
+        assert 'is-playing' not in page.locator('#manga-spread').get_attribute('class')
+        for section in ['top','api','health','pricing','thinking','path','experience','first-principles','beyond','movement','food','games','manga','connect']:
+            if width == 768 and section not in ['top','api','path','experience','beyond']:
                 continue
-            if width == 390 and section not in ['top','api','health','path','beyond','food','manga']:
+            if width == 390 and section not in ['top','api','health','path','experience','beyond','food','manga']:
                 continue
             page.locator('#'+section).scroll_into_view_if_needed()
             page.wait_for_timeout(950)
