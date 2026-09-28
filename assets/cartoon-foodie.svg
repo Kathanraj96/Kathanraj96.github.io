@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430" role="img" aria-label="Original warm cartoon food explorer holding Gujarati snacks">
+  <defs><pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="#b74833" opacity=".18"/></pattern><linearGradient id="face" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f7ca97"/><stop offset="1" stop-color="#e1a56f"/></linearGradient></defs>
+  <path d="M23 173L70 49L161 127L77 207Z" fill="#f5db78" stroke="#572b26" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M69 50L75 207M23 173L161 127" stroke="#d45c42" stroke-width="6"/>
+  <path d="M77 209Q20 250 68 304" fill="none" stroke="#572b26" stroke-width="3" stroke-dasharray="8 9"/>
+  <ellipse cx="225" cy="396" rx="169" ry="22" fill="#703a2c" opacity=".22"/>
+  <path d="M98 361Q94 284 141 247L264 248Q326 283 337 369L311 404H118Z" fill="#78b3a0" stroke="#572b26" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M138 287Q129 340 136 399M291 284Q311 334 306 396" fill="none" stroke="#458775" stroke-width="7"/>
+  <path d="M154 245Q168 269 212 273Q252 269 266 244" fill="none" stroke="#fff3dc" stroke-width="20" stroke-linecap="round"/>
+  <path d="M132 281Q90 270 74 318L95 334L154 313Z" fill="url(#face)" stroke="#572b26" stroke-width="8"/>
+  <path d="M294 286Q332 267 359 310L337 333L282 313Z" fill="url(#face)" stroke="#572b26" stroke-width="8"/>
+  <path d="M68 315Q59 329 76 341L99 343L104 323Z" fill="url(#face)" stroke="#572b26" stroke-width="7"/>
+  <path d="M338 315Q363 313 373 331Q370 348 346 349L326 330Z" fill="url(#face)" stroke="#572b26" stroke-width="7"/>
+  <path d="M144 107Q148 52 208 43Q275 45 290 107L282 197Q265 252 214 254Q162 251 145 197Z" fill="url(#face)" stroke="#572b26" stroke-width="9"/>
+  <path d="M149 119Q115 92 137 59Q155 23 205 27Q261 8 295 53Q316 85 287 127L274 102Q239 112 210 88Q183 116 149 119Z" fill="#2e2824" stroke="#572b26" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M168 151Q181 142 195 151M229 150Q243 143 257 153" fill="none" stroke="#572b26" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="181" cy="166" rx="5" ry="9" fill="#34241f"/><ellipse cx="243" cy="167" rx="5" ry="9" fill="#34241f"/>
+  <ellipse cx="158" cy="186" rx="13" ry="7" fill="#dc8e72" opacity=".75"/><ellipse cx="270" cy="186" rx="13" ry="7" fill="#dc8e72" opacity=".75"/>
+  <path d="M187 206Q211 227 238 207Q214 242 187 206Z" fill="#fff5dd" stroke="#572b26" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M103 328Q125 351 215 356Q303 350 331 328L306 386Q218 417 126 384Z" fill="#f4d98e" stroke="#572b26" stroke-width="8"/>
+  <path d="M114 327Q216 303 324 328Q309 356 212 366Q133 359 114 327Z" fill="#e6b95c" stroke="#572b26" stroke-width="8"/>
+  <path d="M145 319Q165 295 190 321M181 319Q207 290 229 320M222 321Q246 292 268 320M261 321Q283 301 300 326" fill="none" stroke="#a67131" stroke-width="13" stroke-linecap="round"/>
+  <path d="M108 327Q211 299 326 328" fill="none" stroke="#fff2bb" stroke-width="6" stroke-linecap="round"/>
+  <path d="M100 365Q130 392 203 398" fill="none" stroke="#c88342" stroke-width="5"/>
+  <path d="M0 0H430V430H0Z" fill="url(#dots)" opacity=".5"/>
+</svg>

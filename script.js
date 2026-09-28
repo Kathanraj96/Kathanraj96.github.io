@@ -11,25 +11,38 @@ let apiProgress = 0;
 let currentApiStage = -1;
 const apiStories = [
   { title: 'One product. Many moving parts.', copy: 'Corporate clients use different accounting, expense and invoice systems. The exchange gives those systems a consistent way to connect with Amex capabilities.', role: 'PRODUCT FOCUS · CONNECTIVITY AND DELIVERY ACROSS TEAMS' },
-  { title: 'Bring ERP context inward.', copy: 'Data from client ERP and related systems enters the exchange so clients can make supplier payments through Amex tools. I shaped roadmap, requirements and partner connectivity.', role: 'INBOUND · ACCOUNTING / EXPENSES / INVOICES' },
-  { title: 'Put transaction data to work.', copy: 'Amex transaction data goes out to a corporate client or its chosen expense and reconciliation partner. The downstream process belongs to that partner.', role: 'OUTBOUND · CLIENTS AND THEIR CHOSEN SYSTEMS' },
-  { title: 'Go deeper, closer to real time.', copy: 'I have begun work on transaction APIs with richer details such as merchant and travel line items where available. This is the next chapter, not a finished launch.', role: 'CURRENT WORK · TRANSACTION API DEFINITION' }
+  { title: 'Bring ERP context inward.', copy: 'Client ERP data moves in so supplier payments can begin in Amex tools. My work connects requirements, product decisions and partner integration.', role: 'INBOUND · ACCOUNTING / EXPENSES / INVOICES' },
+  { title: 'Move transaction data outward.', copy: 'Amex data reaches corporate clients and their chosen partners. I have also begun shaping richer, real-time transaction APIs; that work is in progress.', role: 'OUTBOUND · TRANSACTIONS / REAL-TIME API WORK' },
+  { title: 'Make the foundation stronger.', copy: 'Useful connections need clear logging, traceable issues and dependable data. Rich transaction details can include merchant and travel line items where available.', role: 'FOUNDATIONS · LOGGING / TRACEABILITY / RICH DATA' }
 ];
+const apiNextLabels = ['NEXT / ERP DATA ↓','NEXT / REAL TIME ↓','NEXT / FOUNDATIONS ↓','CONTINUE THE STORY ↓'];
 function setApiStage(stage) {
   if (stage === currentApiStage) return;
   currentApiStage = stage;
   const story = apiStories[stage];
   const panel = $('.api-story');
+  panel.classList.remove('changing');
+  void panel.offsetWidth;
+  $('#api-story-title').textContent = story.title;
+  $('#api-story-copy').textContent = story.copy;
+  $('#api-story-role').textContent = story.role;
+  $('#api-count').textContent = `0${stage + 1} / 04`;
+  $('#api-next-label').textContent = apiNextLabels[stage];
   panel.classList.add('changing');
-  window.setTimeout(() => {
-    $('#api-story-title').textContent = story.title;
-    $('#api-story-copy').textContent = story.copy;
-    $('#api-story-role').textContent = story.role;
-    $('#api-count').textContent = `0${stage + 1} / 04`;
-    panel.classList.remove('changing');
-  }, motionOK ? 150 : 0);
   $('#api-stage').dataset.stage = stage;
+  $$('[data-api-step]').forEach((button, index) => {
+    const active = index === stage;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', active);
+  });
 }
+$$('[data-api-step]').forEach(button => button.addEventListener('click', () => {
+  const api = $('.api-scroll');
+  const stage = Number(button.dataset.apiStep);
+  const travel = Math.max(1, api.offsetHeight - innerHeight);
+  window.scrollTo({ top: api.offsetTop + travel * ((stage + .04) / 4), behavior: 'auto' });
+  setApiStage(stage);
+}));
 function updateScroll() {
   scrollQueued = false;
   const doc = document.documentElement;
@@ -51,11 +64,19 @@ function updateScroll() {
     setApiStage(Math.min(3, Math.floor(apiProgress * 4)));
     $('#api-progress-fill').style.transform = `scaleX(${apiProgress})`;
   }
+  const timeline = $('#timeline-track');
+  const timelineRect = timeline.getBoundingClientRect();
+  const timelineProgress = clamp((innerHeight * .55 - timelineRect.top) / Math.max(1, timelineRect.height));
+  $('#timeline-fill').style.transform = `scaleY(${timelineProgress})`;
+  $$('.timeline-item').forEach(item => {
+    const rect = item.getBoundingClientRect();
+    item.classList.toggle('is-current', rect.top < innerHeight * .63 && rect.bottom > innerHeight * .28);
+  });
   if (motionOK) {
-    $$('.postcard-scene').forEach((scene) => {
-      const rect = scene.getBoundingClientRect();
-      const shift = clamp((innerHeight - rect.top) / (innerHeight + rect.height)) * 45 - 22;
-      $('.postcard-image', scene).style.setProperty('--postcard-shift', `${shift}px`);
+    $$('.timeline-postcard').forEach((postcard) => {
+      const rect = postcard.getBoundingClientRect();
+      const shift = clamp((innerHeight - rect.top) / (innerHeight + rect.height)) * 22 - 11;
+      postcard.style.setProperty('--postcard-shift', `${shift}px`);
     });
     $$('.curiosity-clippings span').forEach((item, index) => {
       const rect = $('.curiosity-section').getBoundingClientRect();
@@ -104,7 +125,8 @@ $$('[data-lab]').forEach(button => button.addEventListener('click', () => {
   const stage = Number(button.dataset.lab);
   $('#lab-status').textContent = labs[stage][0];
   $('#lab-copy').textContent = labs[stage][1];
-  $('.console-core').textContent = ['?', '→', '▥'][stage];
+  $('#ai-console').dataset.lab = stage;
+  $$('[data-lab-visual]').forEach((visual, index) => visual.setAttribute('aria-hidden', index !== stage));
   $$('[data-lab]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
 }));
 
@@ -118,6 +140,12 @@ $$('[data-food]').forEach(button => button.addEventListener('click', () => {
   $('#food').dataset.food = button.dataset.food;
   $$('[data-food]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
 }));
+
+$('#principles-button').addEventListener('click', event => {
+  const expanded = $('.quote-section').classList.toggle('is-decomposed');
+  event.currentTarget.setAttribute('aria-pressed', expanded);
+  event.currentTarget.textContent = expanded ? 'REBUILD THE IDEA ↖' : 'BREAK IT DOWN ↗';
+});
 
 const avatar = $('#personal-avatar');
 avatar.addEventListener('pointermove', event => {
@@ -161,7 +189,7 @@ const observer = new IntersectionObserver(entries => {
     observer.unobserve(entry.target);
   }
 }, {threshold:.12});
-$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.path-intro,.roots-intro,.postcard-caption,.personal-story,.manga-spread').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
+$$('.opening-title,.opening-aside,.health-intro,.pricing-head,.ai-top,.timeline-intro,.timeline-copy,.personal-story,.manga-spread').forEach(item => { item.classList.add('reveal'); observer.observe(item); });
 const metricObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
   metricObserver.disconnect();

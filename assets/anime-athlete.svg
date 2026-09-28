@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 520" role="img" aria-label="Original anime-style racket-sport athlete in motion">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7cb9a"/><stop offset="1" stop-color="#c98667"/></linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fbef"/><stop offset=".52" stop-color="#e4eacb"/><stop offset="1" stop-color="#9eb7ad"/></linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15364a"/><stop offset="1" stop-color="#071c28"/></linearGradient>
+    <filter id="shadow"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <ellipse cx="220" cy="485" rx="140" ry="20" fill="#123b54" opacity=".17" filter="url(#shadow)"/>
+  <path d="M32 284C71 198 113 154 162 124M27 321C85 235 107 229 143 214M81 90C112 64 138 52 174 47" fill="none" stroke="#f7f1df" stroke-width="8" stroke-linecap="round" opacity=".88"/>
+  <path d="M300 93C331 56 369 46 404 64M317 127C356 96 381 96 416 109" fill="none" stroke="#d5f45d" stroke-width="9" stroke-linecap="round"/>
+  <g transform="rotate(23 323 151)" stroke="#143a52" stroke-width="7" fill="none">
+    <ellipse cx="323" cy="137" rx="64" ry="88" fill="#d6ecf2" fill-opacity=".34"/>
+    <path d="M273 95H373M261 125H385M259 154H386M273 181H373M296 59V216M321 49V225M346 56V217" stroke="#f7faf4" stroke-width="3" opacity=".88"/>
+    <path d="M323 223V342" stroke-width="12"/>
+    <path d="M323 313V350" stroke="#f36f4d" stroke-width="18"/>
+  </g>
+  <path d="M169 355L225 371L293 411L331 452L309 472L270 439L199 418L142 404Z" fill="#173e5a" stroke="#103347" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M164 372L118 405L58 454L38 477L62 491L102 468L157 441L207 410Z" fill="#1f5270" stroke="#103347" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M32 473Q56 463 78 480L91 494L57 506Q28 507 17 495Z" fill="#f8f3e7" stroke="#123b54" stroke-width="7"/>
+  <path d="M298 456Q321 451 348 472L372 491Q354 511 320 503L295 483Z" fill="#f8f3e7" stroke="#123b54" stroke-width="7"/>
+  <path d="M122 242Q171 214 231 236L264 304L224 388L135 374L111 309Z" fill="url(#shirt)" stroke="#123b54" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M122 274L187 294L234 258M145 340L211 362" fill="none" stroke="#8ca9aa" stroke-width="10" opacity=".64"/>
+  <path d="M151 258L124 328L82 370L64 354L83 309L98 266Z" fill="url(#skin)" stroke="#123b54" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M64 352Q42 345 38 368Q46 386 65 389L83 372Z" fill="url(#skin)" stroke="#123b54" stroke-width="6"/>
+  <path d="M229 253Q255 250 279 270L313 322L296 339L247 301L220 289Z" fill="url(#skin)" stroke="#123b54" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M297 321Q315 308 331 321L342 346Q341 367 323 371L300 349Z" fill="url(#skin)" stroke="#123b54" stroke-width="6"/>
+  <path d="M163 197L201 190L221 251L173 259Z" fill="url(#skin)" stroke="#123b54" stroke-width="7"/>
+  <path d="M121 127Q136 70 192 70Q245 69 251 136L242 205Q224 244 192 243Q159 244 137 205Z" fill="url(#skin)" stroke="#123b54" stroke-width="8"/>
+  <path d="M127 145Q95 104 125 65Q141 33 182 40Q214 18 239 50Q276 68 255 123L237 119L225 98L200 112L179 89Q163 122 127 145Z" fill="url(#hair)" stroke="#123b54" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M126 112Q179 86 247 116" fill="none" stroke="#d5f45d" stroke-width="17" stroke-linecap="round"/>
+  <path d="M151 159L174 157M208 155L232 153" fill="none" stroke="#123b54" stroke-width="7" stroke-linecap="round"/>
+  <path d="M165 176L174 180M218 177L227 173" fill="none" stroke="#123b54" stroke-width="5" stroke-linecap="round"/>
+  <path d="M181 201Q198 213 215 195" fill="none" stroke="#9a4c43" stroke-width="5" stroke-linecap="round"/>
+  <path d="M105 222Q135 212 153 224M240 223Q262 230 275 251" fill="none" stroke="#f36f4d" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="392" cy="259" r="26" fill="#d9f45a" stroke="#f8f7d7" stroke-width="6"/>
+  <path d="M378 240Q394 258 403 278M371 259Q389 253 411 253" fill="none" stroke="#8ca42b" stroke-width="3"/>
+</svg>

@@ -1,13 +1,15 @@
 """Capture and assert the scroll-linked scenes at exact progress points."""
 from pathlib import Path
+from os import getenv
 from playwright.sync_api import sync_playwright
 root=Path(__file__).resolve().parents[1]
+url=getenv('SITE_URL') or (root/'index.html').as_uri()
 with sync_playwright() as p:
     browser=p.chromium.launch(headless=True)
     page=browser.new_page(viewport={'width':1440,'height':900})
     errors=[]
     page.on('pageerror',lambda error:errors.append(str(error)))
-    page.goto((root/'index.html').as_uri())
+    page.goto(url)
     page.evaluate("document.documentElement.style.scrollBehavior='auto'")
     page.wait_for_timeout(500)
     page.screenshot(path=str(root/'qa/v2-desktop-hero-actual.png'))

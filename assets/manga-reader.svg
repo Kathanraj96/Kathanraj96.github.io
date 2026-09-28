@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 490" role="img" aria-label="Original black-and-white manga-style reader character">
+  <defs><pattern id="inkdots" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#171c1c" opacity=".45"/></pattern><clipPath id="panel"><path d="M20 20H400V470H20Z"/></clipPath></defs>
+  <g clip-path="url(#panel)" fill="none" stroke="#171c1c" stroke-width="3" opacity=".6"><path d="M211 182L-14 6M211 182L67 -30M211 182L175 -20M211 182L306 -20M211 182L434 5M211 182L475 152M211 182L478 351M211 182L445 468M211 182L331 514M211 182L-15 486M211 182L-50 307"/></g>
+  <path d="M80 418Q91 332 139 285L281 283Q333 326 347 425L307 479H113Z" fill="#f5f1e8" stroke="#171c1c" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M113 361L77 451L146 466L180 392M308 361L349 450L280 465L252 388" fill="url(#inkdots)" stroke="#171c1c" stroke-width="8"/>
+  <path d="M154 279L163 321Q194 350 210 352Q238 338 262 320L269 275Z" fill="#f5f1e8" stroke="#171c1c" stroke-width="8"/>
+  <path d="M122 119Q132 60 210 55Q288 57 303 122L289 228Q267 291 210 294Q151 290 132 228Z" fill="#f5f1e8" stroke="#171c1c" stroke-width="10"/>
+  <path d="M123 147L103 106L142 73L170 25L205 56L247 18L274 61L313 76L295 155L275 132L249 144L229 114L195 146L170 123Z" fill="#171c1c" stroke="#171c1c" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M141 93L113 47M177 60L179 23M224 59L243 19M269 70L306 38" stroke="#f5f1e8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M150 179L188 173M231 173L270 180" stroke="#171c1c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M167 188L183 193M237 193L253 188" stroke="#171c1c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M209 196L203 223L219 225M190 247Q212 257 234 246" stroke="#171c1c" stroke-width="5" stroke-linecap="round"/>
+  <path d="M92 363L210 389L328 363L310 457L211 482L109 457Z" fill="#f5f1e8" stroke="#171c1c" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M210 389L211 482M111 389L188 408M230 408L309 389M123 414L176 427M243 427L299 414" stroke="#171c1c" stroke-width="4"/>
+  <path d="M160 443L174 449M250 449L263 443" stroke="#171c1c" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="352" cy="112" r="48" fill="#d8f050" stroke="#171c1c" stroke-width="8"/>
+  <path d="M336 116L351 128L371 96" fill="none" stroke="#171c1c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
