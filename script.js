@@ -127,7 +127,7 @@ $$('button[data-lab]').forEach(button => button.addEventListener('click', () => 
   $('#lab-copy').textContent = labs[stage][1];
   $('#ai-console').dataset.lab = stage;
   $$('[data-lab-visual]').forEach((visual, index) => visual.setAttribute('aria-hidden', index !== stage));
-  $$('button[data-lab]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
+  $$('button[data-lab]').forEach(item => { const active = Number(item.dataset.lab) === stage; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
 }));
 
 const foodStories = {
