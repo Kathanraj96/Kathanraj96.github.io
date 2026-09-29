@@ -1,0 +1,138 @@
+/* The CDX chapter has two independent directions, never a single through-flow. */
+.api-copy{top:17%;width:32%}
+.api-copy h2{font-size:clamp(82px,8.6vw,145px);margin:12px 0 18px}
+.api-story{max-width:440px}
+.api-story p{font-size:clamp(11px,.78vw,14px);line-height:1.5}
+.cdx-map{position:absolute;z-index:3;right:4vw;top:15%;width:min(52vw,980px);height:60%;display:grid;grid-template-rows:1fr 1fr;gap:13px}
+.api-head span:last-child{display:none}
+.cdx-lane{min-width:0;overflow:hidden;padding:16px 18px 13px;border:2px solid #9cb8d1;background:#eaf0ef;color:#183447;box-shadow:8px 9px 0 #081d2c77;transition:opacity .3s,transform .35s,border-color .3s}
+.cdx-inbound{--lane:#568fca}.cdx-outbound{--lane:#d8f151;border-color:#d8f151;background:#f1f3e4}
+.cdx-lane-head{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding-bottom:9px;border-bottom:2px solid var(--lane)}
+.cdx-lane-head span{flex:none;color:#386c87;font:800 10px var(--mono);letter-spacing:.1em}.cdx-outbound .cdx-lane-head span{color:#486521}
+.cdx-lane-head strong{font:800 clamp(15px,1.45vw,25px)/1 var(--display);text-align:right}
+.cdx-nodes{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1.1fr);gap:4px;align-items:center;margin:13px 0 12px}
+.cdx-nodes>div{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:64px;padding:8px 10px;border:1px solid #8eaab6;background:#fffdf4}
+.cdx-nodes>div.cdx-hub{background:var(--lane);border-color:#183447}
+.cdx-nodes small{display:block;font:800 8px/1.2 var(--mono);letter-spacing:.06em}
+.cdx-nodes b{display:block;margin-top:5px;font:800 clamp(13px,1.1vw,20px)/1.05 var(--display)}
+.cdx-nodes>span{text-align:center;font:800 22px var(--display);color:#3c6c7a}
+.cdx-lane-notes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cdx-lane-notes span{padding:8px 10px;background:#c9dbdc;color:#183447;font:800 9px/1.2 var(--mono);letter-spacing:.04em}
+.cdx-outbound .cdx-lane-notes span{background:#dce9b2}
+.cdx-lane-notes em{display:block;margin-top:3px;font:500 9px/1.3 var(--mono);letter-spacing:0}
+.cdx-map-note{position:absolute;right:0;bottom:-19px;margin:0;color:#bdd4df;font:700 9px var(--mono);letter-spacing:.08em}
+.api-stage[data-stage="1"] .cdx-outbound,.api-stage[data-stage="2"] .cdx-inbound,.api-stage[data-stage="3"] .cdx-inbound{opacity:.48;transform:scale(.98)}
+.api-stage[data-stage="1"] .cdx-inbound,.api-stage[data-stage="2"] .cdx-outbound,.api-stage[data-stage="3"] .cdx-outbound{border-color:#fff;transform:translateX(-5px)}
+.api-stage[data-stage="3"] .cdx-outbound .cdx-lane-notes span:last-child{background:#d8f151;box-shadow:inset 0 0 0 2px #173446}
+
+/* Trace the legacy file work to its actual source and use the full diagram width. */
+.data-foundation-copy p{max-width:530px}
+.data-foundation-flow{grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr) 18px minmax(0,1fr) 18px minmax(0,1fr);gap:7px;padding-inline:24px}
+.data-foundation-flow>div:not(.data-flow-output){padding:14px}
+.data-foundation-flow b{font-size:clamp(24px,2.35vw,39px);line-height:.96}
+.data-foundation-flow span:not(.data-flow-arrow){font-size:8px}
+.data-flow-trace::after{content:"↳";position:absolute;right:10px;bottom:1px;color:#2c8c83;font:800 60px var(--display)}
+.data-flow-output{left:24px;right:24px;font-size:clamp(20px,2vw,32px)}
+
+/* Bring section content closer to its chapter label. */
+@media(min-width:761px){
+  .pricing-section,.education-section,.timeline-section,.skills-section,.certifications-section{padding-top:72px;padding-bottom:72px}
+  .pricing-section>.case-banner{margin-top:-72px;margin-bottom:48px}
+  .pricing-head{margin-top:36px;gap:0 4vw}
+  .pricing-head h2{margin-bottom:28px}
+  .pricing-head p{margin-bottom:32px}
+  .price-stage{height:clamp(440px,60vh,540px)}
+  .pricing-results{padding-top:24px;align-items:center}
+  .education-intro,.timeline-intro,.skills-intro,.cert-intro{margin-top:38px;margin-bottom:40px}
+  .education-intro h2,.timeline-intro h2,.skills-intro h2,.cert-intro h2{font-size:clamp(76px,7.7vw,122px)}
+  .education-intro h2,.timeline-intro h2{margin-top:12px}
+  .health-section>.case-banner{margin-bottom:48px}
+  .health-intro{margin-top:38px;margin-bottom:52px}
+  .ai-section>.case-banner{margin-bottom:48px}
+}
+
+/* Each dish now has its own matching cutout; celebrations live below the food story. */
+.food-artwork{position:absolute;z-index:2;left:-2%;top:1%;width:102%;height:90%;object-fit:contain;filter:drop-shadow(10px 15px 0 #a552423c);transform:rotate(-7deg);transition:transform .5s}
+.food-section:hover .food-artwork{transform:rotate(-2deg) translateY(-10px)}
+.food-artwork.is-changing{animation:food-arrive .45s ease both}
+@keyframes food-arrive{from{opacity:.45;transform:translateY(20px) rotate(-12deg) scale(.94)}to{opacity:1;transform:rotate(-7deg) scale(1)}}
+.gujarat-festivals{background:#f5ddba;color:#552920;border-top:3px solid #6e392b;border-bottom:3px solid #6e392b}
+.festival-heading{display:flex;align-items:baseline;justify-content:space-between;gap:25px;margin-bottom:25px}
+.festival-heading span{font:800 10px var(--mono);letter-spacing:.14em}
+.festival-heading strong{font:800 clamp(24px,3.4vw,55px)/.95 var(--display);text-align:right}
+.festival-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.festival-card{position:relative;min-height:230px;overflow:hidden;padding:27px;display:flex;justify-content:space-between;gap:14px;border:2px solid #683c2e;background:#ed966b;box-shadow:8px 9px 0 #71382732}
+.festival-uttarayan{background:#a8d6da}
+.festival-card>div:last-child{position:relative;z-index:2;align-self:end;width:54%;max-width:310px;margin-left:auto}
+.festival-card small{font:800 9px var(--mono);letter-spacing:.1em}
+.festival-card h3{font:900 clamp(42px,4.2vw,72px)/.9 var(--display);margin:8px 0}
+.festival-card p{font:500 12px/1.45 var(--mono);max-width:300px;margin:0}
+.festival-art{position:absolute;inset:0;pointer-events:none}
+.dandiya-stick{position:absolute;top:22%;left:27%;width:14px;height:130px;border:2px solid #6e392b;border-radius:12px;background:repeating-linear-gradient(0deg,#e9ca6e 0 16px,#ed5b4f 16px 31px,#327e8c 31px 44px);transform:rotate(43deg);box-shadow:4px 7px 0 #6e392b3d;transition:transform .45s}
+.dandiya-stick:nth-child(2){transform:rotate(-43deg);left:35%}
+.festival-navratri:hover .dandiya-stick:first-child{transform:rotate(58deg) translateY(-8px)}
+.festival-navratri:hover .dandiya-stick:nth-child(2){transform:rotate(-58deg) translateY(-8px)}
+.festival-navratri .festival-art span{position:absolute;left:15%;top:19%;font:90px var(--display);color:#fbe2a9;opacity:.8}
+.festival-kite{position:absolute;top:24%;left:22%;width:110px;height:110px;transform:rotate(45deg);background:linear-gradient(90deg,#f7dd72 50%,#e56846 50%);border:3px solid #683c2e;box-shadow:8px 8px 0 #234c5f44;transition:transform .5s}
+.festival-kite::after{content:"";position:absolute;left:50%;top:100%;height:120px;border-left:2px dashed #683c2e;transform:rotate(-35deg)}
+.festival-uttarayan:hover .festival-kite{transform:translate(12px,-15px) rotate(54deg)}
+.festival-uttarayan .festival-art span{position:absolute;top:5%;left:6%;font:130px var(--serif);opacity:.35}
+
+@media(max-width:1050px){
+  .cdx-map{right:3vw;width:52vw}
+  .cdx-lane{padding:12px}
+  .cdx-lane-head strong{font-size:17px}
+  .cdx-nodes small{font-size:7px}.cdx-nodes b{font-size:13px}
+  .cdx-lane-notes span,.cdx-lane-notes em{font-size:8px}
+}
+@media(min-width:761px) and (max-width:950px){
+  .api-copy h2{font-size:75px}
+  .cdx-map{width:50vw;right:3vw}
+}
+@media(max-width:760px){
+  .api-copy{top:11%;left:5%;width:90%;background:none}
+  .api-copy h2{font-size:clamp(58px,12vw,88px);line-height:.85;margin:7px 0 8px}
+  .api-story{max-width:90vw;padding:9px 11px 9px 13px;background:#142638f2}
+  .api-story h3{font-size:22px;line-height:1.02;margin-bottom:5px}
+  .api-story p{font-size:12px;line-height:1.35;margin-bottom:5px}
+  .api-story small{font-size:8px}
+  .cdx-map{left:5%;right:5%;top:52%;width:90%;height:auto;display:block}
+  .cdx-lane{display:none;height:auto;min-height:154px;padding:10px;margin:0;box-shadow:4px 5px 0 #081d2c77}
+  .api-stage[data-stage="0"] .cdx-lane{display:block;height:auto;min-height:96px;margin-bottom:7px}
+  .api-stage[data-stage="1"] .cdx-inbound,.api-stage[data-stage="2"] .cdx-outbound,.api-stage[data-stage="3"] .cdx-outbound{display:block;transform:none}
+  .cdx-lane-head{padding-bottom:5px}.cdx-lane-head span{font-size:8px}.cdx-lane-head strong{font-size:12px}
+  .cdx-nodes{margin:6px 0;grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr) 12px minmax(0,1fr);gap:2px}
+  .cdx-nodes>div{min-height:44px;padding:4px}.cdx-nodes small{font-size:7px}.cdx-nodes b{font-size:11px;margin-top:2px}.cdx-nodes>span{font-size:14px}
+  .api-stage[data-stage="0"] .cdx-lane-notes{display:none}
+  .cdx-lane-notes{gap:4px}.cdx-lane-notes span,.cdx-lane-notes em{font-size:8px;line-height:1.2;padding:5px}
+  .cdx-map-note{display:none}
+  .data-foundation-flow{padding-inline:18px}.data-flow-output{left:18px;right:18px}
+  .festival-heading{display:block}.festival-heading strong{display:block;text-align:left;margin-top:15px}
+  .festival-cards{grid-template-columns:1fr}.festival-card{min-height:205px}
+  .festival-card h3{font-size:clamp(38px,8vw,58px)}
+}
+@media(max-width:500px){
+  .api-copy h2{font-size:58px}
+  .cdx-map{top:53%}
+  .cdx-lane-head strong{font-size:11px}
+  .cdx-lane-notes span,.cdx-lane-notes em{font-size:8px}
+  .data-foundation-copy p{font-size:14px}
+  .data-foundation-flow{grid-template-columns:1fr;gap:6px;padding:18px;min-height:0}
+  .data-foundation-flow>div:not(.data-flow-output){height:auto;min-height:70px;padding:10px 12px}
+  .data-foundation-flow>div.data-flow-files{min-height:100px}
+  .data-flow-scan::after{top:auto;bottom:7px}
+  .data-flow-arrow{font-size:18px;line-height:1}
+  .data-flow-output{position:relative;bottom:auto;left:auto;right:auto;margin-top:6px;font-size:19px}
+  .food-artwork{left:-7%;width:110%;top:0}
+  .food-section .personal-story{margin-top:46vh}
+  .food-picker{margin-top:18px}
+  .gujarat-festivals{padding-block:50px}
+  .festival-card{display:block;min-height:255px;padding:18px}
+  .festival-card>div:last-child{width:100%;max-width:none;margin:99px 0 0}
+  .festival-card h3{font-size:46px}
+  .festival-card p{font-size:11px;max-width:100%}
+  .dandiya-stick{top:13%;left:23%;height:80px;width:11px}
+  .dandiya-stick:nth-child(2){left:31%}
+  .festival-kite{top:10%;left:12%;width:73px;height:73px}
+}
+@media(prefers-reduced-motion:reduce){.food-artwork,.dandiya-stick,.festival-kite{transition:none;animation:none}}

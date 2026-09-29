@@ -10,12 +10,12 @@ let heroProgress = 0;
 let apiProgress = 0;
 let currentApiStage = -1;
 const apiStories = [
-  { title: 'One product. Many moving parts.', copy: 'Corporate clients use different accounting, expense and invoice systems. The exchange gives those systems a consistent way to connect with Amex capabilities.', role: 'PRODUCT FOCUS · CONNECTIVITY AND DELIVERY ACROSS TEAMS' },
-  { title: 'Bring ERP context inward.', copy: 'Client ERP data moves in so supplier payments can begin in Amex tools. My work connects requirements, product decisions and partner integration.', role: 'INBOUND · ACCOUNTING / EXPENSES / INVOICES' },
-  { title: 'Move transaction data outward.', copy: 'Amex data reaches corporate clients and their chosen partners. I have also begun shaping richer, real-time transaction APIs; that work is in progress.', role: 'OUTBOUND · TRANSACTIONS / REAL-TIME API WORK' },
-  { title: 'Make the foundation stronger.', copy: 'Useful connections need clear logging, traceable issues and dependable data. Rich transaction details can include merchant and travel line items where available.', role: 'FOUNDATIONS · LOGGING / TRACEABILITY / RICH DATA' }
+  { title: 'Two pipelines. Different jobs.', copy: 'CDX brings client ERP data into Amex for specific use cases. Separately, it sends Amex card events and settlement data out to clients or their approved partners.', role: 'INBOUND ERP DATA ≠ OUTBOUND CARD DATA' },
+  { title: 'Bring ERP data inward.', copy: 'Codat and Merge connect client ERPs such as QuickBooks, NetSuite and Sage Intacct. A customer pulls supplier and payment details into an Amex card tool, pays, and CDX writes the result back to ERP. For a credit-line increase request, ERP financials feed credit and fraud risk models for a decision.', role: 'INBOUND · SUPPLIER PAYMENT + CREDIT-LINE REVIEW' },
+  { title: 'Send the swipe outward.', copy: 'At card authorisation, CDX sends a real-time event to the client or an approved expense partner such as Concur, Emburse or Navan. An employee can receive a notification and attach the invoice instead of entering the expense by hand.', role: 'OUTBOUND · AUTHORISATION EVENT' },
+  { title: 'Follow with settlement.', copy: 'When settlement arrives later, CDX sends enriched transaction data with addenda and line-item detail where available. This is a second moment in the outbound pipeline, separate from ERP ingestion.', role: 'OUTBOUND · SETTLEMENT + ENRICHMENT' }
 ];
-const apiNextLabels = ['NEXT / ERP DATA ↓','NEXT / REAL TIME ↓','NEXT / FOUNDATIONS ↓','CONTINUE THE STORY ↓'];
+const apiNextLabels = ['NEXT / INBOUND ↓','NEXT / AUTHORISATION ↓','NEXT / SETTLEMENT ↓','CONTINUE THE STORY ↓'];
 function setApiStage(stage) {
   if (stage === currentApiStage) return;
   currentApiStage = stage;
@@ -133,7 +133,7 @@ updateEducation();
 const incidentStories = {
   repeat: ['Find the repeat, not just the alert.', 'Group similar issues, identify the root cause, and make the next response consistent across teams.'],
   delay: ['Make slowdowns visible.', 'A shared view helps teams trace repeated delays, understand handoffs and shorten the route to resolution.'],
-  quality: ['Trace the mismatch to its source.', 'Profile attributes and define quality checks so teams can act on the cause of bad data.']
+  handoff: ['Clarify the handoff.', 'Map ownership and escalation paths so issues stop bouncing between teams.']
 };
 $$('[data-incident]').forEach(button => button.addEventListener('click', () => {
   $$('#incident-wall [data-incident]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', active); });
@@ -248,14 +248,24 @@ $$('.achievement-replay').forEach(button => button.addEventListener('click', () 
 }));
 
 const foodStories = {
-  fafda: 'A crisp street-food favourite, especially when the city is celebrating.',
-  gathiya: 'A familiar Gujarati snack that tastes like home, even when I am far away.',
-  undhiyu: 'A seasonal dish that carries the feeling of gathering and tradition.',
-  navratri: 'Nine nights of garba, colour, music and late food stops: this is Gujarat at its most alive.'
+  fafda: 'Crisp fafda and chutney: a street-food ritual I always come back to.',
+  khandvi: 'Soft, delicate rolls with mustard seeds and fresh coriander; worth slowing down for.',
+  undhiyu: 'A seasonal bowl that tastes like winter gatherings and everyone sharing the table.'
 };
+const foodArtwork = {
+  fafda: './assets/gujarat-fafda-cutout.png',
+  khandvi: './assets/gujarat-khandvi-cutout.webp',
+  undhiyu: './assets/gujarat-undhiyu-cutout.webp'
+};
+Object.values(foodArtwork).forEach(src => { const image = new Image(); image.src = src; });
 $$('.food-picker [data-food]').forEach(button => button.addEventListener('click', () => {
-  $('#food-detail').textContent = foodStories[button.dataset.food];
-  $('#food').dataset.food = button.dataset.food;
+  const choice = button.dataset.food;
+  $('#food-detail').textContent = foodStories[choice];
+  $('#food').dataset.food = choice;
+  $('#food-artwork').src = foodArtwork[choice];
+  $('#food-artwork').classList.remove('is-changing');
+  void $('#food-artwork').offsetWidth;
+  $('#food-artwork').classList.add('is-changing');
   $$('.food-picker [data-food]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
 }));
 

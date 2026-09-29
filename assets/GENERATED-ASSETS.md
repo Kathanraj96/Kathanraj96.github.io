@@ -42,6 +42,12 @@ These assets were generated with the built-in imagegen tool for the current inte
 
 The four world images are rendered under translucent CSS washes at roughly half opacity so text and moving characters remain the focal point.
 
+## Gujarati food choices
+
+`gujarat-khandvi-cutout.webp` and `gujarat-undhiyu-cutout.webp` were generated with the built-in imagegen tool and compressed to transparent WebP. The existing `gujarat-fafda-cutout.png` served as the style reference. Each choice in the food section now displays its own artwork; Navratri and Uttarayan are separate code-drawn festival cards.
+
+Prompt set: Match the tactile hand-painted editorial illustration, warm saturated color, fine ink outlines, slight paper grain, three-quarter view, and broad horizontal composition of the existing fafda cutout. For khandvi, show distinct yellow rolled ribbons with mustard seed, green chili, coriander, and chutney on a paper-lined tray. For undhiyu, show an abundant Gujarati mixed-vegetable curry with beans, baby eggplant, potato, sweet potato, coriander, and a puri in a terracotta bowl. Use transparent backgrounds, with no text, logos, people, or festival objects.
+
 ## Interactive Kathan portrait
 
 `kathan-portrait-neutral.webp`, `kathan-portrait-left.webp`, `kathan-portrait-right.webp`, `kathan-portrait-up-left.webp`, `kathan-portrait-up-right.webp`, `kathan-portrait-curious.webp`, and `kathan-portrait-shades.webp` are transparent 3D-style portrait frames generated with the built-in imagegen tool and compressed to WebP for the off-duty chapter. The photos provided by Kathan were used only as identity and sunglass references; the photos themselves are not published in this repository. Kathan selected the more lifelike render and accepted its subtle facial hair.
