@@ -9,11 +9,11 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` in this fol
 ## What moves
 
 - The hero voxel field reacts to scroll and pointer movement.
-- The API scene stays pinned for a shorter span; visitors can scroll or choose one of four named steps covering the map, ERP inbound, real-time outbound work and product foundations.
+- The API scene stays pinned while visitors scroll or choose four steps. Two separate animated routes show ERP data coming in and card data going out, including authorisation and later settlement. The project panel keeps the visual schematic generic.
 - Incident slips reveal different root-cause notes.
 - The pricing scene steps from comparison to anomaly flag to manager-approved suggestion.
 - The AI console switches between three project-specific diagrams: a connected graph, an agent workflow and a dashboard view.
-- Supplied campus postcards sit in a swipeable, keyboard-accessible three-stop education journey. The three work roles follow in their own vertical timeline. The sport ball follows pointer or tap; Gujarati food choices, the pixel game and manga page have distinct controls.
+- Supplied campus postcards sit in a swipeable, keyboard-accessible three-stop education journey. The three work roles follow in their own vertical timeline, each with expandable CV-backed role notes. The sport ball follows pointer or tap; Gujarati food choices, the pixel game and manga page have distinct controls.
 - The first-principles quote breaks a repeated problem into its source, cause and constraint, then assembles a better process.
 - The manga and animation chapter is an asymmetrical comic page. Generated Luffy, Zoro and Zenitsu fan-art cutouts use different ink, cel and cartoon treatments; an original pixel scout completes the page. Characters enter on scroll and respond to pointer movement, page turn and motion controls.
 - Skills connect through a live switchboard to the case studies that demonstrate them. Six achievement keepsakes have individual vector illustrations and replay controls. A keyboard-accessible file drawer opens four external courses and credentials, each with its own visual motif. Internal technical training is listed separately.

@@ -5,17 +5,24 @@
 .api-story p{font-size:clamp(11px,.78vw,14px);line-height:1.5}
 .cdx-map{position:absolute;z-index:3;right:4vw;top:15%;width:min(52vw,980px);height:60%;display:grid;grid-template-rows:1fr 1fr;gap:13px}
 .api-head span:last-child{display:none}
-.cdx-lane{min-width:0;overflow:hidden;padding:16px 18px 13px;border:2px solid #9cb8d1;background:#eaf0ef;color:#183447;box-shadow:8px 9px 0 #081d2c77;transition:opacity .3s,transform .35s,border-color .3s}
+.cdx-lane{min-width:0;overflow:hidden;padding:16px 18px 13px;border:2px solid #9cb8d1;background:linear-gradient(#1734460a 1px,transparent 1px),linear-gradient(90deg,#1734460a 1px,transparent 1px),#eaf0ef;background-size:20px 20px;color:#183447;box-shadow:8px 9px 0 #081d2c77;transition:opacity .3s,transform .35s,border-color .3s}
 .cdx-inbound{--lane:#568fca}.cdx-outbound{--lane:#d8f151;border-color:#d8f151;background:#f1f3e4}
 .cdx-lane-head{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding-bottom:9px;border-bottom:2px solid var(--lane)}
 .cdx-lane-head span{flex:none;color:#386c87;font:800 10px var(--mono);letter-spacing:.1em}.cdx-outbound .cdx-lane-head span{color:#486521}
 .cdx-lane-head strong{font:800 clamp(15px,1.45vw,25px)/1 var(--display);text-align:right}
 .cdx-nodes{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1.1fr);gap:4px;align-items:center;margin:13px 0 12px}
-.cdx-nodes>div{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:64px;padding:8px 10px;border:1px solid #8eaab6;background:#fffdf4}
+.cdx-nodes>div{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:64px;padding:8px 10px;border:1px solid #8eaab6;background:#fffdf4;box-shadow:3px 4px 0 #17344629;transition:transform .45s,background .45s}
 .cdx-nodes>div.cdx-hub{background:var(--lane);border-color:#183447}
 .cdx-nodes small{display:block;font:800 8px/1.2 var(--mono);letter-spacing:.06em}
 .cdx-nodes b{display:block;margin-top:5px;font:800 clamp(13px,1.1vw,20px)/1.05 var(--display)}
-.cdx-nodes>span{text-align:center;font:800 22px var(--display);color:#3c6c7a}
+.cdx-nodes>.cdx-link{position:relative;display:block;height:0;border-top:2px dashed #3c6c7a}
+.cdx-link::after{content:"";position:absolute;right:-1px;top:-5px;border:4px solid transparent;border-right:0;border-left-color:#3c6c7a}
+.cdx-link i{position:absolute;z-index:2;left:0;top:-6px;width:10px;height:10px;background:var(--lane);border:1px solid #173446;border-radius:50%;box-shadow:0 0 0 4px #fff9;animation:cdx-travel 1.8s ease-in-out infinite}
+.cdx-link:nth-of-type(2) i{animation-delay:-.9s}
+@keyframes cdx-travel{0%{left:0;opacity:0;transform:scale(.65)}15%{opacity:1}85%{opacity:1}100%{left:calc(100% - 10px);opacity:0;transform:scale(1.2)}}
+.cdx-lane:hover .cdx-nodes>div{transform:translateY(-3px)}
+.api-stage[data-stage="1"] .cdx-inbound .cdx-hub,.api-stage[data-stage="2"] .cdx-outbound .cdx-hub,.api-stage[data-stage="3"] .cdx-outbound .cdx-hub{animation:cdx-pulse 2s ease-in-out infinite alternate}
+@keyframes cdx-pulse{to{box-shadow:0 0 0 7px #fff8,7px 8px 0 #17344640}}
 .cdx-lane-notes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .cdx-lane-notes span{padding:8px 10px;background:#c9dbdc;color:#183447;font:800 9px/1.2 var(--mono);letter-spacing:.04em}
 .cdx-outbound .cdx-lane-notes span{background:#dce9b2}
@@ -24,6 +31,25 @@
 .api-stage[data-stage="1"] .cdx-outbound,.api-stage[data-stage="2"] .cdx-inbound,.api-stage[data-stage="3"] .cdx-inbound{opacity:.48;transform:scale(.98)}
 .api-stage[data-stage="1"] .cdx-inbound,.api-stage[data-stage="2"] .cdx-outbound,.api-stage[data-stage="3"] .cdx-outbound{border-color:#fff;transform:translateX(-5px)}
 .api-stage[data-stage="3"] .cdx-outbound .cdx-lane-notes span:last-child{background:#d8f151;box-shadow:inset 0 0 0 2px #173446}
+.api-stage[data-stage="2"] .cdx-outbound .cdx-lane-notes span:first-child{background:#d8f151;box-shadow:inset 0 0 0 2px #173446}
+
+/* The timeline keeps the overview short and opens the CV-backed role notes on demand. */
+.timeline-more{max-width:520px;margin-top:22px;border:2px solid #173446;background:#edf3ed;box-shadow:6px 7px 0 #17344622}
+.timeline-more summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;background:#173446;color:#f2f0e8;cursor:pointer;font:800 10px/1.3 var(--mono);letter-spacing:.1em}
+.timeline-more summary::-webkit-details-marker{display:none}
+.timeline-more summary span[aria-hidden]{margin-left:auto;font:900 19px/.7 var(--display);color:#d8f151;transition:transform .25s}
+.timeline-more .timeline-label-close{display:none}
+.timeline-more[open] .timeline-label-open{display:none}
+.timeline-more[open] .timeline-label-close{display:inline}
+.timeline-more[open] summary span[aria-hidden]{transform:rotate(135deg)}
+.timeline-more summary:hover,.timeline-more summary:focus-visible{background:#28546a}
+.timeline-more summary:focus-visible{outline:3px solid #b4d63a;outline-offset:3px}
+.timeline-more-body{padding:17px 20px 18px}
+.timeline-more h4{margin:2px 0 9px;color:#386f81;font:800 10px/1.4 var(--mono);letter-spacing:.09em}
+.timeline-more h4:not(:first-child){margin-top:22px}
+.timeline-more ul{margin:0;padding-left:20px}
+.timeline-more li{margin:0 0 9px;font:500 clamp(13px,1.05vw,16px)/1.48 var(--editorial)}
+.timeline-more li:last-child{margin-bottom:0}
 
 /* Trace the legacy file work to its actual source and use the full diagram width. */
 .data-foundation-copy p{max-width:530px}
@@ -51,33 +77,11 @@
   .ai-section>.case-banner{margin-bottom:48px}
 }
 
-/* Each dish now has its own matching cutout; celebrations live below the food story. */
+/* Each dish has its own matching cutout. */
 .food-artwork{position:absolute;z-index:2;left:-2%;top:1%;width:102%;height:90%;object-fit:contain;filter:drop-shadow(10px 15px 0 #a552423c);transform:rotate(-7deg);transition:transform .5s}
 .food-section:hover .food-artwork{transform:rotate(-2deg) translateY(-10px)}
 .food-artwork.is-changing{animation:food-arrive .45s ease both}
 @keyframes food-arrive{from{opacity:.45;transform:translateY(20px) rotate(-12deg) scale(.94)}to{opacity:1;transform:rotate(-7deg) scale(1)}}
-.gujarat-festivals{background:#f5ddba;color:#552920;border-top:3px solid #6e392b;border-bottom:3px solid #6e392b}
-.festival-heading{display:flex;align-items:baseline;justify-content:space-between;gap:25px;margin-bottom:25px}
-.festival-heading span{font:800 10px var(--mono);letter-spacing:.14em}
-.festival-heading strong{font:800 clamp(24px,3.4vw,55px)/.95 var(--display);text-align:right}
-.festival-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.festival-card{position:relative;min-height:230px;overflow:hidden;padding:27px;display:flex;justify-content:space-between;gap:14px;border:2px solid #683c2e;background:#ed966b;box-shadow:8px 9px 0 #71382732}
-.festival-uttarayan{background:#a8d6da}
-.festival-card>div:last-child{position:relative;z-index:2;align-self:end;width:54%;max-width:310px;margin-left:auto}
-.festival-card small{font:800 9px var(--mono);letter-spacing:.1em}
-.festival-card h3{font:900 clamp(42px,4.2vw,72px)/.9 var(--display);margin:8px 0}
-.festival-card p{font:500 12px/1.45 var(--mono);max-width:300px;margin:0}
-.festival-art{position:absolute;inset:0;pointer-events:none}
-.dandiya-stick{position:absolute;top:22%;left:27%;width:14px;height:130px;border:2px solid #6e392b;border-radius:12px;background:repeating-linear-gradient(0deg,#e9ca6e 0 16px,#ed5b4f 16px 31px,#327e8c 31px 44px);transform:rotate(43deg);box-shadow:4px 7px 0 #6e392b3d;transition:transform .45s}
-.dandiya-stick:nth-child(2){transform:rotate(-43deg);left:35%}
-.festival-navratri:hover .dandiya-stick:first-child{transform:rotate(58deg) translateY(-8px)}
-.festival-navratri:hover .dandiya-stick:nth-child(2){transform:rotate(-58deg) translateY(-8px)}
-.festival-navratri .festival-art span{position:absolute;left:15%;top:19%;font:90px var(--display);color:#fbe2a9;opacity:.8}
-.festival-kite{position:absolute;top:24%;left:22%;width:110px;height:110px;transform:rotate(45deg);background:linear-gradient(90deg,#f7dd72 50%,#e56846 50%);border:3px solid #683c2e;box-shadow:8px 8px 0 #234c5f44;transition:transform .5s}
-.festival-kite::after{content:"";position:absolute;left:50%;top:100%;height:120px;border-left:2px dashed #683c2e;transform:rotate(-35deg)}
-.festival-uttarayan:hover .festival-kite{transform:translate(12px,-15px) rotate(54deg)}
-.festival-uttarayan .festival-art span{position:absolute;top:5%;left:6%;font:130px var(--serif);opacity:.35}
-
 @media(max-width:1050px){
   .cdx-map{right:3vw;width:52vw}
   .cdx-lane{padding:12px}
@@ -107,9 +111,6 @@
   .cdx-lane-notes{gap:4px}.cdx-lane-notes span,.cdx-lane-notes em{font-size:8px;line-height:1.2;padding:5px}
   .cdx-map-note{display:none}
   .data-foundation-flow{padding-inline:18px}.data-flow-output{left:18px;right:18px}
-  .festival-heading{display:block}.festival-heading strong{display:block;text-align:left;margin-top:15px}
-  .festival-cards{grid-template-columns:1fr}.festival-card{min-height:205px}
-  .festival-card h3{font-size:clamp(38px,8vw,58px)}
 }
 @media(max-width:500px){
   .api-copy h2{font-size:58px}
@@ -126,13 +127,5 @@
   .food-artwork{left:-7%;width:110%;top:0}
   .food-section .personal-story{margin-top:46vh}
   .food-picker{margin-top:18px}
-  .gujarat-festivals{padding-block:50px}
-  .festival-card{display:block;min-height:255px;padding:18px}
-  .festival-card>div:last-child{width:100%;max-width:none;margin:99px 0 0}
-  .festival-card h3{font-size:46px}
-  .festival-card p{font-size:11px;max-width:100%}
-  .dandiya-stick{top:13%;left:23%;height:80px;width:11px}
-  .dandiya-stick:nth-child(2){left:31%}
-  .festival-kite{top:10%;left:12%;width:73px;height:73px}
 }
-@media(prefers-reduced-motion:reduce){.food-artwork,.dandiya-stick,.festival-kite{transition:none;animation:none}}
+@media(prefers-reduced-motion:reduce){.food-artwork,.cdx-link i,.cdx-hub{transition:none;animation:none}}

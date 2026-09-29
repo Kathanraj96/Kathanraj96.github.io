@@ -10,10 +10,10 @@ let heroProgress = 0;
 let apiProgress = 0;
 let currentApiStage = -1;
 const apiStories = [
-  { title: 'Two pipelines. Different jobs.', copy: 'CDX brings client ERP data into Amex for specific use cases. Separately, it sends Amex card events and settlement data out to clients or their approved partners.', role: 'INBOUND ERP DATA ≠ OUTBOUND CARD DATA' },
-  { title: 'Bring ERP data inward.', copy: 'Codat and Merge connect client ERPs such as QuickBooks, NetSuite and Sage Intacct. A customer pulls supplier and payment details into an Amex card tool, pays, and CDX writes the result back to ERP. For a credit-line increase request, ERP financials feed credit and fraud risk models for a decision.', role: 'INBOUND · SUPPLIER PAYMENT + CREDIT-LINE REVIEW' },
-  { title: 'Send the swipe outward.', copy: 'At card authorisation, CDX sends a real-time event to the client or an approved expense partner such as Concur, Emburse or Navan. An employee can receive a notification and attach the invoice instead of entering the expense by hand.', role: 'OUTBOUND · AUTHORISATION EVENT' },
-  { title: 'Follow with settlement.', copy: 'When settlement arrives later, CDX sends enriched transaction data with addenda and line-item detail where available. This is a second moment in the outbound pipeline, separate from ERP ingestion.', role: 'OUTBOUND · SETTLEMENT + ENRICHMENT' }
+  { title: 'Two directions. One exchange.', copy: 'Client ERP information comes in for Amex use cases. Card events and later settlement data go out to clients or their approved systems.', role: 'INBOUND ERP DATA ≠ OUTBOUND CARD DATA' },
+  { title: 'Bring information inward.', copy: 'The inbound connection moves client ERP information into Amex systems for the work that needs it.', role: '01 / CLIENT ERP → AMEX' },
+  { title: 'Send the event outward.', copy: 'The outbound connection carries a card authorisation event to a client or its approved system in real time.', role: '02 / AMEX → CLIENT SYSTEM' },
+  { title: 'Follow with settlement.', copy: 'After the event, settlement data moves through that same outbound direction when it becomes available.', role: '02 / AMEX → CLIENT SYSTEM' }
 ];
 const apiNextLabels = ['NEXT / INBOUND ↓','NEXT / AUTHORISATION ↓','NEXT / SETTLEMENT ↓','CONTINUE THE STORY ↓'];
 function setApiStage(stage) {
