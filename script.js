@@ -268,24 +268,43 @@ $('#principles-button').addEventListener('click', event => {
 });
 
 const avatar = $('#personal-avatar');
-const avatarImage = $('#avatar-image');
+const avatarImages = $$('.avatar-frame', avatar);
 const portraitFrames = {
   neutral: './assets/kathan-portrait-neutral.webp',
   left: './assets/kathan-portrait-left.webp',
   right: './assets/kathan-portrait-right.webp',
+  upLeft: './assets/kathan-portrait-up-left.webp',
+  upRight: './assets/kathan-portrait-up-right.webp',
   curious: './assets/kathan-portrait-curious.webp',
   shades: './assets/kathan-portrait-shades.webp'
 };
 let portraitFrame = 'neutral';
+let portraitWanted = 'neutral';
+let portraitActiveImage = avatarImages[0];
+let portraitTransitioning = false;
 let portraitGaze = 'neutral';
 let portraitReaction = '';
 let portraitShadesOn = false;
 let portraitReactionTimer;
 function showPortraitFrame(frame) {
-  if (frame === portraitFrame) return;
-  portraitFrame = frame;
-  avatarImage.src = portraitFrames[frame];
-  avatar.dataset.expression = frame;
+  portraitWanted = frame;
+  if (portraitTransitioning || frame === portraitFrame) return;
+  portraitTransitioning = true;
+  const incoming = avatarImages.find(image => image !== portraitActiveImage);
+  const reveal = () => {
+    incoming.classList.add('is-visible');
+    portraitActiveImage.classList.remove('is-visible');
+    avatar.dataset.expression = frame;
+    setTimeout(() => {
+      portraitActiveImage = incoming;
+      portraitFrame = frame;
+      portraitTransitioning = false;
+      if (portraitWanted !== portraitFrame) showPortraitFrame(portraitWanted);
+    }, motionOK ? 110 : 0);
+  };
+  if (incoming.getAttribute('src') !== portraitFrames[frame]) incoming.src = portraitFrames[frame];
+  if (incoming.complete && incoming.naturalWidth) requestAnimationFrame(reveal);
+  else incoming.addEventListener('load', reveal, { once: true });
 }
 const portraitPreloader = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
@@ -309,10 +328,14 @@ $('#beyond').addEventListener('pointermove', event => {
   const x = clamp((event.clientX - (rect.left + rect.width / 2)) / (innerWidth * .42), -1, 1);
   const y = clamp((event.clientY - (rect.top + rect.height * .38)) / (innerHeight * .65), -1, 1);
   avatar.style.setProperty('--head-yaw', `${x * 3}deg`);
-  avatar.style.setProperty('--head-pitch', `${-y * 2}deg`);
+  avatar.style.setProperty('--head-pitch', `${-y * 3}deg`);
   avatar.style.setProperty('--head-x', `${x * 5}px`);
   avatar.style.setProperty('--head-y', `${y * 4}px`);
-  portraitGaze = x < -.28 ? 'left' : x > .28 ? 'right' : 'neutral';
+  const leftEdge = portraitGaze === 'left' || portraitGaze === 'upLeft' ? -.2 : -.3;
+  const rightEdge = portraitGaze === 'right' || portraitGaze === 'upRight' ? .2 : .3;
+  const upEdge = portraitGaze === 'upLeft' || portraitGaze === 'upRight' ? -.18 : -.29;
+  const side = x < leftEdge ? 'left' : x > rightEdge ? 'right' : 'center';
+  portraitGaze = side === 'left' ? (y < upEdge ? 'upLeft' : 'left') : side === 'right' ? (y < upEdge ? 'upRight' : 'right') : 'neutral';
   if (!portraitReaction && !portraitShadesOn) showPortraitFrame(portraitGaze);
 });
 $('#beyond').addEventListener('pointerleave', () => {
