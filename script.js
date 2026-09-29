@@ -268,13 +268,73 @@ $('#principles-button').addEventListener('click', event => {
 });
 
 const avatar = $('#personal-avatar');
-avatar.addEventListener('pointermove', event => {
+const avatarImage = $('#avatar-image');
+const portraitFrames = {
+  neutral: './assets/kathan-portrait-neutral.webp',
+  left: './assets/kathan-portrait-left.webp',
+  right: './assets/kathan-portrait-right.webp',
+  curious: './assets/kathan-portrait-curious.webp',
+  shades: './assets/kathan-portrait-shades.webp'
+};
+let portraitFrame = 'neutral';
+let portraitGaze = 'neutral';
+let portraitReaction = '';
+let portraitShadesOn = false;
+let portraitReactionTimer;
+function showPortraitFrame(frame) {
+  if (frame === portraitFrame) return;
+  portraitFrame = frame;
+  avatarImage.src = portraitFrames[frame];
+  avatar.dataset.expression = frame;
+}
+const portraitPreloader = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) return;
+  Object.values(portraitFrames).forEach(src => { const image = new Image(); image.src = src; });
+  portraitPreloader.disconnect();
+}, { rootMargin: '700px' });
+portraitPreloader.observe($('#beyond'));
+function reactPortrait(expression, duration = 1200) {
+  if (portraitShadesOn) return;
+  clearTimeout(portraitReactionTimer);
+  portraitReaction = expression;
+  showPortraitFrame(expression);
+  portraitReactionTimer = setTimeout(() => {
+    portraitReaction = '';
+    showPortraitFrame(portraitShadesOn ? 'shades' : portraitGaze);
+  }, duration);
+}
+$('#beyond').addEventListener('pointermove', event => {
   if (!finePointer || !motionOK) return;
   const rect = avatar.getBoundingClientRect();
-  avatar.style.setProperty('--eye-x', `${((event.clientX - rect.left) / rect.width - .5) * 10}px`);
-  avatar.style.setProperty('--eye-y', `${((event.clientY - rect.top) / rect.height - .5) * 8}px`);
+  const x = clamp((event.clientX - (rect.left + rect.width / 2)) / (innerWidth * .42), -1, 1);
+  const y = clamp((event.clientY - (rect.top + rect.height * .38)) / (innerHeight * .65), -1, 1);
+  avatar.style.setProperty('--head-yaw', `${x * 3}deg`);
+  avatar.style.setProperty('--head-pitch', `${-y * 2}deg`);
+  avatar.style.setProperty('--head-x', `${x * 5}px`);
+  avatar.style.setProperty('--head-y', `${y * 4}px`);
+  portraitGaze = x < -.28 ? 'left' : x > .28 ? 'right' : 'neutral';
+  if (!portraitReaction && !portraitShadesOn) showPortraitFrame(portraitGaze);
 });
-avatar.addEventListener('pointerleave', () => { avatar.style.setProperty('--eye-x','0px'); avatar.style.setProperty('--eye-y','0px'); });
+$('#beyond').addEventListener('pointerleave', () => {
+  portraitGaze = 'neutral';
+  avatar.style.setProperty('--head-yaw', '0deg');
+  avatar.style.setProperty('--head-pitch', '0deg');
+  avatar.style.setProperty('--head-x', '0px');
+  avatar.style.setProperty('--head-y', '0px');
+  if (!portraitReaction && !portraitShadesOn) showPortraitFrame('neutral');
+});
+avatar.addEventListener('pointerenter', () => {
+  if (finePointer && motionOK) reactPortrait('curious', 850);
+});
+avatar.addEventListener('click', () => {
+  clearTimeout(portraitReactionTimer);
+  portraitReaction = '';
+  portraitShadesOn = !portraitShadesOn;
+  avatar.setAttribute('aria-pressed', String(portraitShadesOn));
+  $('#avatar-cue').innerHTML = portraitShadesOn ? 'AFTER HOURS MODE ✳<br>TAP TO RESET' : 'FOLLOW MY GAZE ↗<br>TAP FOR SHADES';
+  $('#avatar-announcement').textContent = portraitShadesOn ? 'Kathan puts on his sunglasses.' : 'Kathan takes off his sunglasses.';
+  showPortraitFrame(portraitShadesOn ? 'shades' : portraitGaze);
+});
 const court = $('#movement-court');
 function moveBall(event) {
   const rect = court.getBoundingClientRect();

@@ -262,3 +262,29 @@ html{scroll-padding-top:76px}html,body{overflow-x:clip}
 @media(max-width:500px){.coop-overlay{inset:5px;gap:8px}.coop-stage{min-height:215px;max-height:300px}.coop-stage img{max-height:255px}.coop-nameplates{padding:0 4% 8px}.coop-nameplates span{font-size:12px;padding:6px 3px}.coop-copy h3{font-size:50px}.coop-copy p{font-size:13px;line-height:1.35}.coop-games span{font-size:8px;padding:5px 6px}}
 @media(min-width:360px) and (max-width:500px) and (min-height:800px){.coop-overlay{padding-bottom:112px}}
 @media(prefers-reduced-motion:reduce){.game-overlay .coop-unlock,.coop-stage img,.games-section.playing.coop-open .game-partner{animation:none}}
+
+/* Kathan's off-duty portrait is a small responsive character stage. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.offduty-inner{padding-top:21vh}
+.offduty-inner h2{width:min(63vw,890px);font-size:clamp(88px,10.3vw,178px);line-height:.8;letter-spacing:-.025em;z-index:3}
+.offduty-inner h2 i{display:inline-block;font-size:.78em;line-height:.87;white-space:normal;letter-spacing:-.065em;margin-left:.04em}
+.offduty-inner>p{position:relative;z-index:3;max-width:430px;margin-top:30px}
+.personal-avatar{position:absolute;right:2.5vw;bottom:-4.5%;width:min(39vw,575px);height:auto;aspect-ratio:1145/1374;padding:0;margin:0;display:block;transform:none;background:none;border:0;border-radius:0;box-shadow:none;overflow:visible;z-index:2;cursor:pointer;isolation:isolate;perspective:950px;-webkit-tap-highlight-color:transparent}
+.personal-avatar:focus-visible{outline:3px solid #1b1716;outline-offset:9px}
+.personal-avatar::after{content:"";position:absolute;left:16%;right:5%;bottom:1%;height:8%;border-radius:50%;background:#49231d52;filter:blur(16px);z-index:-1}
+.personal-avatar>img{display:block;position:relative;z-index:2;width:100%;height:100%;object-fit:contain;transform:rotateY(var(--head-yaw,0deg)) rotateX(var(--head-pitch,0deg)) translate3d(var(--head-x,0px),var(--head-y,0px),0);transform-origin:50% 57%;transition:transform .25s ease,filter .25s ease;filter:drop-shadow(10px 18px 0 #602a2452);pointer-events:none;user-select:none}
+.personal-avatar .avatar-orbit{position:absolute;z-index:-1;left:4%;top:20%;width:90%;aspect-ratio:1;border:3px solid #1b1716;border-radius:50%;background:radial-gradient(circle at 38% 36%,#fff0ca 0 22%,#f9d2a1 23% 100%);box-shadow:17px 17px 0 #1b17161a;transform:rotate(-9deg);pointer-events:none}
+.personal-avatar .avatar-orbit::after{content:"";position:absolute;inset:8%;border:1px dashed #a15745;border-radius:50%}
+.personal-avatar .avatar-spark{position:absolute;z-index:3;font:900 54px/1 var(--display);color:#1b1716;text-shadow:3px 3px 0 #f9d2a1;pointer-events:none}
+.personal-avatar .avatar-spark-one{top:19%;left:-7%;transform:rotate(-18deg)}
+.personal-avatar .avatar-spark-two{top:38%;right:-1%;font-size:31px;transform:rotate(14deg)}
+.personal-avatar .avatar-caption,.personal-avatar .avatar-cue{position:absolute;z-index:4;display:block;width:max-content;max-width:55%;padding:9px 12px;background:#1b1716;color:#fff8e7;box-shadow:5px 5px 0 #f7d6ac;text-align:left;font:700 10px/1.3 var(--mono);letter-spacing:.07em;pointer-events:none}
+.personal-avatar .avatar-caption{left:-2%;bottom:14%;transform:rotate(-5deg)}
+.personal-avatar .avatar-cue{right:-2%;top:12%;transform:rotate(5deg);background:#d8f151;color:#171c1c;box-shadow:5px 5px 0 #171c1c}
+.personal-avatar[data-expression="curious"] .avatar-cue{background:#fff5e7}
+.personal-avatar[aria-pressed="true"] .avatar-cue{background:#fff5e7}
+@media(max-width:1000px){.offduty-inner h2{font-size:clamp(80px,11.5vw,125px);width:65vw}.personal-avatar{width:min(43vw,470px);right:1vw}}
+@media(max-width:760px){.offduty-intro{height:100svh;min-height:730px}.offduty-inner{padding:23vh 5vw 5vh}.offduty-inner h2{width:92vw;font-size:clamp(78px,15vw,120px)}.offduty-inner>p{font-size:19px;max-width:290px;margin-top:20px}.personal-avatar{width:min(56vw,410px);right:2vw;bottom:-2%}.personal-avatar .avatar-cue{font-size:8px}.personal-avatar .avatar-caption{font-size:8px}}
+@media(max-width:500px){.offduty-intro{min-height:740px}.offduty-inner{padding:25vh 20px 0}.offduty-inner h2{width:min(100%,390px);font-size:clamp(65px,16.6vw,83px);line-height:.83}.offduty-inner h2 i{font-size:.72em}.offduty-inner>p{font-size:17px;max-width:275px;line-height:1.25;margin-top:20px}.personal-avatar{width:min(72vw,310px);right:2%;bottom:-3%}.personal-avatar .avatar-cue{top:14%;right:0;font-size:7px;padding:7px}.personal-avatar .avatar-caption{bottom:16%;left:-7%;font-size:7px;padding:7px}.personal-avatar .avatar-spark-one{font-size:34px;left:-7%}.personal-avatar .avatar-spark-two{font-size:22px}}
+@media(max-width:360px){.offduty-inner h2{font-size:61px}.offduty-inner>p{max-width:190px}.personal-avatar{width:75vw;right:-2%;bottom:-3%}}
+@media(prefers-reduced-motion:reduce){.personal-avatar>img{transition:none}}

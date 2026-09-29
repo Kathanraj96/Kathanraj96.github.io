@@ -41,3 +41,9 @@ These assets were generated with the built-in imagegen tool for the current inte
 | `kathan-janhvi-coop.webp` | Two original handcrafted cooperative game avatars, a young South Asian man in a patched blue adventurer jacket and a young South Asian woman in a coral outfit and teal scarf, playfully reaching toward one another. Full-body expressive 3D cutout look, no existing game character designs, no names or text; the site adds the names on unlock. |
 
 The four world images are rendered under translucent CSS washes at roughly half opacity so text and moving characters remain the focal point.
+
+## Interactive Kathan portrait
+
+`kathan-portrait-neutral.webp`, `kathan-portrait-left.webp`, `kathan-portrait-right.webp`, `kathan-portrait-curious.webp`, and `kathan-portrait-shades.webp` are transparent 3D-style portrait frames generated with the built-in imagegen tool and compressed to WebP for the off-duty chapter. The photos provided by Kathan were used only as identity and sunglass references; the photos themselves are not published in this repository. Kathan selected the more lifelike render and accepted its subtle facial hair.
+
+Prompt set: Create a recognizable dimensional 3D bust of Kathan from his two photographs, with side-swept dark hair, warm brown skin, a navy overshirt and cream tee, editorial lighting, and a transparent background. Preserve the selected likeness and framing across variants. Turn head and eyes left and right for cursor gaze, then make a matching expression frame with only a slightly raised eyebrow and closed-mouth amusement. Add an alternate frame with dark rectangular sunglasses like his third photo and a small closed-mouth smile. Keep the rendering polished and lifelike, without a scene, text, logo, or props. A broad smile and exaggerated surprise were explored but rejected from the site.
